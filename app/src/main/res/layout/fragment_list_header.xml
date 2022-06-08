@@ -1,53 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.appbar.CollapsingToolbarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/motion_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layoutDescription="@xml/search_view_motion_layout"
-    android:minHeight="50dp"
-    android:fitsSystemWindows="false"
-    app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed">
+    android:layout_height="wrap_content"
+    app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed"
+    app:toolbarId="@id/visible_toolbar">
 
-    <TextView
-        android:id="@+id/list_title_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="6dp"
-        android:text="@string/calculation"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/list_content_search_view"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/search_view_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_title_textView"
-        app:queryBackground="@android:color/transparent"
-        app:queryHint="@string/search" />
+        <TextView
+            android:id="@+id/list_title_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:text="@string/calculation"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/search_view_divider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="5dp"
-        android:background="@color/dark_gray"
-        app:layout_constraintEnd_toEndOf="@+id/list_content_search_view"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/list_content_search_view"
-        app:layout_constraintTop_toBottomOf="@+id/list_content_search_view" />
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/list_content_search_view"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/search_view_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/list_title_textView"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="@string/search" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/search_view_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/dark_gray"
+            app:layout_constraintEnd_toEndOf="@+id/list_content_search_view"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/list_content_search_view"
+            app:layout_constraintTop_toBottomOf="@+id/list_content_search_view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/visible_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_collapseMode="pin"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="52dp" />
+
+</com.google.android.material.appbar.CollapsingToolbarLayout>
