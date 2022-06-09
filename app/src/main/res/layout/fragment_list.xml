@@ -65,7 +65,8 @@
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
+                app:singleSelection="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -75,18 +76,24 @@
                 <Button
                     android:id="@+id/date_sort_button"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="65dp"
+                    android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:text="@string/Date"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/gray"
                     tools:layout_editor_absoluteX="118dp"
                     tools:layout_editor_absoluteY="253dp" />
 
                 <Button
                     android:id="@+id/name_sort_button"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="65dp"
+                    android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:text="@string/Name"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/gray"
                     tools:layout_editor_absoluteX="225dp"
                     tools:layout_editor_absoluteY="262dp" />
 
