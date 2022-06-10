@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentListBinding
-import com.example.calculator.databinding.FragmentUpdateBinding
 
 class ListFragment : Fragment(R.layout.fragment_list) {
 
