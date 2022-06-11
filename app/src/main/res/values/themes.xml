@@ -16,7 +16,7 @@
 
     <style name="ToggleButtonColor" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="backgroundTint">@color/sort_toggle_button_bg</item>
-        <item name="strokeColor">@color/black</item>
+        <item name="strokeColor">@color/medium_black</item>
     </style>
 
 </resources>
