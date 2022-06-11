@@ -77,27 +77,25 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/date_sort_button"
-                    style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:text="@string/Date"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    android:theme="@style/ToggleButtonColor"
-                    app:shapeAppearanceOverlay="@style/ToggleButtonColor"
+                    android:textColor="@color/black"
+                    style="@style/ToggleButtonColor"
                     tools:layout_editor_absoluteX="118dp"
                     tools:layout_editor_absoluteY="253dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/name_sort_button"
-                    style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:text="@string/Name"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    android:theme="@style/ToggleButtonColor"
-                    app:shapeAppearanceOverlay="@style/ToggleButtonColor"
+                    android:textColor="@color/black"
+                    style="@style/ToggleButtonColor"
                     tools:layout_editor_absoluteX="225dp"
                     tools:layout_editor_absoluteY="262dp" />
 
