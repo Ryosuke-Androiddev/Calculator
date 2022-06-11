@@ -14,7 +14,9 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ToggleButtonColor" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/black</item>
+    <style name="ToggleButtonColor" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">@color/sort_toggle_button_bg</item>
+        <item name="strokeColor">@color/black</item>
     </style>
+
 </resources>
