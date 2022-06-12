@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentAddBinding
 import com.example.calculator.databinding.FragmentUpdateBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddFragment : Fragment(R.layout.fragment_add) {
 
     private var _binding: FragmentAddBinding? = null

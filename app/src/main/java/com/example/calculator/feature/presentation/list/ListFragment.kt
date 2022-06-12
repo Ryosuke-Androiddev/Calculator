@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ListFragment : Fragment(R.layout.fragment_list) {
 
     private var _binding: FragmentListBinding? = null
