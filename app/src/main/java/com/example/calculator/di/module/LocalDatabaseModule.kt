@@ -3,6 +3,7 @@ package com.example.calculator.di.module
 import android.app.Application
 import androidx.room.Room
 import com.example.calculator.feature.data.data_source.CalculationDatabase
+import com.example.calculator.feature.data.repository.CalculationRepositoryImpl
 import com.example.calculator.feature.data.util.DataLayerConstants.CALCULATION_DATABASE_NAME
 import dagger.Module
 import dagger.Provides
@@ -23,6 +24,13 @@ object LocalDatabaseModule {
             CalculationDatabase::class.java,
             CALCULATION_DATABASE_NAME
         ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideCalculationRepository(calculationDatabase: CalculationDatabase): CalculationRepositoryImpl {
+
+        return CalculationRepositoryImpl(calculationDatabase.calculationDao())
     }
 
 }
