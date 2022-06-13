@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/fragment_list_scene">
@@ -52,6 +53,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -59,47 +61,56 @@
         app:layout_constraintTop_toBottomOf="@+id/list_content_search_view">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nested_constraint_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/materialButtonToggleGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:singleSelection="true"
-                app:selectionRequired="true"
                 app:checkedButton="@id/date_sort_button"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:selectionRequired="true"
+                app:singleSelection="true">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/date_sort_button"
+                    style="@style/ToggleButtonColor"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:text="@string/Date"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    style="@style/ToggleButtonColor"
-                    tools:layout_editor_absoluteX="118dp"
-                    tools:layout_editor_absoluteY="253dp" />
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/name_sort_button"
+                    style="@style/ToggleButtonColor"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:text="@string/Name"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    style="@style/ToggleButtonColor"
-                    tools:layout_editor_absoluteX="225dp"
-                    tools:layout_editor_absoluteY="262dp" />
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_recyclerView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/nested_constraint_layout"
+                app:layout_constraintEnd_toEndOf="@+id/nested_constraint_layout"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/nested_constraint_layout"
+                app:layout_constraintTop_toBottomOf="@+id/materialButtonToggleGroup"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
