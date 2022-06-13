@@ -11,14 +11,18 @@ object CalculationInfoItemDiffUtil {
             oldItem: CalculationInfoItem,
             newItem: CalculationInfoItem
         ): Boolean {
-            TODO("Not yet implemented")
+
+            // check the original property
+            return oldItem.calculationId == newItem.calculationId
         }
 
         override fun areContentsTheSame(
             oldItem: CalculationInfoItem,
             newItem: CalculationInfoItem
         ): Boolean {
-            TODO("Not yet implemented")
+
+            // check the object
+            return oldItem == newItem
         }
     }
 }
