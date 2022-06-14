@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentListBinding
+import com.example.calculator.feature.presentation.adapter.list.CalculationInfoItemAdapter
 import com.example.calculator.feature.presentation.list.viewmodel.ListViewModel
+import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +22,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     private val binding get() = _binding!!
 
     private val viewModel: ListViewModel by viewModels()
+    private val adapter by lazy { CalculationInfoItemAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,8 +39,17 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupRecyclerView()
+
         viewModel.getAllCalculation.observe(viewLifecycleOwner, {
 
         })
+    }
+
+    private fun setupRecyclerView() {
+
+        binding.listRecyclerView.adapter = adapter
+        binding.listRecyclerView.layoutManager = LinearLayoutManager(context)
+        adapter.submitList(DummyData.list)
     }
 }

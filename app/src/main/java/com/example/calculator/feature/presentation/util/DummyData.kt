@@ -8,53 +8,78 @@ object DummyData {
     val list: List<CalculationInfoItem> = listOf(
         CalculationInfoItem(
             1,
-            "1",
-            1L
+            "Java",
+            20220614L
         ),
         CalculationInfoItem(
             2,
-            "2",
-            2L
+            "Kotlin",
+            20220614L
         ),
         CalculationInfoItem(
             3,
-            "3",
-            3L
+            "Python",
+            20220614L
         ),
         CalculationInfoItem(
             4,
-            "4",
-            4L
+            "JavaScript",
+            20220614L
         ),
         CalculationInfoItem(
             5,
-            "5",
-            5L
+            "Ruby",
+            20220614L
         ),
         CalculationInfoItem(
             6,
-            "6",
-            6L
+            "Swift",
+            20220614L
         ),
         CalculationInfoItem(
             7,
-            "7",
-            7L
+            "PHP",
+            20220614L
         ),
         CalculationInfoItem(
             8,
-            "8",
-            8L
+            "Haskell",
+            20220614L
         ),
         CalculationInfoItem(
             9,
-            "9",
-            9L
+            "RUST",
+            20220614L
         ),
         CalculationInfoItem(
             10,
-            "10",
-            10L
-        )
+            "Go",
+            20220614L
+        ),
+        CalculationInfoItem(
+            11,
+            "C",
+            20220614L
+        ),
+        CalculationInfoItem(
+            12,
+            "C+",
+            20220614L
+        ),
+        CalculationInfoItem(
+            13,
+            "C++",
+            20220614L
+        ),
+        CalculationInfoItem(
+            14,
+            "C#",
+            20220614L
+        ),
+        CalculationInfoItem(
+            15,
+            "HTML",
+            20220614L
+        ),
     )
 }

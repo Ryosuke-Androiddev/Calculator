@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/fragment_list_scene">
@@ -47,62 +48,104 @@
         app:layout_constraintStart_toStartOf="@+id/list_content_search_view"
         app:layout_constraintTop_toBottomOf="@+id/list_content_search_view" />
 
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/materialButtonToggleGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:checkedButton="@id/date_sort_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_view_divider"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/date_sort_button"
+            style="@style/ToggleButtonColor"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:text="@string/Date"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/name_sort_button"
+            style="@style/ToggleButtonColor"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:text="@string/Name"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_content_search_view">
+        app:layout_constraintTop_toBottomOf="@+id/materialButtonToggleGroup"
+        tools:ignore="ScrollViewCount">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:singleSelection="true"
-                app:selectionRequired="true"
-                app:checkedButton="@id/date_sort_button"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/date_sort_button"
-                    android:layout_width="60dp"
-                    android:layout_height="40dp"
-                    android:text="@string/Date"
-                    android:textSize="12sp"
+                <ImageButton
+                    android:id="@+id/Dash_Border_Button"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/dash_border_bg"
+                    android:contentDescription="@string/add_calculation"
+                    app:srcCompat="@drawable/ic_add" />
+
+                <TextView
+                    android:id="@+id/dash_border_explain_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/new_calculation"
+                    android:textColor="#0068B7"
+                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
-                    style="@style/ToggleButtonColor"
-                    tools:layout_editor_absoluteX="118dp"
-                    tools:layout_editor_absoluteY="253dp" />
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"/>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/name_sort_button"
-                    android:layout_width="60dp"
-                    android:layout_height="40dp"
-                    android:text="@string/Name"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    style="@style/ToggleButtonColor"
-                    tools:layout_editor_absoluteX="225dp"
-                    tools:layout_editor_absoluteY="262dp" />
+            </LinearLayout>
 
-            </com.google.android.material.button.MaterialButtonToggleGroup>
+            <View
+                android:id="@+id/button_view_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/dark_gray" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
