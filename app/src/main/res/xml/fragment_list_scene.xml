@@ -54,12 +54,23 @@
             android:id="@+id/search_view_divider" />
         <Constraint
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintTop_toBottomOf="@+id/list_content_search_view"
+            motion:layout_constraintTop_toBottomOf="@+id/search_view_divider"
             motion:layout_constraintHorizontal_bias="0.5"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="4dp"
-            android:id="@+id/nestedScrollView" />
+            android:layout_marginTop="0dp"
+            android:visibility="invisible"
+            android:id="@+id/materialButtonToggleGroup" />
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintTop_toBottomOf="@+id/materialButtonToggleGroup"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="-40dp"
+            android:id="@+id/nestedScrollView"
+            motion:layout_constraintBottom_toBottomOf="parent" />
     </ConstraintSet>
 </MotionScene>

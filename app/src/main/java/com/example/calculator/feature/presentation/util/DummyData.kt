@@ -55,6 +55,31 @@ object DummyData {
             10,
             "Go",
             20220614L
-        )
+        ),
+        CalculationInfoItem(
+            11,
+            "C",
+            20220614L
+        ),
+        CalculationInfoItem(
+            12,
+            "C+",
+            20220614L
+        ),
+        CalculationInfoItem(
+            13,
+            "C++",
+            20220614L
+        ),
+        CalculationInfoItem(
+            14,
+            "C#",
+            20220614L
+        ),
+        CalculationInfoItem(
+            15,
+            "HTML",
+            20220614L
+        ),
     )
 }
