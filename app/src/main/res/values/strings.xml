@@ -7,4 +7,6 @@
     <string name="Date">日付</string>
     <string name="Name">名前</string>
     <string name="pop_up_image">pop_up_menu_button</string>
+    <string name="add_calculation">AddCalculation</string>
+    <string name="new_calculation">新規..</string>
 </resources>
