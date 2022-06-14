@@ -31,7 +31,7 @@ object LocalDatabaseModule {
 
     @Provides
     @Singleton
-    fun provideCalculationRepository(calculationDatabase: CalculationDatabase): CalculationRepositoryImpl {
+    fun provideCalculationRepository(calculationDatabase: CalculationDatabase): CalculationRepository {
 
         return CalculationRepositoryImpl(calculationDatabase.calculationDao())
     }
