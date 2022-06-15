@@ -46,6 +46,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         viewModel.getAllCalculation.observe(viewLifecycleOwner, {
 
         })
+
+        binding.DashBorderButton.setOnClickListener {
+            navigateToCreateNewItemFragment()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -62,6 +66,11 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 }
             }
         )
+    }
+
+    private fun navigateToCreateNewItemFragment() {
+        val action = ListFragmentDirections.actionListFragmentToCreateNewItemFragment()
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {
