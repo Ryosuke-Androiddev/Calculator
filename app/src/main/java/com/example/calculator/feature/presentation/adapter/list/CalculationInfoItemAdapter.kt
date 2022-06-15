@@ -9,6 +9,16 @@ import com.example.calculator.feature.presentation.adapter.list.CalculationInfoI
 
 class CalculationInfoItemAdapter: ListAdapter<CalculationInfoItem, CalculationInfoItemViewHolder>(DIFF_UTIL) {
 
+    private lateinit var listener: OnCalculationItemClickListener
+
+    interface OnCalculationItemClickListener {
+        fun onItemClick(calculationInfoItem: CalculationInfoItem)
+    }
+
+    fun setOnCalculationClickListener(listener: OnCalculationItemClickListener) {
+        this.listener = listener
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -23,5 +33,10 @@ class CalculationInfoItemAdapter: ListAdapter<CalculationInfoItem, CalculationIn
     override fun onBindViewHolder(calculationInfoItemViewHolder: CalculationInfoItemViewHolder, position: Int) {
 
         calculationInfoItemViewHolder.bind(getItem(position))
+
+        calculationInfoItemViewHolder.itemView.setOnClickListener {
+
+            listener.onItemClick(getItem(position))
+        }
     }
 }
