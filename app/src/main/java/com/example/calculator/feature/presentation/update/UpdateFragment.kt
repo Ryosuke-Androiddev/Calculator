@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentUpdateBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,6 +16,8 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
 
     private var _binding: FragmentUpdateBinding? = null
     private val binding get() = _binding!!
+
+    private val args: UpdateFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,5 +29,10 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
         Log.d("UpdateFragment", "UpdateFragment View Created")
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.textView.text = args.calculationItem.title
     }
 }
