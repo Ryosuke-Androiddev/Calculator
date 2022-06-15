@@ -35,4 +35,9 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
         super.onViewCreated(view, savedInstanceState)
         binding.textView.text = args.calculationItem.title
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
