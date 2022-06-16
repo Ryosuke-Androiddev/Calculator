@@ -60,9 +60,14 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
         adapter.setOnCalculationClickListener(
             object : CalculationInfoItemAdapter.OnCalculationItemClickListener {
+
                 override fun onCalculationItemInfoOnClick(calculationInfoItem: CalculationInfoItem) {
                     val action = ListFragmentDirections.actionListFragmentToUpdateFragment(calculationItem = calculationInfoItem)
                     findNavController().navigate(action)
+                }
+
+                override fun showPopUpWindow(calculationInfoItem: CalculationInfoItem) {
+                    // TODO custom_pop_up_window のレイアウト処理
                 }
             }
         )

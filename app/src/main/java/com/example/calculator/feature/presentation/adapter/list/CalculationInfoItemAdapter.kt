@@ -13,6 +13,7 @@ class CalculationInfoItemAdapter: ListAdapter<CalculationInfoItem, CalculationIn
 
     interface OnCalculationItemClickListener {
         fun onCalculationItemInfoOnClick(calculationInfoItem: CalculationInfoItem)
+        fun showPopUpWindow(calculationInfoItem: CalculationInfoItem)
     }
 
     fun setOnCalculationClickListener(listener: OnCalculationItemClickListener) {
@@ -33,6 +34,10 @@ class CalculationInfoItemAdapter: ListAdapter<CalculationInfoItem, CalculationIn
     override fun onBindViewHolder(calculationInfoItemViewHolder: CalculationInfoItemViewHolder, position: Int) {
 
         calculationInfoItemViewHolder.bind(getItem(position))
+
+        calculationInfoItemViewHolder.showPopUpWindow {
+            listener.showPopUpWindow(getItem(position))
+        }
 
         calculationInfoItemViewHolder.itemView.setOnClickListener {
 
