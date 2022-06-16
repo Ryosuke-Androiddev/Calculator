@@ -12,7 +12,7 @@ class CalculationInfoItemAdapter: ListAdapter<CalculationInfoItem, CalculationIn
     private lateinit var listener: OnCalculationItemClickListener
 
     interface OnCalculationItemClickListener {
-        fun onItemClick(calculationInfoItem: CalculationInfoItem)
+        fun onCalculationItemInfoOnClick(calculationInfoItem: CalculationInfoItem)
     }
 
     fun setOnCalculationClickListener(listener: OnCalculationItemClickListener) {
@@ -36,7 +36,7 @@ class CalculationInfoItemAdapter: ListAdapter<CalculationInfoItem, CalculationIn
 
         calculationInfoItemViewHolder.itemView.setOnClickListener {
 
-            listener.onItemClick(getItem(position))
+            listener.onCalculationItemInfoOnClick(getItem(position))
         }
     }
 }

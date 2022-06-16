@@ -60,7 +60,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
         adapter.setOnCalculationClickListener(
             object : CalculationInfoItemAdapter.OnCalculationItemClickListener {
-                override fun onItemClick(calculationInfoItem: CalculationInfoItem) {
+                override fun onCalculationItemInfoOnClick(calculationInfoItem: CalculationInfoItem) {
                     val action = ListFragmentDirections.actionListFragmentToUpdateFragment(calculationItem = calculationInfoItem)
                     findNavController().navigate(action)
                 }
