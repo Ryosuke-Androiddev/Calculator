@@ -30,7 +30,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     private val viewModel: ListViewModel by viewModels()
     private val adapter by lazy { CalculationInfoItemAdapter() }
 
-    private lateinit var parent: ConstraintLayout
+    private val customPopUpWindowBinding by lazy { CustomPopUpWindowBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +39,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     ): View? {
         _binding = FragmentListBinding.inflate(inflater, container, false)
 
-        Log.d("UpdateFragment", "UpdateFragment View Created")
+        Log.d("UpdateFragment", "ListFragment View Created")
 
         return binding.root
     }
@@ -72,14 +72,14 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 }
 
                 override fun showPopUpWindow(calculationInfoItem: CalculationInfoItem) {
-                    // このイベントが発生するときにこの処理が走る→ビューの生成のタイミングと破棄のタイミングを考える
-                    val customPopUpWindowBinding = CustomPopUpWindowBinding.inflate(layoutInflater)
 
+                    // このイベントが発生するときにこの処理が走る→ビューの生成のタイミングと破棄のタイミングを考える
                     Log.d("PopUpImageButton", "View Created")
+                    Log.d("PopUpImageButton", "${customPopUpWindowBinding.root} Created")
 
                     val width = ConstraintLayout.LayoutParams.WRAP_CONTENT
                     val height = ConstraintLayout.LayoutParams.WRAP_CONTENT
-                    val popUpWindow = PopupWindow(customPopUpWindowBinding.root, width, height, false)
+                    val popUpWindow = PopupWindow(customPopUpWindowBinding.root, 750, 600, false)
 
                     // 表示したい場所を第一引数で渡す
                     popUpWindow.showAtLocation(binding.root ,Gravity.CENTER, 0, 0)
@@ -105,5 +105,9 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+
+        // リソースが解放されていない
+        // View を作らず画面遷移すると初期化遅延をかけているのでエラーが出力される
+        Log.d("PopUp", "${customPopUpWindowBinding.root}")
     }
 }
