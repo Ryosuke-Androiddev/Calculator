@@ -62,8 +62,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             object : CalculationInfoItemAdapter.OnCalculationItemClickListener {
 
                 override fun onCalculationItemInfoOnClick(calculationInfoItem: CalculationInfoItem) {
-                    val action = ListFragmentDirections.actionListFragmentToUpdateFragment(calculationItem = calculationInfoItem)
-                    findNavController().navigate(action)
+                    navigateToUpdateFragment(calculationInfoItem = calculationInfoItem)
                 }
 
                 override fun showPopUpWindow(calculationInfoItem: CalculationInfoItem) {
@@ -71,6 +70,11 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 }
             }
         )
+    }
+
+    private fun navigateToUpdateFragment(calculationInfoItem: CalculationInfoItem) {
+        val action = ListFragmentDirections.actionListFragmentToUpdateFragment(calculationItem = calculationInfoItem)
+        findNavController().navigate(action)
     }
 
     private fun navigateToCreateNewItemFragment() {
