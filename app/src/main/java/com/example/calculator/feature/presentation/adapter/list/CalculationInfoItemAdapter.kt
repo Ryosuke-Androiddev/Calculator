@@ -35,8 +35,8 @@ class CalculationInfoItemAdapter: ListAdapter<CalculationInfoItem, CalculationIn
 
         calculationInfoItemViewHolder.bind(getItem(position))
 
-        calculationInfoItemViewHolder.showPopUpWindow {
-            listener.showPopUpWindow(getItem(position))
+        calculationInfoItemViewHolder.showPopUpWindow(getItem(position)) { calculationInfoItem ->
+            listener.showPopUpWindow(calculationInfoItem)
         }
 
         calculationInfoItemViewHolder.itemView.setOnClickListener {

@@ -19,11 +19,11 @@ class CalculationInfoItemViewHolder(
         binding.creationDateTextView.text = calculationInfoItem.date.toString()
     }
 
-    fun showPopUpWindow(showPopUpWindow: (calculationInfoItem: CalculationInfoItem) -> Unit) {
+    fun showPopUpWindow(calculationInfoItem: CalculationInfoItem, popUpWindow: (calculationInfoItem: CalculationInfoItem) -> Unit) {
 
         binding.popUpImageButton.setOnClickListener {
             Log.d("PopUpImageButton", "PopUpImageButton Clicked")
-            showPopUpWindow
+            popUpWindow(calculationInfoItem)
         }
     }
 }
