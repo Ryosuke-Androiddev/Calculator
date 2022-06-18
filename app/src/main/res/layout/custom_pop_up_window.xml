@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="90dp"
-    android:layout_marginEnd="90dp"
     android:background="@drawable/pop_up_window_bg">
 
     <androidx.appcompat.widget.SearchView
@@ -35,14 +33,38 @@
         android:contentDescription="@string/navigation_button_icon" />
 
     <ImageView
+        android:id="@+id/delete_imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:contentDescription="@string/delete_icon_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/navigation_imageView"
         app:layout_constraintStart_toStartOf="@+id/navigation_imageView"
         app:layout_constraintTop_toBottomOf="@+id/navigation_imageView"
-        app:srcCompat="@drawable/ic_delete"
-        android:contentDescription="@string/delete_icon_button" />
+        app:srcCompat="@drawable/ic_delete" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/save"
+        android:textSize="20sp"
+        style="@style/PopUpWindowConfirmButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cancel_button"
+        app:layout_constraintTop_toBottomOf="@+id/delete_imageView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        android:textSize="20sp"
+        style="@style/PopUpWindowConfirmButton"
+        app:layout_constraintBottom_toBottomOf="@+id/save_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/save_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

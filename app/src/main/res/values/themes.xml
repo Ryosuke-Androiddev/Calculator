@@ -19,4 +19,9 @@
         <item name="strokeColor">@color/medium_black</item>
     </style>
 
+    <style name="PopUpWindowConfirmButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:backgroundTint">@color/pop_up_black</item>
+        <item name="strokeColor">@color/pop_up_black</item>
+    </style>
+
 </resources>
