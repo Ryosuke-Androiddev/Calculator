@@ -1,4 +1,4 @@
-package com.example.calculator.feature.presentation.list
+package com.example.calculator.feature.presentation.ui.list
 
 import android.os.Bundle
 import android.util.Log
@@ -12,11 +12,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
-import com.example.calculator.databinding.CustomPopUpWindowBinding
+import com.example.calculator.databinding.CustomPopUpDialogBinding
 import com.example.calculator.databinding.FragmentListBinding
 import com.example.calculator.feature.domain.model.CalculationInfoItem
-import com.example.calculator.feature.presentation.adapter.list.CalculationInfoItemAdapter
-import com.example.calculator.feature.presentation.list.viewmodel.ListViewModel
+import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemAdapter
+import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +29,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     private val viewModel: ListViewModel by viewModels()
     private val adapter by lazy { CalculationInfoItemAdapter() }
 
-    private val customPopUpWindowBinding by lazy { CustomPopUpWindowBinding.inflate(layoutInflater) }
+    private val customPopUpWindowBinding by lazy { CustomPopUpDialogBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

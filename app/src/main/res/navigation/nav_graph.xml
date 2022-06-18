@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.example.calculator.feature.presentation.list.ListFragment"
+        android:name="com.example.calculator.feature.presentation.ui.list.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.example.calculator.feature.presentation.add.CreateNewItemFragment"
+        android:name="com.example.calculator.feature.presentation.ui.add.CreateNewItemFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_create_new_item" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
-        android:name="com.example.calculator.feature.presentation.update.UpdateFragment"
+        android:name="com.example.calculator.feature.presentation.ui.update.UpdateFragment"
         android:label="fragment_update"
         tools:layout="@layout/fragment_update" >
         <action

@@ -1,11 +1,11 @@
-package com.example.calculator.feature.presentation.adapter.list
+package com.example.calculator.feature.presentation.component.adapter.list_item
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.calculator.databinding.LayoutCalculationInfoItemBinding
 import com.example.calculator.feature.domain.model.CalculationInfoItem
-import com.example.calculator.feature.presentation.adapter.list.CalculationInfoItemDiffUtil.DIFF_UTIL
+import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemDiffUtil.DIFF_UTIL
 
 class CalculationInfoItemAdapter: ListAdapter<CalculationInfoItem, CalculationInfoItemViewHolder>(DIFF_UTIL) {
 

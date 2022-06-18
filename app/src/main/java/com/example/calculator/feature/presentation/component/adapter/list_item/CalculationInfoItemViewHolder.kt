@@ -1,11 +1,7 @@
-package com.example.calculator.feature.presentation.adapter.list
+package com.example.calculator.feature.presentation.component.adapter.list_item
 
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.widget.PopupWindow
 import androidx.recyclerview.widget.RecyclerView
-import com.example.calculator.databinding.CustomPopUpWindowBinding
 import com.example.calculator.databinding.LayoutCalculationInfoItemBinding
 import com.example.calculator.feature.domain.model.CalculationInfoItem
 
