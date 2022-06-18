@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -77,14 +76,12 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                     Log.d("PopUpImageButton", "View Created")
                     Log.d("PopUpImageButton", "${customPopUpWindowBinding.root} Created")
 
-                    val width = ConstraintLayout.LayoutParams.WRAP_CONTENT
-                    val height = ConstraintLayout.LayoutParams.WRAP_CONTENT
                     val popUpWindow = PopupWindow(customPopUpWindowBinding.root, 750, 600, false)
 
                     // 表示したい場所を第一引数で渡す
                     popUpWindow.showAtLocation(binding.root ,Gravity.CENTER, 0, 0)
 
-                    customPopUpWindowBinding.textView3.setOnClickListener {
+                    binding.nameSortButton.setOnClickListener {
                         popUpWindow.dismiss()
                     }
                 }
@@ -105,7 +102,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-
         // リソースが解放されていない
         // View を作らず画面遷移すると初期化遅延をかけているのでエラーが出力される
         Log.d("PopUp", "${customPopUpWindowBinding.root}")
