@@ -31,7 +31,8 @@
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/content_search_view"
-        app:srcCompat="@drawable/ic_exit_to_app" />
+        app:srcCompat="@drawable/ic_exit_to_app"
+        android:contentDescription="@string/navigation_button_icon" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -41,6 +42,7 @@
         app:layout_constraintEnd_toEndOf="@+id/navigation_imageView"
         app:layout_constraintStart_toStartOf="@+id/navigation_imageView"
         app:layout_constraintTop_toBottomOf="@+id/navigation_imageView"
-        app:srcCompat="@drawable/ic_delete" />
+        app:srcCompat="@drawable/ic_delete"
+        android:contentDescription="@string/delete_icon_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

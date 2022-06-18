@@ -9,4 +9,6 @@
     <string name="pop_up_image">pop_up_menu_button</string>
     <string name="add_calculation">AddCalculation</string>
     <string name="new_calculation">新規..</string>
+    <string name="delete_icon_button">delete_icon</string>
+    <string name="navigation_button_icon">navigation_icon</string>
 </resources>
