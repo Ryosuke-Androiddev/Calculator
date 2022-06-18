@@ -32,6 +32,31 @@
         app:srcCompat="@drawable/ic_exit_to_app"
         android:contentDescription="@string/navigation_button_icon" />
 
+    <TextView
+        android:id="@+id/navigation_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/move_update_fragment"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/navigation_imageView"
+        app:layout_constraintStart_toEndOf="@+id/navigation_imageView"
+        app:layout_constraintTop_toTopOf="@+id/navigation_imageView" />
+
+    <View
+        android:id="@+id/navigation_view_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/navigation_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/navigation_textView" />
+
     <ImageView
         android:id="@+id/delete_imageView"
         android:layout_width="wrap_content"
@@ -42,6 +67,31 @@
         app:layout_constraintStart_toStartOf="@+id/navigation_imageView"
         app:layout_constraintTop_toBottomOf="@+id/navigation_imageView"
         app:srcCompat="@drawable/ic_delete" />
+
+    <TextView
+        android:id="@+id/delete_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/move_trashcan"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/delete_imageView"
+        app:layout_constraintStart_toEndOf="@+id/delete_imageView"
+        app:layout_constraintTop_toTopOf="@+id/delete_imageView" />
+
+    <View
+        android:id="@+id/delete_view_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/delete_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/delete_textView" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save_button"
