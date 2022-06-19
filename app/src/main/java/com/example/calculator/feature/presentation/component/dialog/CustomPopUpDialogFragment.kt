@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.example.calculator.R
@@ -21,7 +22,7 @@ class CustomPopUpDialogFragment: DialogFragment(R.layout.custom_pop_up_dialog) {
 
         _binding = CustomPopUpDialogBinding.inflate(LayoutInflater.from(context))
 
-        val builder = AlertDialog.Builder(requireActivity())
+        val builder = AlertDialog.Builder(requireActivity(),)
         builder.setView(binding.root)
 
 //        binding.cancelButton.setOnClickListener {
@@ -30,6 +31,7 @@ class CustomPopUpDialogFragment: DialogFragment(R.layout.custom_pop_up_dialog) {
 
         val dialog = builder.create()
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
 
         return dialog
     }
