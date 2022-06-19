@@ -16,6 +16,7 @@ import com.example.calculator.databinding.CustomPopUpDialogBinding
 import com.example.calculator.databinding.FragmentListBinding
 import com.example.calculator.feature.domain.model.CalculationInfoItem
 import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemAdapter
+import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragment
 import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,8 +29,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
     private val viewModel: ListViewModel by viewModels()
     private val adapter by lazy { CalculationInfoItemAdapter() }
-
-    private val customPopUpWindowBinding by lazy { CustomPopUpDialogBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,16 +73,8 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
                     // このイベントが発生するときにこの処理が走る→ビューの生成のタイミングと破棄のタイミングを考える
                     Log.d("PopUpImageButton", "View Created")
-                    Log.d("PopUpImageButton", "${customPopUpWindowBinding.root} Created")
-
-                    val popUpWindow = PopupWindow(customPopUpWindowBinding.root, 750, 600, false)
-
-                    // 表示したい場所を第一引数で渡す
-                    popUpWindow.showAtLocation(binding.root ,Gravity.CENTER, 0, 0)
-
-                    binding.nameSortButton.setOnClickListener {
-                        popUpWindow.dismiss()
-                    }
+                    Log.d("PopUpDialog", "${CustomPopUpDialogFragment()} created")
+                    CustomPopUpDialogFragment().show(parentFragmentManager, "Custom Pop Up")
                 }
             }
         )
@@ -104,6 +95,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         _binding = null
         // リソースが解放されていない
         // View を作らず画面遷移すると初期化遅延をかけているのでエラーが出力される
-        Log.d("PopUp", "${customPopUpWindowBinding.root}")
+        // Log.d("PopUp", "${customPopUpWindowBinding.root}")
     }
 }

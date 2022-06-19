@@ -2,13 +2,16 @@ package com.example.calculator.feature.presentation.component.dialog
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import com.example.calculator.R
 import com.example.calculator.databinding.CustomPopUpDialogBinding
 
-class CustomPopUpDialogFragment: DialogFragment() {
+class CustomPopUpDialogFragment: DialogFragment(R.layout.custom_pop_up_dialog) {
 
     private var _binding: CustomPopUpDialogBinding? = null
     private val binding get() = _binding!!
@@ -21,10 +24,18 @@ class CustomPopUpDialogFragment: DialogFragment() {
         val builder = AlertDialog.Builder(requireActivity())
         builder.setView(binding.root)
 
-        binding.cancelButton.setOnClickListener {
-            dismiss()
-        }
+//        binding.cancelButton.setOnClickListener {
+//            dismiss()
+//        }
 
-        return builder.create()
+        val dialog = builder.create()
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        return dialog
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
