@@ -1,4 +1,4 @@
-package com.example.calculator.feature.presentation.adapter.list
+package com.example.calculator.feature.presentation.component.adapter.list_item
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.calculator.feature.domain.model.CalculationInfoItem

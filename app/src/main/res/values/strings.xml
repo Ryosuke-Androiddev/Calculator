@@ -9,4 +9,10 @@
     <string name="pop_up_image">pop_up_menu_button</string>
     <string name="add_calculation">AddCalculation</string>
     <string name="new_calculation">新規..</string>
+    <string name="delete_icon_button">delete_icon</string>
+    <string name="navigation_button_icon">navigation_icon</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="move_trashcan">ゴミ箱に入れる</string>
+    <string name="move_update_fragment">移動する</string>
 </resources>
