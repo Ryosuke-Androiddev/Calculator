@@ -70,7 +70,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 }
 
                 override fun showPopUpWindow(calculationInfoItem: CalculationInfoItem) {
-                    CustomPopUpDialogFragment().show(parentFragmentManager, "Custom Pop Up")
+                    CustomPopUpDialogFragment(calculationInfoItem = calculationInfoItem).show(parentFragmentManager, "Custom Pop Up")
                 }
             }
         )

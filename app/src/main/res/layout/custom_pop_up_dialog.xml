@@ -6,20 +6,21 @@
     android:layout_height="wrap_content"
     android:background="@drawable/pop_up_window_bg">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/content_search_view"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/content_edit_textview"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/search_view_bg"
+        android:hint="@string/pop_up_image"
+        android:text="Name"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:queryBackground="@android:color/transparent"
-        app:queryHint="@string/search" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/navigation_imageView"
@@ -28,7 +29,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/content_search_view"
+        app:layout_constraintTop_toBottomOf="@+id/content_edit_textview"
         app:srcCompat="@drawable/ic_exit_to_app"
         android:contentDescription="@string/navigation_button_icon" />
 
