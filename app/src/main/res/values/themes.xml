@@ -24,4 +24,10 @@
         <item name="strokeColor">@color/pop_up_black</item>
     </style>
 
+    <style name="TitleTextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/title_input_text_stroke_color</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="hintTextColor">@color/title_input_text_stroke_color</item>
+    </style>
+
 </resources>
