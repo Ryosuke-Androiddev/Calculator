@@ -70,11 +70,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 }
 
                 override fun showPopUpWindow(calculationInfoItem: CalculationInfoItem) {
-
-                    // このイベントが発生するときにこの処理が走る→ビューの生成のタイミングと破棄のタイミングを考える
-                    Log.d("PopUpImageButton", "View Created")
-                    Log.d("PopUpDialog", "${CustomPopUpDialogFragment()} created")
-                    CustomPopUpDialogFragment().show(parentFragmentManager, "Custom Pop Up")
+                    CustomPopUpDialogFragment(calculationInfoItem = calculationInfoItem).show(parentFragmentManager, "Custom Pop Up")
                 }
             }
         )
@@ -93,8 +89,5 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        // リソースが解放されていない
-        // View を作らず画面遷移すると初期化遅延をかけているのでエラーが出力される
-        // Log.d("PopUp", "${customPopUpWindowBinding.root}")
     }
 }

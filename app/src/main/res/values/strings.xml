@@ -15,4 +15,5 @@
     <string name="save">Save</string>
     <string name="move_trashcan">ゴミ箱に入れる</string>
     <string name="move_update_fragment">移動する</string>
+    <string name="rename_view">Rename item title</string>
 </resources>
