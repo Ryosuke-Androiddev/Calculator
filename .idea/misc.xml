@@ -9,13 +9,13 @@
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/drawable/ic_exit_to_app.xml" value="0.544" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/drawable/ic_folder.xml" value="0.473" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/drawable/ic_launcher_background.xml" value="0.25" />
-        <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/drawable/pop_up_window_bg.xml" value="0.22" />
+        <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/drawable/pop_up_window_bg.xml" value="0.543" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/drawable/search_view_bg.xml" value="0.2625" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/drawable/sort_button_bg.xml" value="0.2065" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/drawable/sort_toggle_button_bg.xml" value="0.3325" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/drawable/toggle_button_bg.xml" value="0.543" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/layout/activity_main.xml" value="0.5505208333333333" />
-        <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/layout/custom_pop_up_dialog.xml" value="0.23548387096774193" />
+        <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/layout/custom_pop_up_dialog.xml" value="0.31145833333333334" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/layout/custom_pop_up_menu.xml" value="0.14074074074074075" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/layout/custom_pop_up_window.xml" value="0.2672239108409321" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/layout/fragment_create_new_item.xml" value="0.20555555555555555" />
@@ -25,6 +25,11 @@
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/layout/layout_calculation_info_item.xml" value="0.37817028985507245" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/layout/scrolling_content.xml" value="0.296448087431694" />
         <entry key="..\:/Users/Hirom/StudioProjects/Calculator/app/src/main/res/xml/search_view_motion_layout.xml" value="0.35733695652173914" />
+        <entry key="..\:/Users/Ryosuke Nikushi/StudioProjects/Calculator/app/src/main/res/drawable/search_view_bg.xml" value="0.1805" />
+        <entry key="..\:/Users/Ryosuke Nikushi/StudioProjects/Calculator/app/src/main/res/drawable/title_edit_text_bg.xml" value="0.1805" />
+        <entry key="..\:/Users/Ryosuke Nikushi/StudioProjects/Calculator/app/src/main/res/drawable/title_edit_text_view_bg.xml" value="0.1" />
+        <entry key="..\:/Users/Ryosuke Nikushi/StudioProjects/Calculator/app/src/main/res/layout/custom_pop_up_dialog.xml" value="0.1453804347826087" />
+        <entry key="..\:/Users/Ryosuke Nikushi/StudioProjects/Calculator/app/src/main/res/layout/fragment_list.xml" value="0.1" />
         <entry key="..\:/Users/ryosuke/AndroidStudioProjecs/Calculator/app/src/main/res/layout/activity_main.xml" value="0.23731884057971014" />
         <entry key="..\:/Users/ryosuke/AndroidStudioProjecs/Calculator/app/src/main/res/layout/fragment_list.xml" value="0.24728260869565216" />
       </map>
