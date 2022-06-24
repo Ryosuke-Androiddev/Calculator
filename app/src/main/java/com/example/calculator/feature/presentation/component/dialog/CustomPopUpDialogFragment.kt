@@ -11,8 +11,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import com.example.calculator.R
 import com.example.calculator.databinding.CustomPopUpDialogBinding
 import com.example.calculator.feature.domain.model.CalculationInfoItem
@@ -39,6 +41,10 @@ class CustomPopUpDialogFragment(
         }
 
         binding.contentEditTextview.setText(calculationInfoItem.title)
+
+        binding.navigationTextView.setOnClickListener {
+            Toast.makeText(requireContext(),"Clicked",Toast.LENGTH_LONG).show()
+        }
 
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
