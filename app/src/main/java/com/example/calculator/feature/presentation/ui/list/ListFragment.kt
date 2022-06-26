@@ -15,7 +15,6 @@ import com.example.calculator.databinding.FragmentListBinding
 import com.example.calculator.feature.domain.model.CalculationInfoItem
 import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemAdapter
 import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragment
-import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragmentDirections
 import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
