@@ -13,7 +13,9 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import com.example.calculator.R
 import com.example.calculator.databinding.CustomPopUpDialogBinding
@@ -43,7 +45,7 @@ class CustomPopUpDialogFragment(
         binding.contentEditTextview.setText(calculationInfoItem.title)
 
         binding.navigationTextView.setOnClickListener {
-            Toast.makeText(requireContext(),"Clicked",Toast.LENGTH_LONG).show()
+            setFragmentResult("update_navigation", bundleOf("result" to calculationInfoItem))
         }
 
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
