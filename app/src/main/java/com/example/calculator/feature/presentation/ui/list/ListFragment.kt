@@ -51,8 +51,11 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         })
 
         childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->
-            val result = bundle.get("request")
-            Toast.makeText(requireContext(), "$result", Toast.LENGTH_LONG).show()
+            val result = bundle["result"] as CalculationInfoItem
+            Log.d("Result", "${findNavController().currentDestination}")
+            Log.d("Result","${result.equals(CalculationInfoItem(1, "Java", 20220614L))}")
+            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(result)
+            findNavController().navigate(action)
         }
 
         binding.DashBorderButton.setOnClickListener {
@@ -74,7 +77,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 }
 
                 override fun showPopUpWindow(calculationInfoItem: CalculationInfoItem) {
-
+                    Log.d("CurrentNav", "${findNavController().currentDestination}")
                     // pass Dialog Fragment Manager (childFragment Manager)
                     CustomPopUpDialogFragment(calculationInfoItem = calculationInfoItem).show(childFragmentManager, "Custom Pop Up")
                 }
