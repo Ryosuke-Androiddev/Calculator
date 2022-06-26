@@ -47,6 +47,7 @@ class CustomPopUpDialogFragment(
         binding.navigationTextView.setOnClickListener {
             setFragmentResult("update_navigation", bundleOf("result" to calculationInfoItem))
             dismiss()
+            Log.d("Argument", "$calculationInfoItem")
         }
 
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
