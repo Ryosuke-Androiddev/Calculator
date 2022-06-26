@@ -51,7 +51,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         })
 
         childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->
-            val result = bundle.get("request")
+            val result = bundle["result"]
             Toast.makeText(requireContext(), "$result", Toast.LENGTH_LONG).show()
         }
 
