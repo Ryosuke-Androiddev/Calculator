@@ -2,21 +2,20 @@ package com.example.calculator.feature.presentation.ui.list
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupWindow
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
-import com.example.calculator.databinding.CustomPopUpDialogBinding
 import com.example.calculator.databinding.FragmentListBinding
 import com.example.calculator.feature.domain.model.CalculationInfoItem
 import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemAdapter
 import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragment
+import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragmentDirections
 import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,6 +50,11 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
         })
 
+        childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->
+            val result = bundle["result"]
+            Toast.makeText(requireContext(), "$result", Toast.LENGTH_LONG).show()
+        }
+
         binding.DashBorderButton.setOnClickListener {
             navigateToCreateNewItemFragment()
         }
@@ -70,7 +74,9 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 }
 
                 override fun showPopUpWindow(calculationInfoItem: CalculationInfoItem) {
-                    CustomPopUpDialogFragment(calculationInfoItem = calculationInfoItem).show(parentFragmentManager, "Custom Pop Up")
+
+                    // pass Dialog Fragment Manager (childFragment Manager)
+                    CustomPopUpDialogFragment(calculationInfoItem = calculationInfoItem).show(childFragmentManager, "Custom Pop Up")
                 }
             }
         )
