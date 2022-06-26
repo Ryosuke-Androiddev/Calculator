@@ -38,12 +38,4 @@
             android:name="calculation_item"
             app:argType="com.example.calculator.feature.domain.model.CalculationInfoItem" />
     </fragment>
-    <dialog
-        android:id="@+id/customPopUpDialogFragment"
-        android:name="com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragment"
-        android:label="CustomPopUpDialogFragment" >
-        <action
-            android:id="@+id/action_customPopUpDialogFragment_to_updateFragment"
-            app:destination="@id/updateFragment" />
-    </dialog>
 </navigation>

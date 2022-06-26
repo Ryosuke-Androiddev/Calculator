@@ -15,7 +15,6 @@ import com.example.calculator.databinding.FragmentListBinding
 import com.example.calculator.feature.domain.model.CalculationInfoItem
 import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemAdapter
 import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragment
-import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragmentDirections
 import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,8 +50,11 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         })
 
         childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->
-            val result = bundle["result"]
-            Toast.makeText(requireContext(), "$result", Toast.LENGTH_LONG).show()
+            val result = bundle["result"] as CalculationInfoItem
+            Log.d("Result", "${findNavController().currentDestination}")
+            Log.d("Result","${result.equals(CalculationInfoItem(1, "Java", 20220614L))}")
+            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(result)
+            findNavController().navigate(action)
         }
 
         binding.DashBorderButton.setOnClickListener {
@@ -74,7 +76,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 }
 
                 override fun showPopUpWindow(calculationInfoItem: CalculationInfoItem) {
-
+                    Log.d("CurrentNav", "${findNavController().currentDestination}")
                     // pass Dialog Fragment Manager (childFragment Manager)
                     CustomPopUpDialogFragment(calculationInfoItem = calculationInfoItem).show(childFragmentManager, "Custom Pop Up")
                 }
