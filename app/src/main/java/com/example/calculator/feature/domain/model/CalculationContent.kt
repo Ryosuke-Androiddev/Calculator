@@ -8,4 +8,6 @@ import com.example.calculator.feature.domain.util.DomainLayerConstants.CALCULATI
 data class CalculationContent(
     @PrimaryKey(autoGenerate = true)
     val contentId: Long,
+    val answer: Long,
+    val formulaProcess: String
 )
