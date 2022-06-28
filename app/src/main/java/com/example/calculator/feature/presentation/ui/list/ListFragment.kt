@@ -52,7 +52,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->
             val result = bundle["result"] as CalculationInfoItem
             Log.d("Result", "${findNavController().currentDestination}")
-            Log.d("Result","${result.equals(CalculationInfoItem(1, "Java", 20220614L))}")
+            Log.d("Result","${result.equals(CalculationInfoItem(1, "Java", 20220614L, 1L))}")
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(result)
             findNavController().navigate(action)
         }
