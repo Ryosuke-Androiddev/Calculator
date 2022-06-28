@@ -6,13 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentListBinding
-import com.example.calculator.feature.domain.model.CalculationInfoItem
+import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemAdapter
 import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragment
 import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
@@ -50,9 +49,9 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         })
 
         childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->
-            val result = bundle["result"] as CalculationInfoItem
+            val result = bundle["result"] as CalculationInfo
             Log.d("Result", "${findNavController().currentDestination}")
-            Log.d("Result","${result.equals(CalculationInfoItem(1, "Java", 20220614L, 1L))}")
+            Log.d("Result","${result.equals(CalculationInfo(1, "Java", 20220614L, 1L))}")
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(result)
             findNavController().navigate(action)
         }
@@ -71,21 +70,21 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         adapter.setOnCalculationClickListener(
             object : CalculationInfoItemAdapter.OnCalculationItemClickListener {
 
-                override fun onCalculationItemInfoOnClick(calculationInfoItem: CalculationInfoItem) {
-                    navigateToUpdateFragment(calculationInfoItem = calculationInfoItem)
+                override fun onCalculationItemInfoOnClick(calculationInfo: CalculationInfo) {
+                    navigateToUpdateFragment(calculationInfo = calculationInfo)
                 }
 
-                override fun showPopUpWindow(calculationInfoItem: CalculationInfoItem) {
+                override fun showPopUpWindow(calculationInfo: CalculationInfo) {
                     Log.d("CurrentNav", "${findNavController().currentDestination}")
                     // pass Dialog Fragment Manager (childFragment Manager)
-                    CustomPopUpDialogFragment(calculationInfoItem = calculationInfoItem).show(childFragmentManager, "Custom Pop Up")
+                    CustomPopUpDialogFragment(calculationInfoItem = calculationInfo).show(childFragmentManager, "Custom Pop Up")
                 }
             }
         )
     }
 
-    private fun navigateToUpdateFragment(calculationInfoItem: CalculationInfoItem) {
-        val action = ListFragmentDirections.actionListFragmentToUpdateFragment(calculationItem = calculationInfoItem)
+    private fun navigateToUpdateFragment(calculationInfo: CalculationInfo) {
+        val action = ListFragmentDirections.actionListFragmentToUpdateFragment(calculationItem = calculationInfo)
         findNavController().navigate(action)
     }
 

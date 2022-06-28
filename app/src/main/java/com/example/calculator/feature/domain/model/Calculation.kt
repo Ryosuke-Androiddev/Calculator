@@ -9,5 +9,5 @@ data class Calculation(
         parentColumn = "contentId",
         entityColumn = "calculationContentId"
     )
-    val calculationInfoItem: CalculationInfoItem
+    val calculationInfo: CalculationInfo
 )

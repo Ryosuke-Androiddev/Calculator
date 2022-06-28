@@ -11,18 +11,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
-import androidx.navigation.fragment.findNavController
 import com.example.calculator.R
 import com.example.calculator.databinding.CustomPopUpDialogBinding
-import com.example.calculator.feature.domain.model.CalculationInfoItem
+import com.example.calculator.feature.domain.model.CalculationInfo
 
 class CustomPopUpDialogFragment(
-    private val calculationInfoItem: CalculationInfoItem
+    private val calculationInfo: CalculationInfo
 ): DialogFragment(R.layout.custom_pop_up_dialog) {
 
     private var _binding: CustomPopUpDialogBinding? = null
@@ -42,12 +40,12 @@ class CustomPopUpDialogFragment(
             dismiss()
         }
 
-        binding.contentEditTextview.setText(calculationInfoItem.title)
+        binding.contentEditTextview.setText(calculationInfo.title)
 
         binding.navigationTextView.setOnClickListener {
-            setFragmentResult("update_navigation", bundleOf("result" to calculationInfoItem))
+            setFragmentResult("update_navigation", bundleOf("result" to calculationInfo))
             dismiss()
-            Log.d("Argument", "$calculationInfoItem")
+            Log.d("Argument", "$calculationInfo")
         }
 
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

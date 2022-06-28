@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = CALCULATION_INFO_TABLE_NAME)
 @Parcelize
-data class CalculationInfoItem(
+data class CalculationInfo(
     @PrimaryKey(autoGenerate = true)
     val calculationId: Long,
     val title: String,

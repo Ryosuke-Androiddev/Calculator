@@ -1,96 +1,95 @@
 package com.example.calculator.feature.presentation.util
 
-import androidx.lifecycle.LiveData
-import com.example.calculator.feature.domain.model.CalculationInfoItem
+import com.example.calculator.feature.domain.model.CalculationInfo
 
 object DummyData {
 
-    val list: List<CalculationInfoItem> = listOf(
-        CalculationInfoItem(
+    val list: List<CalculationInfo> = listOf(
+        CalculationInfo(
             1,
             "Java",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             2,
             "Kotlin",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             3,
             "Python",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             4,
             "JavaScript",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             5,
             "Ruby",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             6,
             "Swift",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             7,
             "PHP",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             8,
             "Haskell",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             9,
             "RUST",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             10,
             "Go",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             11,
             "C",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             12,
             "C+",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             13,
             "C++",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             14,
             "C#",
             20220614L,
             1L
         ),
-        CalculationInfoItem(
+        CalculationInfo(
             15,
             "HTML",
             20220614L,

@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.calculator.databinding.LayoutCalculationInfoItemBinding
-import com.example.calculator.feature.domain.model.CalculationInfoItem
+import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemDiffUtil.DIFF_UTIL
 
-class CalculationInfoItemAdapter: ListAdapter<CalculationInfoItem, CalculationInfoItemViewHolder>(DIFF_UTIL) {
+class CalculationInfoItemAdapter: ListAdapter<CalculationInfo, CalculationInfoItemViewHolder>(DIFF_UTIL) {
 
     private lateinit var listener: OnCalculationItemClickListener
 
     interface OnCalculationItemClickListener {
-        fun onCalculationItemInfoOnClick(calculationInfoItem: CalculationInfoItem)
-        fun showPopUpWindow(calculationInfoItem: CalculationInfoItem)
+        fun onCalculationItemInfoOnClick(calculationInfo: CalculationInfo)
+        fun showPopUpWindow(calculationInfo: CalculationInfo)
     }
 
     fun setOnCalculationClickListener(listener: OnCalculationItemClickListener) {
