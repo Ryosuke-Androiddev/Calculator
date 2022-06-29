@@ -7,6 +7,7 @@ import com.example.calculator.feature.data.repository.CalculationRepositoryImpl
 import com.example.calculator.feature.data.util.DataLayerConstants.CALCULATION_DATABASE_NAME
 import com.example.calculator.feature.domain.repository.CalculationRepository
 import com.example.calculator.feature.domain.use_case.GetAllCalculationInfoUseCase
+import com.example.calculator.feature.domain.use_case.GetCalculationUseCase
 import com.example.calculator.feature.domain.use_case.model.UseCase
 import dagger.Module
 import dagger.Provides
@@ -40,7 +41,8 @@ object LocalDatabaseModule {
     @Singleton
     fun provideUseCase(calculationRepository: CalculationRepository): UseCase {
         return UseCase(
-            getAllCalculationInfoUseCase = GetAllCalculationInfoUseCase(repository = calculationRepository)
+            getAllCalculationInfoUseCase = GetAllCalculationInfoUseCase(repository = calculationRepository),
+            getCalculation = GetCalculationUseCase(repository = calculationRepository)
         )
     }
 }
