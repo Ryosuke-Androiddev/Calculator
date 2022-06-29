@@ -5,7 +5,7 @@ import com.example.calculator.feature.domain.model.Calculation
 import com.example.calculator.feature.domain.repository.CalculationRepository
 import javax.inject.Inject
 
-class GetCalculation @Inject constructor(
+class GetCalculationUseCase @Inject constructor(
     private val repository: CalculationRepository
 ) {
 
