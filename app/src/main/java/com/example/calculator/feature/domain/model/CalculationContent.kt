@@ -9,5 +9,5 @@ data class CalculationContent(
     @PrimaryKey(autoGenerate = true)
     val contentId: Long,
     val answer: Long,
-    val formulaProcess: String
+    val formulaProcess: List<String>
 )
