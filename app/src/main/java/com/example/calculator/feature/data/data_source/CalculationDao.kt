@@ -3,6 +3,7 @@ package com.example.calculator.feature.data.data_source
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
+import androidx.room.Transaction
 import com.example.calculator.feature.domain.model.Calculation
 import com.example.calculator.feature.domain.model.CalculationInfo
 
@@ -14,6 +15,8 @@ interface CalculationDao {
     fun getAllCalculationInfo(): LiveData<List<CalculationInfo>>
 
     // Calculation
+
+    @Transaction
     @Query("SELECT * FROM calculation_content_table")
     fun getCalculation(): LiveData<Calculation>
 }
