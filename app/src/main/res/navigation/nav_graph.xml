@@ -36,6 +36,6 @@
             app:destination="@id/listFragment" />
         <argument
             android:name="calculation_item"
-            app:argType="com.example.calculator.feature.domain.model.CalculationInfoItem" />
+            app:argType="com.example.calculator.feature.domain.model.CalculationInfo" />
     </fragment>
 </navigation>
