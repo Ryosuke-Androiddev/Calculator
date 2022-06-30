@@ -11,7 +11,7 @@ import com.example.calculator.databinding.FragmentCreateNewItemBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CreateNewItemFragment : Fragment(R.layout.fragment_create_new_item) {
+class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculation) {
 
     private var _binding: FragmentCreateNewItemBinding? = null
     private val binding get() = _binding!!

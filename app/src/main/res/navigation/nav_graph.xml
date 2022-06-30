@@ -19,9 +19,9 @@
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.example.calculator.feature.presentation.ui.add.CreateNewItemFragment"
+        android:name="com.example.calculator.feature.presentation.ui.add.MakeNewCalculationFragment"
         android:label="fragment_add"
-        tools:layout="@layout/fragment_create_new_item" >
+        tools:layout="@layout/fragment_make_new_calculation" >
         <action
             android:id="@+id/action_addFragment_to_listFragment"
             app:destination="@id/listFragment" />
