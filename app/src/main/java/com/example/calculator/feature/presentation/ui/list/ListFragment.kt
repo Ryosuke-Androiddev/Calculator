@@ -77,7 +77,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 override fun showPopUpWindow(calculationInfo: CalculationInfo) {
                     Log.d("CurrentNav", "${findNavController().currentDestination}")
                     // pass Dialog Fragment Manager (childFragment Manager)
-                    CustomPopUpDialogFragment(calculationInfoItem = calculationInfo).show(childFragmentManager, "Custom Pop Up")
+                    CustomPopUpDialogFragment(calculationInfo = calculationInfo).show(childFragmentManager, "Custom Pop Up")
                 }
             }
         )
