@@ -62,6 +62,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         binding.DashBorderButton.setOnClickListener {
             MakeCalculationPopUpDialogFragment().show(childFragmentManager, "Make New Calculation Pop Up")
         }
+
+        binding.dashBorderExplainTextView.setOnClickListener {
+            MakeCalculationPopUpDialogFragment().show(childFragmentManager, "Make New Calculation Pop Up")
+        }
     }
 
     private fun setupRecyclerView() {
