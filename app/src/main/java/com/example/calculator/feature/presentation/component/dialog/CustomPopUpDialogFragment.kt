@@ -18,7 +18,6 @@ import androidx.fragment.app.setFragmentResult
 import com.example.calculator.R
 import com.example.calculator.databinding.CustomPopUpDialogBinding
 import com.example.calculator.feature.domain.model.CalculationInfo
-import com.example.calculator.feature.presentation.component.dialog.parent.DialogFragmentParent
 
 class CustomPopUpDialogFragment(
     private val calculationInfo: CalculationInfo

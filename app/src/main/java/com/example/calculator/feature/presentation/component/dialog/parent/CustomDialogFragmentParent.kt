@@ -5,7 +5,7 @@ import android.graphics.Rect
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 
-open class DialogFragmentParent: DialogFragment() {
+open class CustomDialogFragmentParent: DialogFragment() {
 
     open fun DialogFragment.setWidthPercent(percentage: Int) {
         // percentage に変換する
