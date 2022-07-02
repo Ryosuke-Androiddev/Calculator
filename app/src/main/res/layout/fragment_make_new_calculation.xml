@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/navigate_back_imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -31,16 +31,18 @@
         app:srcCompat="@drawable/ic_arrow_left" />
 
     <TextView
+        android:id="@+id/navigate_back_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/calculation_list"
-        android:textStyle="bold"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="@+id/imageButton" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/navigate_back_imageButton"
+        app:layout_constraintStart_toEndOf="@+id/navigate_back_imageButton"
+        app:layout_constraintTop_toTopOf="@+id/navigate_back_imageButton" />
 
     <View
+        android:id="@+id/title_field_divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="8dp"
@@ -51,5 +53,14 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/make_new_calculation_title_textView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_field_divider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
