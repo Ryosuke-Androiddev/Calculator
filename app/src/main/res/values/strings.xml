@@ -17,4 +17,6 @@
     <string name="move_update_fragment">移動する</string>
     <string name="rename_view">Rename item title</string>
     <string name="title">Title</string>
+    <string name="navigate_home_screen">Navigate_Home_Screen</string>
+    <string name="calculation_list">一覧</string>
 </resources>
