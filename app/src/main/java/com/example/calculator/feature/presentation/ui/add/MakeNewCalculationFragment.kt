@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.calculator.R
-import com.example.calculator.databinding.FragmentCreateNewItemBinding
+import com.example.calculator.databinding.FragmentMakeNewCalculationBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculation) {
 
-    private var _binding: FragmentCreateNewItemBinding? = null
+    private var _binding: FragmentMakeNewCalculationBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -21,7 +21,7 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentCreateNewItemBinding.inflate(inflater, container, false)
+        _binding = FragmentMakeNewCalculationBinding.inflate(inflater, container, false)
 
         Log.d("AddFragment", "AddFragment View Created")
 
