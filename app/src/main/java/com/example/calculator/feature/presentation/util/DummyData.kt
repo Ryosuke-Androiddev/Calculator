@@ -1,5 +1,6 @@
 package com.example.calculator.feature.presentation.util
 
+import com.example.calculator.feature.domain.model.CalculationContent
 import com.example.calculator.feature.domain.model.CalculationInfo
 
 object DummyData {
@@ -95,5 +96,22 @@ object DummyData {
             20220614L,
             1L
         ),
+    )
+
+    val calculationInfo = CalculationContent(
+        contentId = 1L,
+        answer = 100L,
+        formulaProcess = listOf(
+            "20×5=",
+            "20×5=",
+            "20×5=",
+            "20×5=",
+            "20×5=",
+            "20×5=",
+            "20×5=",
+            "20×5=",
+            "20×5=",
+            "20×5=",
+        )
     )
 }
