@@ -2,16 +2,12 @@ package com.example.calculator.feature.presentation.component.dialog
 
 import android.annotation.SuppressLint
 import android.app.Dialog
-import android.content.res.Resources
 import android.graphics.Color
-import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.DialogFragment
 import com.example.calculator.databinding.MakeCalculationPopUpDialogBinding
 import com.example.calculator.feature.presentation.component.dialog.parent.CustomDialogFragmentParent
 
