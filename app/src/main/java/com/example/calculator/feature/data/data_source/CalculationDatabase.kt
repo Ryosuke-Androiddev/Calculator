@@ -2,7 +2,6 @@ package com.example.calculator.feature.data.data_source
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import com.example.calculator.feature.domain.model.CalculationContent
 import com.example.calculator.feature.domain.model.CalculationInfo
 
@@ -11,7 +10,6 @@ import com.example.calculator.feature.domain.model.CalculationInfo
     version = 1,
     exportSchema = false
 )
-@TypeConverters(DatabaseConverter::class)
 abstract class CalculationDatabase: RoomDatabase() {
 
     abstract fun calculationDao(): CalculationDao
