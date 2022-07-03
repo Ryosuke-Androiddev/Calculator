@@ -98,7 +98,7 @@ object DummyData {
         ),
     )
 
-    val calculationInfo = CalculationContent(
+    val contentList = listOf<CalculationContent>(CalculationContent(
         contentId = 1L,
         answer = 100L,
         formulaProcess = listOf(
@@ -113,5 +113,5 @@ object DummyData {
             "20×5=",
             "20×5=",
         )
-    )
+    ))
 }
