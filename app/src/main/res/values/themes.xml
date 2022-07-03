@@ -30,4 +30,10 @@
         <item name="hintTextColor">@color/title_input_text_stroke_color</item>
     </style>
 
+    <style name="FormulaInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/formula_input_stroke_color</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="hintTextColor">@color/formula_input_stroke_color</item>
+    </style>
+
 </resources>
