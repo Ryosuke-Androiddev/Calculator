@@ -10,6 +10,6 @@ class CalculationFormulaItemViewHolder(
 
 
     fun bind(calculationContent: CalculationContent) {
-        binding.calculationFormula.text = calculationContent.answer.toString()
+        binding.calculationFormula.text = calculationContent.formulaProcess
     }
 }
