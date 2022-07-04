@@ -17,6 +17,6 @@ interface CalculationDao {
     // Calculation
 
     @Transaction
-    @Query("SELECT * FROM calculation_content_table")
+    @Query("SELECT * FROM calculation_info_table")
     fun getCalculation(): LiveData<Calculation>
 }

@@ -4,10 +4,10 @@ import androidx.room.Embedded
 import androidx.room.Relation
 
 data class Calculation(
-    @Embedded val calculationContent: CalculationContent,
+    @Embedded val calculationInfo: CalculationInfo,
     @Relation(
-        parentColumn = "contentId",
-        entityColumn = "calculationContentId"
+        parentColumn = "calculationId",
+        entityColumn = "calculationInfoId"
     )
-    val calculationInfo: CalculationInfo
+    val calculationContent: List<CalculationContent>
 )

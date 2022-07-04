@@ -12,6 +12,5 @@ data class CalculationInfo(
     @PrimaryKey(autoGenerate = true)
     val calculationId: Long,
     val title: String,
-    val date: Long,
-    val calculationContentId: Long
+    val date: Long
 ): Parcelable
