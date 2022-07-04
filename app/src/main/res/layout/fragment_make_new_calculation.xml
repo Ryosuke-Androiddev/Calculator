@@ -118,7 +118,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
-            app:icon="@drawable/ic_arrow_left"
+            app:icon="@drawable/ic_backspace"
             app:layout_constraintEnd_toStartOf="@+id/percent_formula_input_button"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/ac_button"
