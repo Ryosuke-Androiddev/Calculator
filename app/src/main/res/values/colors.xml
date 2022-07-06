@@ -11,4 +11,5 @@
     <color name="gray">#F9F9F9</color>
     <color name="medium_black">#A9A9A9</color>
     <color name="pop_up_black">#646464</color>
+    <color name="calculator_divider_color">#BBBBBB</color>
 </resources>

@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_field_divider"
         app:layout_constraintVertical_chainStyle="spread_inside"
-        app:layout_constraintVertical_weight="0.95" />
+        app:layout_constraintVertical_weight="0.9" />
 
     <View
         android:id="@+id/calculation_button_divider"
@@ -48,7 +48,8 @@
         android:layout_height="1dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:background="#B6B6B6"
+        android:layout_marginBottom="8dp"
+        android:background="@color/calculator_divider_color"
         app:layout_constraintBottom_toTopOf="@+id/calculation_button_constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -64,7 +65,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calculation_button_divider"
-        app:layout_constraintVertical_weight="1.1">
+        app:layout_constraintVertical_weight="1.0">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ac_button"
@@ -101,6 +102,7 @@
             android:layout_height="70dp"
             android:layout_marginStart="16dp"
             android:text="%"
+            android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/division_formula_input_button"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/delete_formula_input_button"
