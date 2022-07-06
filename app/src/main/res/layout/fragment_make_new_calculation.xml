@@ -88,6 +88,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="16dp"
+            android:contentDescription="@string/Delete_Formula_input"
             app:icon="@drawable/ic_backspace"
             app:layout_constraintEnd_toStartOf="@+id/percent_formula_input_button"
             app:layout_constraintHorizontal_bias="0.5"
