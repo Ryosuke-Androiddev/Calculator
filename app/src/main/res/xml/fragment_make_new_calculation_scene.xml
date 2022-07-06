@@ -35,15 +35,23 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:visibility="invisible" />
         <Constraint
+            android:id="@+id/calculation_button_constraintLayout"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="-1dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/calculation_button_divider"
+            motion:layout_constraintHorizontal_bias="0.5"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
             android:id="@+id/calculation_formula_recyclerview"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             motion:layout_constraintBottom_toTopOf="@+id/calculation_button_divider"
-            motion:layout_constraintTop_toBottomOf="@+id/title_field_divider"
+            motion:layout_constraintTop_toBottomOf="@+id/make_new_calculation_title_textView"
             motion:layout_constraintVertical_chainStyle="spread_inside"
             motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintVertical_weight="0.9"
             motion:layout_constraintStart_toStartOf="parent" />
         <Constraint
             android:id="@+id/make_new_calculation_title_textView"
@@ -55,26 +63,5 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="16dp"
             android:visibility="invisible" />
-        <Constraint
-            android:id="@+id/title_field_divider"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="1.5dp"
-            motion:layout_constraintTop_toBottomOf="@+id/make_new_calculation_title_textView"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="10dp"
-            android:visibility="invisible" />
-        <Constraint
-            android:id="@+id/calculation_button_constraintLayout"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/calculation_button_divider"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintVertical_weight="1.0"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:visibility="gone" />
     </ConstraintSet>
 </MotionScene>
