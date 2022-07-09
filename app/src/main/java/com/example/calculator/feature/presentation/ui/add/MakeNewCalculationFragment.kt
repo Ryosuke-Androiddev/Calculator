@@ -33,22 +33,9 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         //setupRecyclerView()
 
-//        val point = binding.calculationButtonConstraintLayout.getLocationPointInWindow()
-//
-//        // TODO 半分以上、以下の場合でViewの表示方法を変化させる
-//        binding.calculationButtonConstraintLayout.isVisible = point.x / 3 <= point.x
-
         return binding.root
     }
 
-    private fun View.setMotionLayoutVisibility(visibility: Int) {
-        val motionLayout = parent as MotionLayout
-        motionLayout.constraintSetIds.forEach {
-            val constraintSet = motionLayout.getConstraintSet(it) ?: return@forEach
-            constraintSet.setVisibility(this.id, visibility)
-            constraintSet.applyTo(motionLayout)
-        }
-    }
 
     private fun setupRecyclerView() {
 
