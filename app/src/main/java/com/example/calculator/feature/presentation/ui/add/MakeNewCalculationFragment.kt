@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
@@ -32,6 +33,22 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
         Log.d("AddFragment", "AddFragment View Created")
 
         //setupRecyclerView()
+
+        binding.calculationButtonConstraintLayout.setOnTouchListener(
+            View.OnTouchListener { view, motionEvent ->
+
+                when (motionEvent.action) {
+
+                    MotionEvent.ACTION_UP -> {
+
+                    }
+
+                    MotionEvent.ACTION_MOVE -> {
+
+                    }
+                }
+            }
+        )
 
         return binding.root
     }
