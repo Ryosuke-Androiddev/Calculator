@@ -1,5 +1,9 @@
 package com.example.calculator.feature.presentation.ui.add
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.annotation.SuppressLint
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,7 +11,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentMakeNewCalculationBinding
@@ -23,6 +27,7 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
     private val adapter by lazy { CalculationFormulaItemAdapter() }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,18 +40,57 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
         //setupRecyclerView()
 
         binding.calculationButtonConstraintLayout.setOnTouchListener(
-            View.OnTouchListener { view, motionEvent ->
+            View.OnTouchListener { view, event ->
 
-                when (motionEvent.action) {
+                val displayMetrics = resources.displayMetrics
+                val viewHeight = binding.calculationButtonConstraintLayout.height
+
+                when (event.action) {
 
                     MotionEvent.ACTION_UP -> {
 
+                        var currentY = binding.calculationButtonConstraintLayout.y
+                        binding.calculationButtonConstraintLayout.animate()
+                            .x(50F)
+                            .setDuration(150)
+                            .setListener(
+                                object : AnimatorListenerAdapter() {
+                                    override fun onAnimationEnd(animation: Animator?) {
+                                        super.onAnimationEnd(animation)
+                                    }
+                                }
+                            )
+                            .start()
                     }
 
                     MotionEvent.ACTION_MOVE -> {
 
+                        // 高さを取得する
+                        val newY = event.rawY
+
+                        // newY を半分から動かしたとして、下に動かしたときに多分これが成り立つから
+                        // ここの0を変えてみる
+                        if (newY - viewHeight < 0) {
+                            binding.calculationButtonConstraintLayout.animate()
+                                .x(
+                                    Math.min(0F, newY - (viewHeight / 2))
+                                )
+                                .setDuration(0)
+                                .start()
+
+                            // 250を変えてみる
+                            if (binding.calculationButtonConstraintLayout.y < 250) {
+                                binding.calculationButtonConstraintLayout.isVisible = false
+                            } else {
+                                binding.calculationButtonConstraintLayout.isVisible = true
+                            }
+                        }
                     }
                 }
+
+
+                view.performClick()
+                return@OnTouchListener true
             }
         )
 
