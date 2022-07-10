@@ -39,61 +39,6 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         //setupRecyclerView()
 
-        binding.calculationButtonConstraintLayout.setOnTouchListener(
-            View.OnTouchListener { view, event ->
-
-                val displayMetrics = resources.displayMetrics
-                val viewHeight = binding.calculationButtonConstraintLayout.height
-
-                when (event.action) {
-
-                    MotionEvent.ACTION_UP -> {
-
-                        var currentY = binding.calculationButtonConstraintLayout.y
-                        binding.calculationButtonConstraintLayout.animate()
-                            .x(50F)
-                            .setDuration(150)
-                            .setListener(
-                                object : AnimatorListenerAdapter() {
-                                    override fun onAnimationEnd(animation: Animator?) {
-                                        super.onAnimationEnd(animation)
-                                    }
-                                }
-                            )
-                            .start()
-                    }
-
-                    MotionEvent.ACTION_MOVE -> {
-
-                        // 高さを取得する
-                        val newY = event.rawY
-
-                        // newY を半分から動かしたとして、下に動かしたときに多分これが成り立つから
-                        // ここの0を変えてみる
-                        if (newY - viewHeight < 0) {
-                            binding.calculationButtonConstraintLayout.animate()
-                                .x(
-                                    Math.min(0F, newY - (viewHeight / 2))
-                                )
-                                .setDuration(0)
-                                .start()
-
-                            // 250を変えてみる
-                            if (binding.calculationButtonConstraintLayout.y < 250) {
-                                binding.calculationButtonConstraintLayout.isVisible = false
-                            } else {
-                                binding.calculationButtonConstraintLayout.isVisible = true
-                            }
-                        }
-                    }
-                }
-
-
-                view.performClick()
-                return@OnTouchListener true
-            }
-        )
-
         return binding.root
     }
 
