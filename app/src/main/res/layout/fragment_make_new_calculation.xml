@@ -29,8 +29,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/make_new_calculation_title_textView"
-        app:layout_constraintVertical_chainStyle="spread_inside"
-        app:layout_constraintVertical_weight="0.9" />
+        app:layout_constraintVertical_chainStyle="spread_inside"/>
 
     <View
         android:id="@+id/calculation_button_divider"
@@ -49,13 +48,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/calculation_button_constraintLayout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calculation_button_divider"
-        app:layout_constraintVertical_weight="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/calculation_button_divider">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/ac_button"

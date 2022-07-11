@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
@@ -39,13 +40,6 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         //setupRecyclerView()
 
-        binding.calculationFormulaRecyclerview.setOnTouchListener(
-            View.OnTouchListener{ view, event ->
-
-                view.performClick()
-                return@OnTouchListener true
-            }
-        )
 
         return binding.root
     }
