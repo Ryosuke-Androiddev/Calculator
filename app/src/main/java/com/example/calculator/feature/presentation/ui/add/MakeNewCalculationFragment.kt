@@ -41,6 +41,17 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
         //setupRecyclerView()
 
 
+        // 計算ボタンでジェスチャーを検出しても，何も操作を行わない
+        binding.calculationButtonConstraintLayout.setOnTouchListener(
+            View.OnTouchListener{ view, event ->
+                when(event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                    }
+                }
+                return@OnTouchListener true
+            }
+        )
+
         return binding.root
     }
 
