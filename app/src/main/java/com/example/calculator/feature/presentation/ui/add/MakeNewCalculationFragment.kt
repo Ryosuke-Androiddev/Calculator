@@ -39,7 +39,7 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         //setupRecyclerView()
 
-        binding.calculationButtonConstraintLayout.setOnTouchListener(
+        binding.calculationFormulaRecyclerview.setOnTouchListener(
             View.OnTouchListener{ view, event ->
 
                 view.performClick()
