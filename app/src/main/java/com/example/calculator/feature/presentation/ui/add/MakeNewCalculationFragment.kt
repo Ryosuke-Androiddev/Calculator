@@ -3,6 +3,9 @@ package com.example.calculator.feature.presentation.ui.add
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
+import android.content.res.Resources
+import android.graphics.Color
+import android.graphics.Rect
 import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +15,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
@@ -20,6 +24,8 @@ import com.example.calculator.feature.presentation.component.adapter.formula_ite
 import com.example.calculator.feature.presentation.component.gesture.FingerGestureListener
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculation) {
@@ -73,12 +79,16 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun toggleVisible() {
+        binding.makeNewCalculationTitleTextView.visibility = View.VISIBLE
         binding.calculationButtonDivider.visibility = View.VISIBLE
         binding.calculationButtonConstraintLayout.visibility = View.VISIBLE
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun toggleInVisible() {
+        binding.makeNewCalculationTitleTextView.visibility = View.INVISIBLE
         binding.calculationButtonDivider.visibility = View.INVISIBLE
         binding.calculationButtonConstraintLayout.visibility = View.INVISIBLE
     }
