@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentMakeNewCalculationBinding
 import com.example.calculator.feature.presentation.component.adapter.formula_item.CalculationFormulaItemAdapter
+import com.example.calculator.feature.presentation.component.gesture.FingerGestureListener
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,17 +41,7 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         //setupRecyclerView()
 
-        binding.calculationFormulaRecyclerview.setOnTouchListener(
-            View.OnTouchListener{ view, event ->
-                when(event.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                    }
-                    MotionEvent.ACTION_UP -> {
-                    }
-                }
-                return@OnTouchListener true
-            }
-        )
+        binding.calculationFormulaRecyclerview.setOnTouchListener(FingerGestureListener(flickListener))
 
         // 計算ボタンでジェスチャーを検出しても，何も操作を行わない
         binding.calculationButtonConstraintLayout.setOnTouchListener(
@@ -64,6 +55,32 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
         )
 
         return binding.root
+    }
+
+    private val flickListener = object : FingerGestureListener.Listener {
+
+        override fun onTouchScreen() {
+
+        }
+
+        override fun onFlickToTop() {
+            toggleVisible()
+        }
+
+        override fun onFlickToBottom() {
+            toggleInVisible()
+        }
+
+    }
+
+    private fun toggleVisible() {
+        binding.calculationButtonDivider.visibility = View.VISIBLE
+        binding.calculationButtonConstraintLayout.visibility = View.VISIBLE
+    }
+
+    private fun toggleInVisible() {
+        binding.calculationButtonDivider.visibility = View.INVISIBLE
+        binding.calculationButtonConstraintLayout.visibility = View.INVISIBLE
     }
 
 
