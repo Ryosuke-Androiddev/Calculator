@@ -1,12 +1,6 @@
 package com.example.calculator.feature.presentation.ui.add
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
-import android.content.res.Resources
-import android.graphics.Color
-import android.graphics.Rect
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,8 +9,9 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.isVisible
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentMakeNewCalculationBinding
@@ -25,6 +20,7 @@ import com.example.calculator.feature.presentation.component.gesture.FingerGestu
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
@@ -69,30 +65,34 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         }
 
-        override fun onFlickToTop() {
-            toggleVisible()
-        }
+        override fun onFlickToTop() = setFlickToTopResult()
 
-        override fun onFlickToBottom() {
-            toggleInVisible()
-        }
+        override fun onFlickToBottom() = setFlickToBottomResult()
 
     }
 
-    @SuppressLint("ResourceAsColor")
+    private fun setFlickToTopResult() {
+        toggleVisible()
+    }
+
+    private fun setFlickToBottomResult() {
+        toggleInVisible()
+    }
+
     private fun toggleVisible() {
         binding.makeNewCalculationTitleTextView.visibility = View.VISIBLE
         binding.calculationButtonDivider.visibility = View.VISIBLE
         binding.calculationButtonConstraintLayout.visibility = View.VISIBLE
     }
 
-    @SuppressLint("ResourceAsColor")
     private fun toggleInVisible() {
         binding.makeNewCalculationTitleTextView.visibility = View.INVISIBLE
         binding.calculationButtonDivider.visibility = View.INVISIBLE
         binding.calculationButtonConstraintLayout.visibility = View.INVISIBLE
     }
 
+    private fun View.setViewBackgroundColor(@ColorRes colorId: Int) =
+        setBackgroundColor(ContextCompat.getColor(requireContext(), colorId))
 
     private fun setupRecyclerView() {
 

@@ -44,6 +44,7 @@ class FingerGestureListener(
         }
     }
 
+    // TODO この条件を変更して，View位置でBooleanを返すように変更する
     private fun upScope(): Boolean = endY < startY
     private fun downScope(): Boolean = startY < endY
 }
