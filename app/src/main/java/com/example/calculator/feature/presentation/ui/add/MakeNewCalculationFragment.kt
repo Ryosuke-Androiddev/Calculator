@@ -19,6 +19,7 @@ import com.example.calculator.R
 import com.example.calculator.databinding.FragmentMakeNewCalculationBinding
 import com.example.calculator.feature.presentation.component.adapter.formula_item.CalculationFormulaItemAdapter
 import com.example.calculator.feature.presentation.util.DummyData
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,11 +42,11 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         //setupRecyclerView()
 
-        binding.calculationButtonConstraintLayout.setOnTouchListener(
-            View.OnTouchListener { view, event ->
-                return@OnTouchListener true
-            }
-        )
+//        binding.calculationButtonConstraintLayout.setOnTouchListener(
+//            View.OnTouchListener { view, event ->
+//                return@OnTouchListener true
+//            }
+//        )
 
         return binding.root
     }
