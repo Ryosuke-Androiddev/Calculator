@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene 
+<MotionScene
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
@@ -8,9 +8,12 @@
         motion:constraintSetStart="@id/start"
         motion:duration="1000">
 
+        <KeyFrameSet>
+        </KeyFrameSet>
+
         <OnSwipe
             motion:dragDirection="dragDown"
-            motion:dragScale="1"
+            motion:dragScale="5"
             motion:moveWhenScrollAtTop="true"
             motion:onTouchUp="stop"
             motion:touchAnchorId="@+id/calculation_formula_recyclerview"
@@ -36,31 +39,18 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            motion:layout_constraintBottom_toTopOf="@+id/calculation_button_divider"
+            motion:layout_constraintBottom_toTopOf="@+id/bottom_sheet_constraintLayout"
             motion:layout_constraintTop_toBottomOf="@+id/make_new_calculation_title_textView"
             motion:layout_constraintVertical_chainStyle="spread_inside"
             motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:visibility="visible" />
+            motion:layout_constraintStart_toStartOf="parent" />
         <Constraint
-            android:id="@+id/calculation_button_divider"
+            android:id="@+id/bottom_sheet_constraintLayout"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="24dp"
-            motion:layout_constraintTop_toBottomOf="@+id/calculation_formula_recyclerview"
-            android:layout_marginStart="24dp"
-            motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:visibility="invisible" />
-        <Constraint
-            android:id="@+id/coordinatorLayout"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/calculation_formula_recyclerview"
             motion:layout_constraintStart_toStartOf="parent"
             android:visibility="invisible" />
     </ConstraintSet>
