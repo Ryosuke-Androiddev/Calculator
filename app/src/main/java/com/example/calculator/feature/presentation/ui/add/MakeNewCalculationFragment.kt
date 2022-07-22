@@ -1,6 +1,7 @@
 package com.example.calculator.feature.presentation.ui.add
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.ColorRes
+import androidx.annotation.RequiresApi
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.content.ContextCompat
 import androidx.dynamicanimation.animation.SpringAnimation
@@ -31,6 +33,7 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
     private val adapter by lazy { CalculationFormulaItemAdapter() }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,15 +44,23 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         Log.d("AddFragment", "AddFragment View Created")
 
-        //setupRecyclerView()
+        setupRecyclerView()
 
-//        binding.calculationButtonConstraintLayout.setOnTouchListener(
-//            View.OnTouchListener { view, event ->
-//                return@OnTouchListener true
-//            }
-//        )
+        // 計算ボタンでMotionLayoutを発動させないため
+        binding.calculationButtonConstraintLayout.setOnTouchListener(
+            View.OnTouchListener { view, event ->
+                return@OnTouchListener true
+            }
+        )
 
         return binding.root
+    }
+
+    private fun setupRecyclerView() {
+
+        binding.calculationFormulaRecyclerview.adapter = adapter
+        binding.calculationFormulaRecyclerview.layoutManager = LinearLayoutManager(context)
+        adapter.submitList(DummyData.contentList)
     }
 
     override fun onDestroyView() {
