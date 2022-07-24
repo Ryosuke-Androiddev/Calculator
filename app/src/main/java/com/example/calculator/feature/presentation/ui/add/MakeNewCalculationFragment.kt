@@ -44,14 +44,7 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         Log.d("AddFragment", "AddFragment View Created")
 
-        setupRecyclerView()
-
-        // 計算ボタンでMotionLayoutを発動させないため
-        binding.calculationButtonConstraintLayout.setOnTouchListener(
-            View.OnTouchListener { view, event ->
-                return@OnTouchListener true
-            }
-        )
+        //setupRecyclerView()
 
         return binding.root
     }
