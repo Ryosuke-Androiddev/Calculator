@@ -6,14 +6,16 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="250">
+        motion:duration="8500">
 
         <OnSwipe
             motion:dragDirection="dragDown"
             motion:dragScale="200"
             motion:onTouchUp="stop"
             motion:touchAnchorId="@+id/recyclerview_container"
-            motion:touchAnchorSide="bottom"/>
+            motion:touchAnchorSide="bottom"
+            motion:maxVelocity="100"
+            motion:maxAcceleration="100"/>
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -43,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             motion:layout_constraintVertical_bias="1.0"
             motion:layout_constraintHorizontal_bias="0.5"
             motion:layout_constraintStart_toStartOf="parent"/>
