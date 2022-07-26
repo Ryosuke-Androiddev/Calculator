@@ -44,7 +44,7 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         Log.d("AddFragment", "AddFragment View Created")
 
-        //setupRecyclerView()
+        setupRecyclerView()
 
         return binding.root
     }

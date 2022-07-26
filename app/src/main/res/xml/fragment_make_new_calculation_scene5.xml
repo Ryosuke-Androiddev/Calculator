@@ -9,7 +9,7 @@
         motion:duration="8500">
 
         <OnSwipe
-            motion:dragDirection="dragDown"
+            motion:dragDirection="dragUp"
             motion:dragScale="20"
             motion:onTouchUp="stop"
             motion:touchAnchorId="@+id/recyclerview_container"
@@ -30,11 +30,12 @@
             motion:layout_constraintHorizontal_bias="0.5"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:visibility="visible" />
         <Constraint
             android:id="@+id/recyclerview_container"
             motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             motion:layout_constraintBottom_toTopOf="@+id/calculation_button_constraintLayout"
             motion:layout_constraintTop_toBottomOf="@+id/make_new_calculation_title_textView"
@@ -47,7 +48,8 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="16dp"
             motion:layout_constraintVertical_bias="1.0"
+            motion:layout_constraintTop_toBottomOf="@+id/recyclerview_container"
             motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintStart_toStartOf="parent"/>
+            motion:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>
 </MotionScene>
