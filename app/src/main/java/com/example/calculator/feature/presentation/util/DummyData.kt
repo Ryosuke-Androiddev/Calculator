@@ -87,91 +87,91 @@ object DummyData {
         CalculationContent(
         contentId = 1L,
         answer = 100L,
-        formulaProcess = "20×5=",
+        formulaProcess = "20×5",
         1L
         ),
         CalculationContent(
             contentId = 2L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 3L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 4L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 5L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 6L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 7L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 8L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 9L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 10L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 11L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 12L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 13L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 14L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
         CalculationContent(
             contentId = 15L,
             answer = 100L,
-            formulaProcess = "20×5=",
+            formulaProcess = "20×5",
             1L
         ),
     )
