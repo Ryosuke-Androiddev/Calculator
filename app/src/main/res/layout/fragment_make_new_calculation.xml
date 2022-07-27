@@ -1,9 +1,9 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/fragment_make_new_calculation_scene5"
+    app:layoutDescription="@xml/fragment_make_new_calculation_scene6"
     tools:context=".feature.presentation.ui.add.MakeNewCalculationFragment">
 
     <TextView
@@ -24,10 +24,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/calculation_button_constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/make_new_calculation_title_textView"
-        app:layout_constraintBottom_toTopOf="@id/calculation_button_constraintLayout"
         tools:ignore="ScrollViewCount">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,7 +43,7 @@
                 android:id="@+id/calculation_formula_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="22dp"
                 app:layout_constraintBottom_toTopOf="@+id/formula_textview"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:text="55555555"
                 android:textSize="45sp"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/formula_answer_textView"
                 app:layout_constraintEnd_toEndOf="@+id/formula_answer_textView"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -66,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
                 android:text="=5555555"
+                android:textColor="@color/black"
                 android:textSize="35sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -80,7 +82,7 @@
         android:layout_height="0.5dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="118dp"
+        android:layout_marginBottom="114dp"
         android:background="@color/calculator_divider_color"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerview_container"
         app:layout_constraintEnd_toEndOf="parent"
@@ -388,4 +390,4 @@
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
