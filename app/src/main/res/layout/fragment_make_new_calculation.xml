@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/fragment_make_new_calculation_scene6"
+    app:layoutDescription="@xml/fragment_make_new_calculation_scene"
     tools:context=".feature.presentation.ui.add.MakeNewCalculationFragment">
 
     <TextView
