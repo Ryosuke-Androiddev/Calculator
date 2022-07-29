@@ -47,6 +47,13 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         setupRecyclerView()
 
+        // MotionLayout を発動させないために，処理を行わない
+        binding.calculationButtonConstraintLayout.setOnTouchListener(
+            View.OnTouchListener { view, event ->
+                return@OnTouchListener true
+            }
+        )
+
         return binding.root
     }
 
@@ -59,7 +66,7 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
         // scroll を分けてくれるけど，単体でscrollできなくなる
         // これを直接XMLで分けることができればいいんだけど
         // start では，false end では，true
-        //binding.calculationFormulaRecyclerview.isNestedScrollingEnabled = true
+        // binding.calculationFormulaRecyclerview.isNestedScrollingEnabled = true
         adapter.submitList(DummyData.contentList)
     }
 
