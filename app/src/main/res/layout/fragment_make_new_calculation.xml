@@ -33,11 +33,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/formula_input_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toTopOf="@+id/calculation_button_constraintLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/calculation_formula_recyclerview"
@@ -148,7 +144,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="16dp"
-            android:text="@string/division"
+            android:text="@string/divide"
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/division_formula_input_button"
             app:layout_constraintHorizontal_bias="0.5"

@@ -171,7 +171,7 @@ object DummyData {
         CalculationContent(
             contentId = 15L,
             answer = 100L,
-            formulaProcess = "20×5",
+            formulaProcess = "20×500",
             1L
         ),
     )

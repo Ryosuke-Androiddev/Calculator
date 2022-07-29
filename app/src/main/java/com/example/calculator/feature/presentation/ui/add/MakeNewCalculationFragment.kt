@@ -18,6 +18,7 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentMakeNewCalculationBinding
 import com.example.calculator.feature.presentation.component.adapter.formula_item.CalculationFormulaItemAdapter
@@ -53,6 +54,12 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         binding.calculationFormulaRecyclerview.adapter = adapter
         binding.calculationFormulaRecyclerview.layoutManager = LinearLayoutManager(context)
+        // これで一番最後から表示する
+        binding.calculationFormulaRecyclerview.scrollToPosition(DummyData.contentList.size - 1)
+        // scroll を分けてくれるけど，単体でscrollできなくなる
+        // これを直接XMLで分けることができればいいんだけど
+        // start では，false end では，true
+        //binding.calculationFormulaRecyclerview.isNestedScrollingEnabled = true
         adapter.submitList(DummyData.contentList)
     }
 
