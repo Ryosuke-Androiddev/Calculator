@@ -5,6 +5,7 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.constraintlayout.motion.widget.MotionScene
 import com.example.calculator.R
 
 class CustomMotionLayout(
@@ -40,8 +41,21 @@ class CustomMotionLayout(
 
         // MotionLayout のイベントが，通知されるリスナーをここで追加する
         // イベントをセットするためにリスナーをここで追加する
-        super.setTransitionListener(object : MotionLayout.TransitionListener {
+        // super である必要がないので，このままにしておくか
+        setTransitionListener(object : MotionLayout.TransitionListener {
 
         })
+    }
+
+    // こっちは，下の処理に，listener を渡すだけだから大きな変更がないから，superで呼び出してんのかな?
+    // こいつの実装は，配列にリスナーをぶち込むことだったから，ここでの処理は，下のメソッドに引数を渡すこと
+    override fun setTransitionListener(listener: TransitionListener?) {
+
+    }
+
+    // 実質，こっちの処理の方法を変えているってことなのかな
+    // List にイベントを追加することで，オーバーライドしてるんかな
+    override fun addTransitionListener(listener: TransitionListener?) {
+
     }
 }
