@@ -28,13 +28,18 @@ class CustomMotionLayout(
     private val transitionListenerList = mutableListOf<TransitionListener?>()
 
     // 初期化処理を行う
+    // このCustom MotionLayout 自身が，Listenerとなり，
     init {
         // MotionLayoutのListenerをここで追加する
         // Interface を実装した，クラスとメソッドをオーバーライドすることで独自の変更を実装できる
+        // MotionLayout がトリガーされたときに，イベントを追加するためのリスナーをここで追加する
+        // イベントが呼ばれたときに，イベントの通知を追加するためのリスナー
         addTransitionListener(object : MotionLayout.TransitionListener {
 
         })
 
+        // MotionLayout のイベントが，通知されるリスナーをここで追加する
+        // イベントをセットするためにリスナーをここで追加する
         super.setTransitionListener(object : MotionLayout.TransitionListener {
 
         })
