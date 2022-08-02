@@ -1,11 +1,14 @@
 package com.example.calculator.feature.presentation.component.motionlayout
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Rect
 import android.util.AttributeSet
+import android.util.Log
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.motion.widget.MotionScene
 import com.example.calculator.R
 
 class CustomMotionLayout(
@@ -24,7 +27,7 @@ class CustomMotionLayout(
     // 全画面を対象にするための処理
     private val viewRect = Rect()
     // 画面をタッチしたのかそうでないのかを考慮するトリガーキー
-    private var hasTouchStarted = false;
+    private var touchStarted = false;
     // MotionLayoutのリスナーをここでリストとして管理する
     private val transitionListenerList = mutableListOf<TransitionListener?>()
 
@@ -126,5 +129,59 @@ class CustomMotionLayout(
     // List にイベントを追加することで，オーバーライドしてるんかな
     override fun addTransitionListener(listener: TransitionListener?) {
         transitionListenerList += listener;
+    }
+
+    // listener のinterface → object に変換する処理(引数)は、interface だと不要な処理まで記述が必要になる
+    // それを避けるためにここではクラスをインスタンス化している
+    private val gestureDetector = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
+
+        override fun onScroll(
+            e1: MotionEvent?,
+            e2: MotionEvent?,
+            distanceX: Float,
+            distanceY: Float
+        ): Boolean {
+            // この処理をどうするのか
+            // y軸のスクロール量として，distanceY が計算を行ってくれる
+            if (distanceY < 0) {
+                transitionToStart()
+            } else {
+                transitionToEnd()
+            }
+
+            // false を返す理由とは??
+            // それぞれ別のメソッドを呼び出しているから??
+            return false;
+        }
+    })
+
+    // onTouch で処理を決めてもいいが、GestureDetector で、処理をまとめてからそれを呼び出す
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+
+        // ここでEvent を渡すことでここで細かい処理を記述する必要がなくなる
+        gestureDetector.onTouchEvent(event)
+
+        // null の可能性を秘めているのでその処理を忘れない
+        when (event?.actionMasked) {
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                // これは指が離れたり処理がキャンセルされたときに行われる処理
+                touchStarted = false
+                return super.onTouchEvent(event)
+            }
+            else -> {
+                Log.d("MotionEvent", "MotionEvent is ${event == null}")
+            }
+        }
+        if (!touchStarted) {
+
+            // このままだと全画面が操作の対象になってしまう
+            viewToDetectedTouch.getHitRect(viewRect)
+            if (event != null) {
+                touchStarted = viewRect.contains(event.x.toInt(), event.y.toInt())
+            }
+        }
+
+        return touchStarted && super.onTouchEvent(event)
     }
 }
