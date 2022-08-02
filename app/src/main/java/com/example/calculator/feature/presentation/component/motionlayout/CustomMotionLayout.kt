@@ -78,8 +78,7 @@ class CustomMotionLayout(
 
         // MotionLayout のイベントが，通知されるリスナーをここで追加する
         // イベントをセットするためにリスナーをここで追加する
-        // super である必要がないので，このままにしておくか
-        setTransitionListener(object : MotionLayout.TransitionListener {
+        super.setTransitionListener(object : MotionLayout.TransitionListener {
 
             override fun onTransitionStarted(
                 motionLayout: MotionLayout?,
@@ -96,6 +95,7 @@ class CustomMotionLayout(
             ) {
                 transitionListenerList.filterNotNull()
                     .forEach { transitionListener ->
+                        Log.d("MotionEvent", "MotionEvent changed")
                         transitionListener.onTransitionChange(motionLayout, startId, endId, progress)
                     }
             }
@@ -104,6 +104,7 @@ class CustomMotionLayout(
             override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
                 transitionListenerList.filterNotNull()
                     .forEach { transitionListener ->
+                        Log.d("MotionEvent", "MotionEvent completed")
                         transitionListener.onTransitionCompleted(motionLayout, currentId)
                     }
             }
@@ -121,6 +122,8 @@ class CustomMotionLayout(
 
     // こっちは，下の処理に，listener を渡すだけだから大きな変更がないから，superで呼び出してんのかな?
     // こいつの実装は，配列にリスナーをぶち込むことだったから，ここでの処理は，下のメソッドに引数を渡すこと
+    // ここは単にListにリスナーを追加する処理を加えただけなのか
+    // 基本的なMotionLayoutのsetListener 処理は、superを呼び出して行う必要があったのか
     override fun setTransitionListener(listener: TransitionListener?) {
         addTransitionListener(listener)
     }
@@ -141,6 +144,7 @@ class CustomMotionLayout(
             distanceX: Float,
             distanceY: Float
         ): Boolean {
+            Log.d("MotionEvent", "Amount of y $distanceY")
             // この処理をどうするのか
             // y軸のスクロール量として，distanceY が計算を行ってくれる
             if (distanceY < 0) {
@@ -165,6 +169,7 @@ class CustomMotionLayout(
         // null の可能性を秘めているのでその処理を忘れない
         when (event?.actionMasked) {
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                Log.d("MotionEvent", "MotionEvent canceled")
                 // これは指が離れたり処理がキャンセルされたときに行われる処理
                 touchStarted = false
                 return super.onTouchEvent(event)

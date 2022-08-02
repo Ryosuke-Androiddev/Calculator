@@ -1,4 +1,4 @@
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.calculator.feature.presentation.component.motionlayout.CustomMotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -386,4 +386,4 @@
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</com.example.calculator.feature.presentation.component.motionlayout.CustomMotionLayout>
