@@ -6,7 +6,7 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="8500">
+        motion:duration="800">
 
         <KeyFrameSet>
             <KeyAttribute
@@ -15,14 +15,41 @@
                 android:alpha="0.6"/>
         </KeyFrameSet>
 
-        <OnSwipe
-            motion:dragDirection="dragUp"
-            motion:dragScale="20"
-            motion:onTouchUp="stop"
-            motion:touchAnchorId="@+id/recyclerview_container"
-            motion:touchAnchorSide="bottom"
-            motion:maxVelocity="100"
-            motion:maxAcceleration="100"/>
+        <KeyFrameSet>
+            <KeyAttribute
+                motion:motionTarget="@+id/back_to_top_button"
+                motion:framePosition="95"
+                android:alpha="0.6"/>
+        </KeyFrameSet>
+
+        <OnClick
+            motion:targetId="@+id/formula_input_00_button"
+            motion:clickAction="toggle"/>
+    </Transition>
+
+    <Transition
+        motion:constraintSetEnd="@+id/start"
+        motion:constraintSetStart="@id/end"
+        motion:duration="800">
+
+        <KeyFrameSet>
+            <KeyAttribute
+                motion:motionTarget="@+id/formula_input_divider"
+                motion:framePosition="10"
+                android:alpha="0.1"/>
+        </KeyFrameSet>
+
+        <KeyFrameSet>
+            <KeyAttribute
+                motion:motionTarget="@+id/back_to_top_button"
+                motion:framePosition="10"
+                android:alpha="0.1"/>
+        </KeyFrameSet>
+
+        <OnClick
+            motion:targetId="@+id/back_to_top_button"
+            motion:clickAction="toggle"/>
+
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -31,10 +58,20 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="0.5dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/recyclerview_container"
-            android:layout_marginBottom="118dp"
+            android:layout_marginBottom="12dp"
+            motion:layout_constraintBottom_toTopOf="@id/formula_textview"
             android:layout_marginEnd="24dp"
             android:layout_marginStart="24dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="4dp"
+            android:alpha="0.0" />
+        <Constraint
+            android:id="@+id/back_to_top_button"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/formula_answer_textView"
+            android:layout_marginStart="24dp"
+            motion:layout_constraintTop_toTopOf="@+id/formula_textview"
             motion:layout_constraintStart_toStartOf="parent"
             android:alpha="0.0" />
     </ConstraintSet>
@@ -61,23 +98,42 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="16dp" />
         <Constraint
-            android:id="@+id/recyclerview_container"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            motion:layout_constraintBottom_toTopOf="@id/calculation_button_constraintLayout"
-            motion:layout_constraintTop_toBottomOf="@+id/make_new_calculation_title_textView"
-            motion:layout_constraintStart_toStartOf="parent" />
-        <Constraint
             android:id="@+id/formula_input_divider"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="0.5dp"
-            motion:layout_constraintBottom_toBottomOf="@+id/recyclerview_container"
-            android:layout_marginBottom="118dp"
+            android:layout_marginBottom="4dp"
+            motion:layout_constraintBottom_toTopOf="@id/formula_textview"
             android:layout_marginEnd="24dp"
             android:layout_marginStart="24dp"
             motion:layout_constraintStart_toStartOf="parent"
-            android:alpha="1.0"/>
+            android:layout_marginTop="4dp"
+            android:alpha="1.0" />
+        <Constraint
+            android:id="@+id/formula_textview"
+            motion:layout_constraintEnd_toEndOf="@+id/formula_answer_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@+id/formula_answer_textView"
+            motion:layout_constraintHorizontal_bias="1.0"
+            motion:layout_constraintStart_toStartOf="@+id/formula_answer_textView"
+            android:visibility="visible" />
+        <Constraint
+            android:id="@+id/formula_answer_textView"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@id/calculation_button_constraintLayout"
+            android:layout_marginEnd="24dp"
+            android:visibility="visible" />
+        <Constraint
+            android:id="@+id/back_to_top_button"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/formula_answer_textView"
+            android:layout_marginStart="24dp"
+            motion:layout_constraintTop_toTopOf="@+id/formula_textview"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:alpha="1.0" />
     </ConstraintSet>
 </MotionScene>
