@@ -69,6 +69,12 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
                 endId: Int,
                 progress: Float
             ) {
+                // この理解が足りてない
+                if (endId == R.id.end) {
+                    // 文字通りどこからどこまで遷移するかを決定できる
+                    binding.motionBase.setTransition(R.id.end, R.id.intermediate)
+                    binding.motionBase.transitionToState(R.id.intermediate)
+                }
             }
 
             override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
