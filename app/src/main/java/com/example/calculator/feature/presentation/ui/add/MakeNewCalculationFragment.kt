@@ -62,6 +62,9 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
             ) {
                 if (startId == R.id.end) {
                     binding.calculationFormulaRecyclerview.scrollToPosition(DummyData.contentList.size - 1)
+                } else if (startId == R.id.start) {
+                    // 繰り返し呼ばれるからバグが発生してる
+                    binding.calculationFormulaRecyclerview.scrollToPosition(DummyData.contentList.size - 1)
                 }
             }
 
