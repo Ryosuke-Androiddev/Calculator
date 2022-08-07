@@ -3,6 +3,7 @@ package com.example.calculator.feature.data.repository
 import androidx.lifecycle.LiveData
 import com.example.calculator.feature.data.data_source.CalculationDao
 import com.example.calculator.feature.domain.model.Calculation
+import com.example.calculator.feature.domain.model.CalculationContent
 import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.domain.repository.CalculationRepository
 
@@ -19,5 +20,10 @@ class CalculationRepositoryImpl(
     // Calculation
     override fun getCalculation(): LiveData<Calculation> {
         return calculationDao.getCalculation()
+    }
+
+    // Calculation Content
+    override suspend fun insertCalculation(calculationContent: CalculationContent) {
+        return calculationDao.insertCalculation(calculationContent = calculationContent)
     }
 }
