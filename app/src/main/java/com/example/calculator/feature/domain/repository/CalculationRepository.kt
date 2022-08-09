@@ -15,4 +15,5 @@ interface CalculationRepository {
 
     // Insert
     suspend fun insertCalculation(calculationContent: CalculationContent)
+    // Update, Delete, Search, Date Sort → 対応するdata class ごとに実装して、UseCaseを作成する
 }

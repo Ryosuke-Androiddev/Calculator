@@ -33,6 +33,9 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // navigation 時に、正しく遷移ができているかを確認する
+        binding.updateCalculationTitleTextView.text = args.calculationItem.title
     }
 
     override fun onDestroyView() {
