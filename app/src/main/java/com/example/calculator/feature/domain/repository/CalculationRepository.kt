@@ -9,6 +9,7 @@ interface CalculationRepository {
 
     // CalculationInfo
     fun getAllCalculationInfo(): LiveData<List<CalculationInfo>>
+    // suspend fun insertCalculationInfo(calculationInfo: CalculationInfo)
 
     // Calculation
     fun getCalculation(): LiveData<Calculation>

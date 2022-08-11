@@ -2,6 +2,7 @@ package com.example.calculator.feature.presentation.component.dialog
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -13,15 +14,19 @@ import com.example.calculator.databinding.MakeCalculationPopUpDialogBinding
 import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.dialog.parent.CustomDialogFragmentParent
 
-class MakeCalculationPopUpDialogFragment(
-    // TODO UseCaseの呼び出し
-): CustomDialogFragmentParent() {
+class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
 
     private var _binding: MakeCalculationPopUpDialogBinding? = null
     private val binding get() = _binding!!
 
     private val builder by lazy { AlertDialog.Builder(requireActivity()) }
     private val dialog by lazy { builder.create() }
+
+    private lateinit var listener : MakeCalculationPopUpDialogListener
+
+    interface MakeCalculationPopUpDialogListener {
+        fun onSaveButtonClick()
+    }
 
     @SuppressLint("UseGetLayoutInflater")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -35,11 +40,12 @@ class MakeCalculationPopUpDialogFragment(
             // DBのテーブル結語で乗りきれいないよね??
             // SafeArgs or Bundleで渡してあげる必要がある
             val title = binding.calculationTitleTextview.text
-            if (title.isNullOrEmpty()) {
-                // ここの内容を差し替えて、UseCaseに渡す
-                Toast.makeText(requireContext(), "Hello world", Toast.LENGTH_SHORT).show()
-            } else {
+            if (title.isNullOrEmpty() || title.isEmpty()) {
                 Toast.makeText(requireContext(), "Please input 0 more characters", Toast.LENGTH_SHORT).show()
+            } else {
+                // UseCaseの処理は、ここの実装に任したほうがいい
+                // どのボタンの処理かがわかってるから単に呼び出すだけでいい気する
+                listener.onSaveButtonClick()
             }
         }
 
@@ -51,6 +57,18 @@ class MakeCalculationPopUpDialogFragment(
         dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
 
         return dialog
+    }
+
+    // Interface が実装されてないと例外が投げられる
+    // これActivityにやってるかを確認してる、Fragmentでやられているかを確認する必要がある
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            // 呼び出し元を親Fragmentから取得する
+            listener = parentFragment as MakeCalculationPopUpDialogListener
+        } catch (e : ClassCastException) {
+            throw ClassCastException(context.toString() + "must Implement Interface")
+        }
     }
 
     override fun onStart() {

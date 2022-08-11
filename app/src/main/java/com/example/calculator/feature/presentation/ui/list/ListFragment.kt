@@ -20,7 +20,7 @@ import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ListFragment : Fragment(R.layout.fragment_list) {
+class ListFragment : Fragment(R.layout.fragment_list), MakeCalculationPopUpDialogFragment.MakeCalculationPopUpDialogListener {
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
@@ -101,5 +101,11 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onSaveButtonClick() {
+        // UseCaseのInsert処理を呼び出す
+        // Pop Up Dialog の処理の実装をここにかけばどのボタンを押したかを気にする必要がない
+        navigateToCreateNewItemFragment()
     }
 }
