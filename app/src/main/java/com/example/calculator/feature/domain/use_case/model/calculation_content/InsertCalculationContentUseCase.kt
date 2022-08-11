@@ -1,10 +1,10 @@
-package com.example.calculator.feature.domain.use_case
+package com.example.calculator.feature.domain.use_case.model.calculation_content
 
 import com.example.calculator.feature.domain.model.CalculationContent
 import com.example.calculator.feature.domain.repository.CalculationRepository
 import javax.inject.Inject
 
-class InsertCalculationUseCase @Inject constructor(
+class InsertCalculationContentUseCase @Inject constructor(
     private val repository: CalculationRepository
 ) {
 

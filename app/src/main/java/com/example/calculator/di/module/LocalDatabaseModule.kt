@@ -6,9 +6,9 @@ import com.example.calculator.feature.data.data_source.CalculationDatabase
 import com.example.calculator.feature.data.repository.CalculationRepositoryImpl
 import com.example.calculator.feature.data.util.DataLayerConstants.CALCULATION_DATABASE_NAME
 import com.example.calculator.feature.domain.repository.CalculationRepository
-import com.example.calculator.feature.domain.use_case.GetAllCalculationInfoUseCase
-import com.example.calculator.feature.domain.use_case.GetCalculationUseCase
-import com.example.calculator.feature.domain.use_case.InsertCalculationUseCase
+import com.example.calculator.feature.domain.use_case.model.calculation_info.GetAllCalculationInfoUseCase
+import com.example.calculator.feature.domain.use_case.model.calculation.GetCalculationUseCase
+import com.example.calculator.feature.domain.use_case.model.calculation_content.InsertCalculationContentUseCase
 import com.example.calculator.feature.domain.use_case.model.UseCase
 import dagger.Module
 import dagger.Provides
@@ -44,7 +44,7 @@ object LocalDatabaseModule {
         return UseCase(
             getAllCalculationInfoUseCase = GetAllCalculationInfoUseCase(repository = calculationRepository),
             getCalculation = GetCalculationUseCase(repository = calculationRepository),
-            insertCalculationUseCase = InsertCalculationUseCase(repository = calculationRepository)
+            insertCalculationContentUseCase = InsertCalculationContentUseCase(repository = calculationRepository)
         )
     }
 }
