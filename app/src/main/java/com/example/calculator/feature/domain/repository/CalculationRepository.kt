@@ -7,14 +7,34 @@ import com.example.calculator.feature.domain.model.CalculationInfo
 
 interface CalculationRepository {
 
-    // CalculationInfo
-    fun getAllCalculationInfo(): LiveData<List<CalculationInfo>>
-    // suspend fun insertCalculationInfo(calculationInfo: CalculationInfo)
+    // model CalculationInfo
 
-    // Calculation
-    fun getCalculation(): LiveData<Calculation>
+    // Get
+    fun getAllCalculationInfo(): LiveData<List<CalculationInfo>>
+    // Insert
+    suspend fun insertCalculationInfo(calculationInfo: CalculationInfo)
+    // Update
+    suspend fun updateCalculationInfo(calculationInfo: CalculationInfo)
+    // Delete
+    suspend fun deleteCalculationInfo(calculationInfo: CalculationInfo)
+    // Search
+    suspend fun searchCalculationInfo(searchQuery: String): LiveData<List<CalculationInfo>>
+    // Date Sort
+    suspend fun sortByDate(): LiveData<List<CalculationInfo>>
+    // Name Sort
+    suspend fun sortByName(): LiveData<List<CalculationInfo>>
+
+    // model CalculationContent
 
     // Insert
-    suspend fun insertCalculation(calculationContent: CalculationContent)
-    // Update, Delete, Search, Date Sort → 対応するdata class ごとに実装して、UseCaseを作成する
+    suspend fun insertCalculationContent(calculationContent: CalculationContent)
+    // Update
+    suspend fun updateCalculationContent(calculationContent: CalculationContent)
+    // Delete
+    suspend fun deleteCalculationContent(calculationContent: CalculationContent)
+
+    // model Calculation
+
+    // Get
+    fun getCalculation(): LiveData<Calculation>
 }

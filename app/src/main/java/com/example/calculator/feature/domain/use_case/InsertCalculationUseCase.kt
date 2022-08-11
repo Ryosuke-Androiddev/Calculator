@@ -9,6 +9,6 @@ class InsertCalculationUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(calculationContent: CalculationContent) {
-        repository.insertCalculation(calculationContent = calculationContent)
+        repository.insertCalculationContent(calculationContent = calculationContent)
     }
 }

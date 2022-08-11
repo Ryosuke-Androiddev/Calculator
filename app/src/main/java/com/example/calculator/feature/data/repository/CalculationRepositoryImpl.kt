@@ -23,7 +23,7 @@ class CalculationRepositoryImpl(
     }
 
     // Calculation Content
-    override suspend fun insertCalculation(calculationContent: CalculationContent) {
+    override suspend fun insertCalculationContent(calculationContent: CalculationContent) {
         return calculationDao.insertCalculation(calculationContent = calculationContent)
     }
 }
