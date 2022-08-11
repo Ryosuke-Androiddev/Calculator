@@ -11,7 +11,6 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.calculator.databinding.MakeCalculationPopUpDialogBinding
-import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.dialog.parent.CustomDialogFragmentParent
 
 class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
@@ -25,7 +24,7 @@ class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
     private lateinit var listener : MakeCalculationPopUpDialogListener
 
     interface MakeCalculationPopUpDialogListener {
-        fun onSaveButtonClick()
+        fun onMakeNewCalculationSaveButtonClick()
     }
 
     @SuppressLint("UseGetLayoutInflater")
@@ -45,7 +44,7 @@ class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
             } else {
                 // UseCaseの処理は、ここの実装に任したほうがいい
                 // どのボタンの処理かがわかってるから単に呼び出すだけでいい気する
-                listener.onSaveButtonClick()
+                listener.onMakeNewCalculationSaveButtonClick()
             }
         }
 

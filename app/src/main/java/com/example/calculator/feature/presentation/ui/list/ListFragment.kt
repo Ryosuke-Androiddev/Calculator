@@ -15,12 +15,15 @@ import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemAdapter
 import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragment
 import com.example.calculator.feature.presentation.component.dialog.MakeCalculationPopUpDialogFragment
+import com.example.calculator.feature.presentation.component.dialog.parent.CustomDialogFragmentParent
 import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ListFragment : Fragment(R.layout.fragment_list), MakeCalculationPopUpDialogFragment.MakeCalculationPopUpDialogListener {
+class ListFragment : Fragment(R.layout.fragment_list),
+    MakeCalculationPopUpDialogFragment.MakeCalculationPopUpDialogListener,
+    CustomPopUpDialogFragment.CustomPopUpDialogListener {
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
@@ -103,9 +106,15 @@ class ListFragment : Fragment(R.layout.fragment_list), MakeCalculationPopUpDialo
         _binding = null
     }
 
-    override fun onSaveButtonClick() {
+    override fun onMakeNewCalculationSaveButtonClick() {
         // UseCaseのInsert処理を呼び出す
         // Pop Up Dialog の処理の実装をここにかけばどのボタンを押したかを気にする必要がない
         navigateToCreateNewItemFragment()
+    }
+
+    override fun onCustomPopUpDialogSaveButtonClick(newTitle: String, dialog : CustomPopUpDialogFragment) {
+        // Title のUPDATEのUseCaseをここで呼び出す
+        // 更新後は、Dialogを隠す
+        dialog.dismiss()
     }
 }
