@@ -10,6 +10,8 @@ import com.example.calculator.feature.domain.use_case.model.calculation_info.Get
 import com.example.calculator.feature.domain.use_case.model.calculation.GetCalculationUseCase
 import com.example.calculator.feature.domain.use_case.model.calculation_content.InsertCalculationContentUseCase
 import com.example.calculator.feature.domain.use_case.model.UseCase
+import com.example.calculator.feature.domain.use_case.model.calculation_content.DeleteCalculationContentUseCase
+import com.example.calculator.feature.domain.use_case.model.calculation_content.UpdateCalculationContentUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,8 +45,10 @@ object LocalDatabaseModule {
     fun provideUseCase(calculationRepository: CalculationRepository): UseCase {
         return UseCase(
             getAllCalculationInfoUseCase = GetAllCalculationInfoUseCase(repository = calculationRepository),
-            getCalculation = GetCalculationUseCase(repository = calculationRepository),
-            insertCalculationContentUseCase = InsertCalculationContentUseCase(repository = calculationRepository)
+            insertCalculationContentUseCase = InsertCalculationContentUseCase(repository = calculationRepository),
+            updateCalculationContentUseCase = UpdateCalculationContentUseCase(repository = calculationRepository),
+            deleteCalculationContentUseCase = DeleteCalculationContentUseCase(repository = calculationRepository),
+            getCalculation = GetCalculationUseCase(repository = calculationRepository)
         )
     }
 }
