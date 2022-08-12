@@ -5,6 +5,7 @@ import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.domain.use_case.model.UseCase
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,5 +18,9 @@ class ListViewModel @Inject constructor(
     private val list = DummyData.list
     private val _getAllCalculation: LiveData<List<CalculationInfo>> = MutableLiveData(list)
     val getAllCalculation: LiveData<List<CalculationInfo>> = _getAllCalculation
+
+    fun insertCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch {
+        useCase.insertCalculationInfoUseCase(calculationInfo = calculationInfo)
+    }
 
 }
