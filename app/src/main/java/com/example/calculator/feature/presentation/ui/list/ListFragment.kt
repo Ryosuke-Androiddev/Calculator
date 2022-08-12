@@ -15,7 +15,6 @@ import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemAdapter
 import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragment
 import com.example.calculator.feature.presentation.component.dialog.MakeCalculationPopUpDialogFragment
-import com.example.calculator.feature.presentation.component.dialog.parent.CustomDialogFragmentParent
 import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,7 +47,7 @@ class ListFragment : Fragment(R.layout.fragment_list),
 
         setupRecyclerView()
 
-        viewModel.getAllCalculation.observe(viewLifecycleOwner, {
+        viewModel.getAllCalculationInfoUseCase.observe(viewLifecycleOwner, {
 
         })
 
