@@ -100,14 +100,7 @@ class ListFragment : Fragment(R.layout.fragment_list),
         findNavController().navigate(action)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     override fun onMakeNewCalculationSaveButtonClick() {
-        // UseCaseのInsert処理を呼び出す
-        // Pop Up Dialog の処理の実装をここにかけばどのボタンを押したかを気にする必要がない
         navigateToCreateNewItemFragment()
     }
 
@@ -115,5 +108,10 @@ class ListFragment : Fragment(R.layout.fragment_list),
         // Title のUPDATEのUseCaseをここで呼び出す
         // 更新後は、Dialogを隠す
         dialog.dismiss()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

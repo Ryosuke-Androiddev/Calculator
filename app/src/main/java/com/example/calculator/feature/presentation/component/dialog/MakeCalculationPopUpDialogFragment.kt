@@ -10,8 +10,11 @@ import android.view.LayoutInflater
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.viewModels
 import com.example.calculator.databinding.MakeCalculationPopUpDialogBinding
+import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.dialog.parent.CustomDialogFragmentParent
+import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
 
 class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
 
@@ -21,6 +24,7 @@ class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
     private val builder by lazy { AlertDialog.Builder(requireActivity()) }
     private val dialog by lazy { builder.create() }
 
+    private val viewModel: ListViewModel by viewModels()
     private lateinit var listener : MakeCalculationPopUpDialogListener
 
     interface MakeCalculationPopUpDialogListener {
@@ -35,15 +39,17 @@ class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
         builder.setView(binding.root)
 
         binding.saveTextButton.setOnClickListener {
-            // ここの内容を画面遷移したときに表示する??
-            // DBのテーブル結語で乗りきれいないよね??
-            // SafeArgs or Bundleで渡してあげる必要がある
-            val title = binding.calculationTitleTextview.text
-            if (title.isNullOrEmpty() || title.isEmpty()) {
+            val calculationTitle = binding.calculationTitleTextview.text.toString()
+            if (calculationTitle.isBlank() || calculationTitle.isEmpty()) {
                 Toast.makeText(requireContext(), "Please input 0 more characters", Toast.LENGTH_SHORT).show()
             } else {
-                // UseCaseの処理は、ここの実装に任したほうがいい
-                // どのボタンの処理かがわかってるから単に呼び出すだけでいい気する
+                // Object を渡してUseCaseの呼び出しと画面遷移
+//                val calculationInfo = CalculationInfo(
+//                    calculationId = 1L,
+//                    title = calculationTitle,
+//                    date = 1L
+//                )
+//                viewModel.insertCalculationInfoUseCase(calculationInfo = calculationInfo)
                 listener.onMakeNewCalculationSaveButtonClick()
             }
         }
