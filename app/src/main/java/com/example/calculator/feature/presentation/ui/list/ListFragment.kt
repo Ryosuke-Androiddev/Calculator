@@ -104,7 +104,7 @@ class ListFragment : Fragment(R.layout.fragment_list),
         navigateToCreateNewItemFragment()
     }
 
-    override fun onCustomPopUpDialogSaveButtonClick(newTitle: String, dialog : CustomPopUpDialogFragment) {
+    override fun onCustomPopUpDialogSaveButtonClick(dialog : CustomPopUpDialogFragment) {
         // Title のUPDATEのUseCaseをここで呼び出す
         // 更新後は、Dialogを隠す
         dialog.dismiss()

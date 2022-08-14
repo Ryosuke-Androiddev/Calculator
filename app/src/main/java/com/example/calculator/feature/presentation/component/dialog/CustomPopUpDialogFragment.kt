@@ -13,9 +13,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.viewModels
 import com.example.calculator.databinding.CustomPopUpDialogBinding
 import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.dialog.parent.CustomDialogFragmentParent
+import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
 
 class CustomPopUpDialogFragment(
     private val calculationInfo: CalculationInfo
@@ -27,10 +29,11 @@ class CustomPopUpDialogFragment(
     private val builder by lazy { AlertDialog.Builder(requireActivity()) }
     private val dialog by lazy { builder.create() }
 
+    private val viewModel: ListViewModel by viewModels()
     private lateinit var listener : CustomPopUpDialogListener
 
     interface CustomPopUpDialogListener {
-        fun onCustomPopUpDialogSaveButtonClick(newTitle : String, dialog : CustomPopUpDialogFragment)
+        fun onCustomPopUpDialogSaveButtonClick(dialog : CustomPopUpDialogFragment)
     }
 
     @SuppressLint("UseGetLayoutInflater")
@@ -51,7 +54,13 @@ class CustomPopUpDialogFragment(
                 // 0文字以上の指定をここで
                 Toast.makeText(requireContext(), "Please input 0 more characters", Toast.LENGTH_SHORT).show()
             } else {
-                listener.onCustomPopUpDialogSaveButtonClick(newTitle = newTitle, this)
+//                val calculationInfo = CalculationInfo(
+//                    calculationId = 1L,
+//                    title = newTitle,
+//                    date = 1L
+//                )
+//                viewModel.updateCalculationInfoUseCase(calculationInfo = calculationInfo)
+                listener.onCustomPopUpDialogSaveButtonClick(this)
             }
         }
 
@@ -61,10 +70,29 @@ class CustomPopUpDialogFragment(
 
         binding.contentEditTextview.setText(calculationInfo.title)
 
+        // Update画面に遷移
+        binding.navigationImageView.setOnClickListener {
+            setFragmentResult("update_navigation", bundleOf("result" to calculationInfo))
+            dismiss()
+        }
+
         binding.navigationTextView.setOnClickListener {
             setFragmentResult("update_navigation", bundleOf("result" to calculationInfo))
             dismiss()
             Log.d("Argument", "$calculationInfo")
+        }
+
+        // TODO
+        // Delete処理
+        binding.deleteImageView.setOnClickListener {
+            // Yes or NoでUseCaseを実行する
+            // FragmentManager の理解も大事
+            DeletePopUpDialogFragment().show(childFragmentManager, "DeletePopUp")
+        }
+
+        binding.deleteTextView.setOnClickListener {
+            // Yes or NoでUseCaseを実行する
+            DeletePopUpDialogFragment().show(childFragmentManager, "DeletePopUp")
         }
 
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
