@@ -34,7 +34,8 @@
             android:layout_height="wrap_content"
             android:maxLength="20"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:maxLines="1"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
