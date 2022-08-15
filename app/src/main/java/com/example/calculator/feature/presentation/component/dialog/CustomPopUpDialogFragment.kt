@@ -87,12 +87,16 @@ class CustomPopUpDialogFragment(
         binding.deleteImageView.setOnClickListener {
             // Yes or NoでUseCaseを実行する
             // FragmentManager の理解も大事
-            DeletePopUpDialogFragment().show(childFragmentManager, "DeletePopUp")
+            // childFragmentManagerを渡すと、元のDialogFragmentの子Dialogという関係になるので
+            // 元のDialogが消えてしまった場合は、子のDialogも消えてしまうので引数にParentFragmentManagerを渡す
+            DeletePopUpDialogFragment().show(parentFragmentManager, "DeletePopUp")
+            dismiss()
         }
 
         binding.deleteTextView.setOnClickListener {
             // Yes or NoでUseCaseを実行する
-            DeletePopUpDialogFragment().show(childFragmentManager, "DeletePopUp")
+            DeletePopUpDialogFragment().show(parentFragmentManager, "DeletePopUp")
+            dismiss()
         }
 
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

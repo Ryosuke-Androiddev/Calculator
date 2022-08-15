@@ -27,7 +27,7 @@ class DeletePopUpDialogFragment : CustomDialogFragmentParent() {
         builder.setTitle("Delete Calculation")
         builder.setMessage("Do you want to delete Calculation??")
 
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.GRAY))
         dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
 
         return dialog
