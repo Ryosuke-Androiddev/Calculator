@@ -89,13 +89,13 @@ class CustomPopUpDialogFragment(
             // FragmentManager の理解も大事
             // childFragmentManagerを渡すと、元のDialogFragmentの子Dialogという関係になるので
             // 元のDialogが消えてしまった場合は、子のDialogも消えてしまうので引数にParentFragmentManagerを渡す
-            DeletePopUpDialogFragment().show(parentFragmentManager, "DeletePopUp")
+            DeletePopUpDialogFragment(calculationInfo = this.calculationInfo).show(parentFragmentManager, "DeletePopUp")
             dismiss()
         }
 
         binding.deleteTextView.setOnClickListener {
             // Yes or NoでUseCaseを実行する
-            DeletePopUpDialogFragment().show(parentFragmentManager, "DeletePopUp")
+            DeletePopUpDialogFragment(calculationInfo = this.calculationInfo).show(parentFragmentManager, "DeletePopUp")
             dismiss()
         }
 
