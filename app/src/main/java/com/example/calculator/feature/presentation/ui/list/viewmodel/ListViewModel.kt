@@ -18,19 +18,26 @@ class ListViewModel @Inject constructor(
     //val getAllCalculation: LiveData<List<CalculationInfoItem>> = useCase.getAllCalculationInfoUseCase()
 
     private val list = DummyData.list
+
+    // ここLiveDataの使い方がちゃうかも
     private val _getAllCalculation: MutableLiveData<List<CalculationInfo>> = MutableLiveData(list)
     val getAllCalculationInfoUseCase: LiveData<List<CalculationInfo>> = _getAllCalculation
 
     // val getAllCalculation: LiveData<List<CalculationInfo>> = useCase.getAllCalculationInfoUseCase()
-    val sortByDate: LiveData<List<CalculationInfo>> = useCase.sortByDateUseCase()
-    val sortByName: LiveData<List<CalculationInfo>> = useCase.sortByNameUseCase()
+    // ここは、suspendに書き換えたあとに、スレッド指定して変更を通知する
+    // val sortByDate: LiveData<List<CalculationInfo>> = useCase.sortByDateUseCase()
+    // val sortByName: LiveData<List<CalculationInfo>> = useCase.sortByNameUseCase()
 
     // Calculation
     val getAllCalculationUseCase: LiveData<Calculation> = useCase.getCalculation()
 
     // Search, Sort
-    private val _searchResult: MutableLiveData<List<CalculationInfo>> = MutableLiveData()
-    val searchResult: LiveData<List<CalculationInfo>> = _searchResult
+    // private val _searchResult = MutableLiveData<List<CalculationInfo>>()
+    // val searchResult: LiveData<List<CalculationInfo>> = _searchResult
+
+    fun searchCalculationInfoUseCase(searchQuery: String) = viewModelScope.launch {
+        _getAllCalculation.postValue(useCase.searchCalculationInfoUseCase(searchQuery = searchQuery))
+    }
 
     fun getAllCalculationInfoUseCase() : LiveData<List<CalculationInfo>> {
         return useCase.getAllCalculationInfoUseCase()

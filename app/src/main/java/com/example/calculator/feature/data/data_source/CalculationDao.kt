@@ -25,13 +25,13 @@ interface CalculationDao {
     // Search
     // "SELECT * FROM url_memo_entity WHERE title LIKE "%検索キーワード%"
     @Query("SELECT * FROM calculation_info_table WHERE title LIKE '%' || :searchQuery || '%'")
-    fun searchCalculationInfo(searchQuery: String): LiveData<List<CalculationInfo>>
+    fun searchCalculationInfo(searchQuery: String): List<CalculationInfo>
     // Date Sort
     @Query("SELECT * FROM calculation_info_table ORDER BY date")
-    fun sortByDate(): LiveData<List<CalculationInfo>>
+    fun sortByDate(): List<CalculationInfo>
     // Name Sort
     @Query("SELECT * FROM calculation_info_table ORDER BY title")
-    fun sortByName(): LiveData<List<CalculationInfo>>
+    fun sortByName(): List<CalculationInfo>
 
     // Calculation Content
     @Insert(onConflict = OnConflictStrategy.REPLACE)
