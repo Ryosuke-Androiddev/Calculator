@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraint_layout"
@@ -20,19 +20,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/list_content_search_view"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/searchInputLayout"
+        style="@style/TextInputLayoutNoBorder"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         android:background="@drawable/search_view_bg"
+        android:importantForAutofill="no"
+        android:paddingStart="6dp"
+        android:paddingEnd="5dp"
+        app:endIconMode="clear_text"
+        app:endIconTint="@android:color/darker_gray"
+        app:hintTextColor="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_title_textView"
         app:queryBackground="@android:color/transparent"
-        app:queryHint="@string/search" />
+        app:queryHint="@string/search"
+        app:startIconDrawable="@android:drawable/ic_menu_search"
+        app:startIconTint="@android:color/darker_gray"
+        tools:ignore="RtlSymmetry">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchInputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:hint="@string/search"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:textSize="16sp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <View
         android:id="@+id/search_view_divider"
@@ -43,10 +64,10 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="8dp"
         android:background="@color/dark_gray"
-        app:layout_constraintEnd_toEndOf="@+id/list_content_search_view"
+        app:layout_constraintEnd_toEndOf="@+id/searchInputLayout"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/list_content_search_view"
-        app:layout_constraintTop_toBottomOf="@+id/list_content_search_view" />
+        app:layout_constraintStart_toStartOf="@+id/searchInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/searchInputLayout" />
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/materialButtonToggleGroup"
@@ -142,10 +163,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
