@@ -47,9 +47,9 @@ class ListFragment : Fragment(R.layout.fragment_list),
 
         setupRecyclerView()
 
-        viewModel.getAllCalculationInfoUseCase.observe(viewLifecycleOwner, {
-
-        })
+        viewModel.getAllCalculationInfoUseCase.observe(viewLifecycleOwner) {
+            // 結局ここで購読するけどタイミングが難しくね??
+        }
 
         childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->
             val result = bundle["result"] as CalculationInfo
