@@ -10,6 +10,7 @@ import com.example.calculator.feature.domain.use_case.model.calculation.GetCalcu
 import com.example.calculator.feature.domain.use_case.model.calculation_content.InsertCalculationContentUseCase
 import com.example.calculator.feature.domain.use_case.model.UseCase
 import com.example.calculator.feature.domain.use_case.model.calculation_content.DeleteCalculationContentUseCase
+import com.example.calculator.feature.domain.use_case.model.calculation_content.GetAllCalculationContentUseCase
 import com.example.calculator.feature.domain.use_case.model.calculation_content.UpdateCalculationContentUseCase
 import com.example.calculator.feature.domain.use_case.model.calculation_info.*
 import dagger.Module
@@ -51,6 +52,7 @@ object LocalDatabaseModule {
             searchCalculationInfoUseCase = SearchCalculationInfoUseCase(repository = calculationRepository),
             sortByDateUseCase = SortByDateUseCase(repository = calculationRepository),
             sortByNameUseCase = SortByNameUseCase(repository = calculationRepository),
+            getAllCalculationContentUseCase = GetAllCalculationContentUseCase(repository = calculationRepository),
             insertCalculationContentUseCase = InsertCalculationContentUseCase(repository = calculationRepository),
             updateCalculationContentUseCase = UpdateCalculationContentUseCase(repository = calculationRepository),
             deleteCalculationContentUseCase = DeleteCalculationContentUseCase(repository = calculationRepository),

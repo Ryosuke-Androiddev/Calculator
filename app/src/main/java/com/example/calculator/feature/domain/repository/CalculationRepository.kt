@@ -26,6 +26,8 @@ interface CalculationRepository {
 
     // model CalculationContent
 
+    // Get
+    fun getAllCalculationContent(): LiveData<List<CalculationContent>>
     // Insert
     suspend fun insertCalculationContent(calculationContent: CalculationContent)
     // Update

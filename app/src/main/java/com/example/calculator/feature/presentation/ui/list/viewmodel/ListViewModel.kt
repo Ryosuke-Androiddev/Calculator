@@ -25,6 +25,7 @@ class ListViewModel @Inject constructor(
 
     // val getAllCalculation: LiveData<List<CalculationInfo>> = useCase.getAllCalculationInfoUseCase()
     // ここは、suspendに書き換えたあとに、スレッド指定して変更を通知する
+    // メソッドで呼び出して変更を加える
     // val sortByDate: LiveData<List<CalculationInfo>> = useCase.sortByDateUseCase()
     // val sortByName: LiveData<List<CalculationInfo>> = useCase.sortByNameUseCase()
 
@@ -53,6 +54,14 @@ class ListViewModel @Inject constructor(
 
     fun deleteCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch {
         useCase.deleteCalculationInfoUseCase(calculationInfo = calculationInfo)
+    }
+
+    fun sortByDate() = viewModelScope.launch {
+        _getAllCalculation.postValue(useCase.sortByDateUseCase())
+    }
+
+    fun sortByName() = viewModelScope.launch {
+        _getAllCalculation.postValue(useCase.sortByNameUseCase())
     }
 
     fun insertCalculationContentUseCase(calculationContent: CalculationContent) = viewModelScope.launch {

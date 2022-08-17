@@ -41,6 +41,10 @@ class CalculationRepositoryImpl(
         return calculationDao.sortByName()
     }
 
+    override fun getAllCalculationContent(): LiveData<List<CalculationContent>> {
+        return calculationDao.getAllCalculationContent()
+    }
+
     // Calculation Content
     override suspend fun insertCalculationContent(calculationContent: CalculationContent) {
         calculationDao.insertCalculation(calculationContent = calculationContent)

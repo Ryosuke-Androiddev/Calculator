@@ -34,6 +34,9 @@ interface CalculationDao {
     fun sortByName(): List<CalculationInfo>
 
     // Calculation Content
+    @Query("SELECT * FROM calculation_content_table")
+    fun getAllCalculationContent(): LiveData<List<CalculationContent>>
+    // Insert
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCalculation(calculationContent: CalculationContent)
     // Update
