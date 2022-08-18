@@ -7,7 +7,7 @@ import com.example.calculator.feature.domain.repository.CalculationRepository
 class SortByDateUseCase(
     private val repository: CalculationRepository
 ) {
-    operator fun invoke() : List<CalculationInfo> {
+    suspend operator fun invoke() : List<CalculationInfo> {
         return repository.sortByDate()
     }
 }

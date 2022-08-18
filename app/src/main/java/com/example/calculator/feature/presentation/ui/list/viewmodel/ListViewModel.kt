@@ -7,6 +7,7 @@ import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.domain.use_case.model.UseCase
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,22 +29,22 @@ class ListViewModel @Inject constructor(
     // Calculation
     val getAllCalculationUseCase: LiveData<Calculation> = useCase.getCalculation()
 
-    fun searchCalculationInfoUseCase(searchQuery: String) = viewModelScope.launch {
+    fun searchCalculationInfoUseCase(searchQuery: String) = viewModelScope.launch(Dispatchers.IO) {
         // 個々のロジックがうまくいってないからクラッシュしてる
         // DBに値を入れていないときは多分確認できないので代わりの処理で代行する
         _getAllCalculation.postValue(DummyData.list.filter { it.title == searchQuery })
         // _getAllCalculation.postValue(useCase.searchCalculationInfoUseCase(searchQuery = searchQuery))
     }
 
-    fun insertCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch {
+    fun insertCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch(Dispatchers.IO) {
         useCase.insertCalculationInfoUseCase(calculationInfo = calculationInfo)
     }
 
-    fun updateCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch {
+    fun updateCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch(Dispatchers.IO) {
         useCase.updateCalculationInfoUseCase(calculationInfo = calculationInfo)
     }
 
-    fun deleteCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch {
+    fun deleteCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch(Dispatchers.IO) {
         useCase.deleteCalculationInfoUseCase(calculationInfo = calculationInfo)
     }
 

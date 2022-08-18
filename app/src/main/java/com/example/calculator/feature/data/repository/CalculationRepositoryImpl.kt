@@ -29,15 +29,15 @@ class CalculationRepositoryImpl(
         deleteCalculationInfo(calculationInfo = calculationInfo)
     }
 
-    override fun searchCalculationInfo(searchQuery: String): List<CalculationInfo> {
+    override suspend fun searchCalculationInfo(searchQuery: String): List<CalculationInfo> {
         return calculationDao.searchCalculationInfo(searchQuery = searchQuery)
     }
 
-    override fun sortByDate(): List<CalculationInfo> {
+    override suspend fun sortByDate(): List<CalculationInfo> {
         return calculationDao.sortByDate()
     }
 
-    override fun sortByName(): List<CalculationInfo> {
+    override suspend fun sortByName(): List<CalculationInfo> {
         return calculationDao.sortByName()
     }
 

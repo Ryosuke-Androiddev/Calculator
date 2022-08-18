@@ -18,11 +18,11 @@ interface CalculationRepository {
     // Delete
     suspend fun deleteCalculationInfo(calculationInfo: CalculationInfo)
     // Search
-    fun searchCalculationInfo(searchQuery: String): List<CalculationInfo>
+    suspend fun searchCalculationInfo(searchQuery: String): List<CalculationInfo>
     // Date Sort
-    fun sortByDate(): List<CalculationInfo>
+    suspend fun sortByDate(): List<CalculationInfo>
     // Name Sort
-    fun sortByName(): List<CalculationInfo>
+    suspend fun sortByName(): List<CalculationInfo>
 
     // model CalculationContent
 
