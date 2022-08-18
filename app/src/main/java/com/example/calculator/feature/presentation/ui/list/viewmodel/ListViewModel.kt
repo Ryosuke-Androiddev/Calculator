@@ -20,24 +20,16 @@ class ListViewModel @Inject constructor(
     private val list = DummyData.list
 
     // ここLiveDataの使い方がちゃうかも
-    private val _getAllCalculation: MutableLiveData<List<CalculationInfo>> = MutableLiveData(list)
+    private val _getAllCalculation = MutableLiveData(list)
     val getAllCalculationInfoUseCase: LiveData<List<CalculationInfo>> = _getAllCalculation
 
     // val getAllCalculation: LiveData<List<CalculationInfo>> = useCase.getAllCalculationInfoUseCase()
-    // ここは、suspendに書き換えたあとに、スレッド指定して変更を通知する
-    // メソッドで呼び出して変更を加える
-    // val sortByDate: LiveData<List<CalculationInfo>> = useCase.sortByDateUseCase()
-    // val sortByName: LiveData<List<CalculationInfo>> = useCase.sortByNameUseCase()
 
     // Calculation
     val getAllCalculationUseCase: LiveData<Calculation> = useCase.getCalculation()
 
     fun searchCalculationInfoUseCase(searchQuery: String) = viewModelScope.launch {
         _getAllCalculation.postValue(useCase.searchCalculationInfoUseCase(searchQuery = searchQuery))
-    }
-
-    fun getAllCalculationInfoUseCase() : LiveData<List<CalculationInfo>> {
-        return useCase.getAllCalculationInfoUseCase()
     }
 
     fun insertCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch {
@@ -58,17 +50,5 @@ class ListViewModel @Inject constructor(
 
     fun sortByName() = viewModelScope.launch {
         _getAllCalculation.postValue(useCase.sortByNameUseCase())
-    }
-
-    fun insertCalculationContentUseCase(calculationContent: CalculationContent) = viewModelScope.launch {
-        useCase.insertCalculationContentUseCase(calculationContent = calculationContent)
-    }
-
-    fun updateCalculationContentUseCase(calculationContent: CalculationContent) = viewModelScope.launch {
-        useCase.updateCalculationContentUseCase(calculationContent = calculationContent)
-    }
-
-    fun deleteCalculationContentUseCase(calculationContent: CalculationContent) = viewModelScope.launch {
-        useCase.deleteCalculationContentUseCase(calculationContent = calculationContent)
     }
 }
