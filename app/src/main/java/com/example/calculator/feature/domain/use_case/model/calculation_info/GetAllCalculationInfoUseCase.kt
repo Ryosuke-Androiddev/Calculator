@@ -1,4 +1,4 @@
-package com.example.calculator.feature.domain.use_case
+package com.example.calculator.feature.domain.use_case.model.calculation_info
 
 import androidx.lifecycle.LiveData
 import com.example.calculator.feature.domain.model.CalculationInfo

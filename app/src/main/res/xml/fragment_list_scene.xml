@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene 
+<MotionScene
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
@@ -31,46 +31,45 @@
             android:layout_marginTop="6dp"
             android:visibility="invisible" />
         <Constraint
+            android:id="@+id/searchInputLayout"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
             motion:layout_constraintTop_toBottomOf="@+id/list_title_textView"
-            android:layout_marginStart="10dp"
-            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="-24dp"
-            android:id="@+id/list_content_search_view" />
+            motion:layout_constraintStart_toStartOf="parent" />
         <Constraint
-            motion:layout_constraintEnd_toEndOf="@+id/list_content_search_view"
+            android:id="@+id/search_view_divider"
+            motion:layout_constraintEnd_toEndOf="@+id/searchInputLayout"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginBottom="12dp"
-            android:layout_marginEnd="0dp"
-            motion:layout_constraintTop_toBottomOf="@+id/list_content_search_view"
-            android:layout_marginStart="0dp"
+            android:layout_marginBottom="8dp"
+            motion:layout_constraintTop_toBottomOf="@+id/searchInputLayout"
             motion:layout_constraintHorizontal_bias="0.5"
-            motion:layout_constraintStart_toStartOf="@+id/list_content_search_view"
-            android:layout_marginTop="6dp"
-            android:id="@+id/search_view_divider" />
+            motion:layout_constraintStart_toStartOf="@+id/searchInputLayout"
+            android:layout_marginTop="1dp"
+            android:visibility="visible" />
         <Constraint
+            android:id="@+id/materialButtonToggleGroup"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/search_view_divider"
             motion:layout_constraintHorizontal_bias="0.5"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="0dp"
-            android:visibility="invisible"
-            android:id="@+id/materialButtonToggleGroup" />
+            android:layout_marginTop="-8dp"
+            android:visibility="invisible" />
         <Constraint
+            android:id="@+id/nestedScrollView"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toBottomOf="@+id/materialButtonToggleGroup"
             motion:layout_constraintHorizontal_bias="0.5"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="-40dp"
-            android:id="@+id/nestedScrollView"
-            motion:layout_constraintBottom_toBottomOf="parent" />
+            android:layout_marginTop="-35dp" />
     </ConstraintSet>
 </MotionScene>

@@ -11,18 +11,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentListBinding
-import com.example.calculator.databinding.MakeCalculationPopUpDialogBinding
 import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemAdapter
 import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragment
 import com.example.calculator.feature.presentation.component.dialog.MakeCalculationPopUpDialogFragment
-import com.example.calculator.feature.presentation.ui.add.MakeNewCalculationFragment
 import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ListFragment : Fragment(R.layout.fragment_list) {
+class ListFragment : Fragment(R.layout.fragment_list),
+    MakeCalculationPopUpDialogFragment.MakeCalculationPopUpDialogListener,
+    CustomPopUpDialogFragment.CustomPopUpDialogListener {
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
@@ -47,14 +47,13 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
         setupRecyclerView()
 
-        viewModel.getAllCalculation.observe(viewLifecycleOwner, {
-
-        })
+        viewModel.getAllCalculationInfoUseCase.observe(viewLifecycleOwner) {
+            // 結局ここで購読するけどタイミングが難しくね??
+        }
 
         childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->
             val result = bundle["result"] as CalculationInfo
             Log.d("Result", "${findNavController().currentDestination}")
-            Log.d("Result","${result.equals(CalculationInfo(1, "Java", 20220614L))}")
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(result)
             findNavController().navigate(action)
         }
@@ -98,6 +97,16 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     private fun navigateToCreateNewItemFragment() {
         val action = ListFragmentDirections.actionListFragmentToCreateNewItemFragment()
         findNavController().navigate(action)
+    }
+
+    override fun onMakeNewCalculationSaveButtonClick() {
+        navigateToCreateNewItemFragment()
+    }
+
+    override fun onCustomPopUpDialogSaveButtonClick(dialog : CustomPopUpDialogFragment) {
+        // Title のUPDATEのUseCaseをここで呼び出す
+        // 更新後は、Dialogを隠す
+        dialog.dismiss()
     }
 
     override fun onDestroyView() {

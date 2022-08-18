@@ -1,4 +1,4 @@
-package com.example.calculator.feature.presentation.ui.update
+package com.example.calculator.feature.presentation.ui.calculation.update
 
 import android.os.Bundle
 import android.util.Log
@@ -33,7 +33,9 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textView.text = args.calculationItem.title
+
+        // navigation 時に、正しく遷移ができているかを確認する
+        binding.updateCalculationTitleTextView.text = args.calculationItem.title
     }
 
     override fun onDestroyView() {

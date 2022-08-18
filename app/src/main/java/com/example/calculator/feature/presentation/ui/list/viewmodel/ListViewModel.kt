@@ -1,10 +1,13 @@
 package com.example.calculator.feature.presentation.ui.list.viewmodel
 
 import androidx.lifecycle.*
+import com.example.calculator.feature.domain.model.Calculation
+import com.example.calculator.feature.domain.model.CalculationContent
 import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.domain.use_case.model.UseCase
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,7 +18,37 @@ class ListViewModel @Inject constructor(
     //val getAllCalculation: LiveData<List<CalculationInfoItem>> = useCase.getAllCalculationInfoUseCase()
 
     private val list = DummyData.list
-    private val _getAllCalculation: LiveData<List<CalculationInfo>> = MutableLiveData(list)
-    val getAllCalculation: LiveData<List<CalculationInfo>> = _getAllCalculation
 
+    // ここLiveDataの使い方がちゃうかも
+    private val _getAllCalculation = MutableLiveData(list)
+    val getAllCalculationInfoUseCase: LiveData<List<CalculationInfo>> = _getAllCalculation
+
+    // val getAllCalculation: LiveData<List<CalculationInfo>> = useCase.getAllCalculationInfoUseCase()
+
+    // Calculation
+    val getAllCalculationUseCase: LiveData<Calculation> = useCase.getCalculation()
+
+    fun searchCalculationInfoUseCase(searchQuery: String) = viewModelScope.launch {
+        _getAllCalculation.postValue(useCase.searchCalculationInfoUseCase(searchQuery = searchQuery))
+    }
+
+    fun insertCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch {
+        useCase.insertCalculationInfoUseCase(calculationInfo = calculationInfo)
+    }
+
+    fun updateCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch {
+        useCase.updateCalculationInfoUseCase(calculationInfo = calculationInfo)
+    }
+
+    fun deleteCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch {
+        useCase.deleteCalculationInfoUseCase(calculationInfo = calculationInfo)
+    }
+
+    fun sortByDate() = viewModelScope.launch {
+        _getAllCalculation.postValue(useCase.sortByDateUseCase())
+    }
+
+    fun sortByName() = viewModelScope.launch {
+        _getAllCalculation.postValue(useCase.sortByNameUseCase())
+    }
 }

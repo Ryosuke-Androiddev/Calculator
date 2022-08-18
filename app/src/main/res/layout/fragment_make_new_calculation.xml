@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/fragment_make_new_calculation_scene"
-    tools:context=".feature.presentation.ui.add.MakeNewCalculationFragment">
+    tools:context=".feature.presentation.ui.calculation.make.MakeNewCalculationFragment">
 
     <TextView
         android:id="@+id/make_new_calculation_title_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/Name"
+        android:text="New"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

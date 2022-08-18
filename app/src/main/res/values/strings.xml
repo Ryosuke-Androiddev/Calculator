@@ -41,4 +41,7 @@
     <string name="_0">0</string>
     <string name="dot">.</string>
     <string name="equal">=</string>
+    <string name="delete_calculation">計算の削除</string>
+    <string name="confirm_delete">計算を削除しますか? (1度削除すると元に戻せません)</string>
+    <string name="delete">Delete</string>
 </resources>

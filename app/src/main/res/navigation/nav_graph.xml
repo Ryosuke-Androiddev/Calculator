@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/addFragment">
+    app:startDestination="@id/listFragment">
 
     <fragment
         android:id="@+id/listFragment"
@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_createNewItemFragment"
-            app:destination="@id/addFragment" />
+            app:destination="@id/makeNewCalculationFragment" />
         <action
             android:id="@+id/action_listFragment_to_updateFragment"
             app:destination="@id/updateFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addFragment"
-        android:name="com.example.calculator.feature.presentation.ui.add.MakeNewCalculationFragment"
+        android:id="@+id/makeNewCalculationFragment"
+        android:name="com.example.calculator.feature.presentation.ui.calculation.make.MakeNewCalculationFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_make_new_calculation" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
-        android:name="com.example.calculator.feature.presentation.ui.update.UpdateFragment"
+        android:name="com.example.calculator.feature.presentation.ui.calculation.update.UpdateFragment"
         android:label="fragment_update"
         tools:layout="@layout/fragment_update" >
         <action
