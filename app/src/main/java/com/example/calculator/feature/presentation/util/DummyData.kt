@@ -2,6 +2,9 @@ package com.example.calculator.feature.presentation.util
 
 import com.example.calculator.feature.domain.model.CalculationContent
 import com.example.calculator.feature.domain.model.CalculationInfo
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.*
 
 object DummyData {
 
@@ -9,77 +12,77 @@ object DummyData {
         CalculationInfo(
             1,
             "Java",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             2,
             "Kotlin",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             3,
             "Python",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             4,
             "JavaScript",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             5,
             "Ruby",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             6,
             "Swift",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             7,
             "PHP",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             8,
             "Haskell",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             9,
             "RUST",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             10,
             "Go",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             11,
             "C",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             12,
             "C+",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             13,
             "C++",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             14,
             "C#",
-            20220614L
+            Date()
         ),
         CalculationInfo(
             15,
             "HTML",
-            20220614L
+            Date()
         ),
     )
 
