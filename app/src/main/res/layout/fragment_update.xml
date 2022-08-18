@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/fragment_update_scene"
-    tools:context=".feature.presentation.ui.update.UpdateFragment">
+    tools:context=".feature.presentation.ui.calculation.update.UpdateFragment">
 
     <TextView
         android:id="@+id/update_calculation_title_textView"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/fragment_make_new_calculation_scene"
-    tools:context=".feature.presentation.ui.make.MakeNewCalculationFragment">
+    tools:context=".feature.presentation.ui.calculation.make.MakeNewCalculationFragment">
 
     <TextView
         android:id="@+id/make_new_calculation_title_textView"

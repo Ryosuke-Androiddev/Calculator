@@ -1,4 +1,4 @@
-package com.example.calculator.feature.presentation.ui.make
+package com.example.calculator.feature.presentation.ui.calculation.make
 
 import android.annotation.SuppressLint
 import android.os.Build

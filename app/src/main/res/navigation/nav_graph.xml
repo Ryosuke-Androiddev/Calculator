@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/makeNewCalculationFragment"
-        android:name="com.example.calculator.feature.presentation.ui.make.MakeNewCalculationFragment"
+        android:name="com.example.calculator.feature.presentation.ui.calculation.make.MakeNewCalculationFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_make_new_calculation" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
-        android:name="com.example.calculator.feature.presentation.ui.update.UpdateFragment"
+        android:name="com.example.calculator.feature.presentation.ui.calculation.update.UpdateFragment"
         android:label="fragment_update"
         tools:layout="@layout/fragment_update" >
         <action

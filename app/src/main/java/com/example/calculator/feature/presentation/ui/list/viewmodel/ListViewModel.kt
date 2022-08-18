@@ -32,10 +32,6 @@ class ListViewModel @Inject constructor(
     // Calculation
     val getAllCalculationUseCase: LiveData<Calculation> = useCase.getCalculation()
 
-    // Search, Sort
-    // private val _searchResult = MutableLiveData<List<CalculationInfo>>()
-    // val searchResult: LiveData<List<CalculationInfo>> = _searchResult
-
     fun searchCalculationInfoUseCase(searchQuery: String) = viewModelScope.launch {
         _getAllCalculation.postValue(useCase.searchCalculationInfoUseCase(searchQuery = searchQuery))
     }
