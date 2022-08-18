@@ -29,7 +29,10 @@ class ListViewModel @Inject constructor(
     val getAllCalculationUseCase: LiveData<Calculation> = useCase.getCalculation()
 
     fun searchCalculationInfoUseCase(searchQuery: String) = viewModelScope.launch {
-        _getAllCalculation.postValue(useCase.searchCalculationInfoUseCase(searchQuery = searchQuery))
+        // 個々のロジックがうまくいってないからクラッシュしてる
+        // DBに値を入れていないときは多分確認できないので代わりの処理で代行する
+        _getAllCalculation.postValue(DummyData.list.filter { it.title == searchQuery })
+        // _getAllCalculation.postValue(useCase.searchCalculationInfoUseCase(searchQuery = searchQuery))
     }
 
     fun insertCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch {

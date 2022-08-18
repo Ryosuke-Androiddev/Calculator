@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -64,6 +65,22 @@ class ListFragment : Fragment(R.layout.fragment_list),
 
         binding.dashBorderExplainTextView.setOnClickListener {
             MakeCalculationPopUpDialogFragment().show(childFragmentManager, "Make New Calculation Pop Up")
+        }
+
+        // 検索処理
+        binding.searchInputText.setOnEditorActionListener { editText, action, _ ->
+
+            if (action == EditorInfo.IME_ACTION_SEARCH) {
+
+                editText.text?.toString()?.let { searchQuery ->
+                    if (searchQuery.isNotEmpty()) {
+                        // 個々の呼び出しをsubmitList()する処理がないと変更を確認できない
+                        viewModel.searchCalculationInfoUseCase(searchQuery = searchQuery)
+                    }
+                }
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
         }
     }
 
