@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -80,6 +81,8 @@ class ListFragment : Fragment(R.layout.fragment_list),
                     if (searchQuery.isNotEmpty()) {
                         // 個々の呼び出しをsubmitList()する処理がないと変更を確認できない
                         viewModel.searchCalculationInfoUseCase(searchQuery = searchQuery)
+                    } else {
+                        Toast.makeText(requireContext(), "Please Input 0 more Characters", Toast.LENGTH_SHORT).show()
                     }
                 }
                 return@setOnEditorActionListener true
