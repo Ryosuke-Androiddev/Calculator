@@ -1,12 +1,15 @@
 package com.example.calculator.feature.presentation.ui.list
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -72,6 +75,7 @@ class ListFragment : Fragment(R.layout.fragment_list),
 
             if (action == EditorInfo.IME_ACTION_SEARCH) {
 
+                hideKeyboard()
                 editText.text?.toString()?.let { searchQuery ->
                     if (searchQuery.isNotEmpty()) {
                         // 個々の呼び出しをsubmitList()する処理がないと変更を確認できない
@@ -81,6 +85,14 @@ class ListFragment : Fragment(R.layout.fragment_list),
                 return@setOnEditorActionListener true
             }
             return@setOnEditorActionListener false
+        }
+    }
+
+    private fun hideKeyboard() {
+        val view = activity?.currentFocus
+        if (view != null) {
+            val manager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            manager.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
 
