@@ -10,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentMakeNewCalculationBinding
 import com.example.calculator.feature.presentation.component.adapter.formula_item.CalculationFormulaItemAdapter
+import com.example.calculator.feature.presentation.ui.calculation.viewmodel.CalculationViewModel
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,6 +26,7 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
     private val binding get() = _binding!!
 
     private val adapter by lazy { CalculationFormulaItemAdapter() }
+    private val viewModel: CalculationViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("ClickableViewAccessibility")
@@ -44,6 +47,11 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
+
+        // TODO すべての処理が終わったタイミングで購読を始める
+//        viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationContentList ->
+//            adapter.submitList(calculationContentList)
+//        }
 
         binding.motionBase.setTransitionListener(object : MotionLayout.TransitionListener {
 
@@ -86,12 +94,9 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         binding.calculationFormulaRecyclerview.adapter = adapter
         binding.calculationFormulaRecyclerview.layoutManager = LinearLayoutManager(context)
-        // これで一番最後から表示する
+
+        // TODO すべての実装が終わったら、以下の2行は削除する
         binding.calculationFormulaRecyclerview.scrollToPosition(DummyData.contentList.size - 1)
-        // scroll を分けてくれるけど，単体でscrollできなくなる
-        // これを直接XMLで分けることができればいいんだけど
-        // start では，false end では，true
-        // binding.calculationFormulaRecyclerview.isNestedScrollingEnabled = true
         adapter.submitList(DummyData.contentList)
     }
 
