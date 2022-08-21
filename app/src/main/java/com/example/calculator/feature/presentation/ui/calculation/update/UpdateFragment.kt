@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,6 +48,42 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
 //        viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationContentList ->
 //            adapter.submitList(calculationContentList)
 //        }
+
+        binding.motionBase.setTransitionListener(object : MotionLayout.TransitionListener {
+
+            override fun onTransitionStarted(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int
+            ) {
+            }
+
+            override fun onTransitionChange(
+                motionLayout: MotionLayout?,
+                startId: Int,
+                endId: Int,
+                progress: Float
+            ) {
+                if (startId == R.id.end) {
+                    binding.updateCalculationFormulaRecyclerview.scrollToPosition(DummyData.contentList.size - 1)
+                } else if (startId == R.id.start) {
+                    // 繰り返し呼ばれるからバグが発生してる
+                    binding.updateCalculationFormulaRecyclerview.scrollToPosition(DummyData.contentList.size - 1)
+                }
+            }
+
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+            }
+
+            override fun onTransitionTrigger(
+                motionLayout: MotionLayout?,
+                triggerId: Int,
+                positive: Boolean,
+                progress: Float
+            ) {
+            }
+
+        })
 
         // navigation 時に、正しく遷移ができているかを確認する
         binding.updateCalculationTitleTextView.text = args.calculationItem.title
