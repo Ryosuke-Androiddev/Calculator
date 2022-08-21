@@ -50,6 +50,62 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         binding.makeNewCalculationTitleTextView.text = args.newCalculationInfo.title
 
+        // ACボタンで入力を全削除
+        binding.acButton.setOnClickListener {
+            binding.formulaTextview.text = ""
+            binding.formulaAnswerTextView.text = ""
+        }
+
+        // backSpace で、1文字削除
+        binding.deleteFormulaInputButton.setOnClickListener {
+            val length = binding.formulaTextview.text.length
+
+            if (length > 0) {
+                // 入力された文字をラストインデックスのラストを削除してあげる
+                binding.formulaTextview.text = binding.formulaTextview.text.subSequence(0, length - 1)
+            }
+        }
+
+        binding.formulaTextview.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("0")
+        }
+
+        binding.formulaInput1Button.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("1")
+        }
+
+        binding.formulaInput2Button.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("2")
+        }
+
+        binding.formulaInput3Button.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("3")
+        }
+
+        binding.formulaInput4Button.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("4")
+        }
+
+        binding.formulaInput5Button.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("5")
+        }
+
+        binding.formulaInput6Button.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("6")
+        }
+
+        binding.formulaInput7Button.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("7")
+        }
+
+        binding.formulaInput8Button.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("8")
+        }
+
+        binding.formulaInput9Button.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("9")
+        }
+
         setupRecyclerView()
 
         // TODO すべての処理が終わったタイミングで購読を始める
@@ -92,6 +148,11 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
             }
 
         })
+    }
+
+    private fun addInputTextToFormulaTextView(buttonText: String) : String {
+        // 連結していくイメージ
+        return "${binding.formulaTextview.text}$buttonText"
     }
 
     private fun setupRecyclerView() {
