@@ -3,7 +3,6 @@ package com.example.calculator.feature.presentation.ui.list
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -53,12 +52,11 @@ class ListFragment : Fragment(R.layout.fragment_list),
         setupRecyclerView()
 
         viewModel.getAllCalculationInfoUseCase.observe(viewLifecycleOwner) {
-            // 結局ここで購読するけどタイミングが難しくね??
+            // submitList() はここで呼び出す
         }
 
         childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->
             val result = bundle["result"] as CalculationInfo
-            Log.d("Result", "${findNavController().currentDestination}")
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(result)
             findNavController().navigate(action)
         }
@@ -99,10 +97,13 @@ class ListFragment : Fragment(R.layout.fragment_list),
         }
     }
 
+    // submitList() のタイミングに注意する
     private fun setupRecyclerView() {
 
         binding.listRecyclerView.adapter = adapter
         binding.listRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        // この処理をLiveDataで購読している処理に回す
         adapter.submitList(DummyData.list)
 
         adapter.setOnCalculationClickListener(
@@ -113,7 +114,6 @@ class ListFragment : Fragment(R.layout.fragment_list),
                 }
 
                 override fun showPopUpWindow(calculationInfo: CalculationInfo) {
-                    Log.d("CurrentNav", "${findNavController().currentDestination}")
                     // pass Dialog Fragment Manager (childFragment Manager)
                     CustomPopUpDialogFragment(calculationInfo = calculationInfo).show(childFragmentManager, "Custom Pop Up")
                 }
@@ -137,7 +137,6 @@ class ListFragment : Fragment(R.layout.fragment_list),
 
     override fun onCustomPopUpDialogSaveButtonClick(dialog : CustomPopUpDialogFragment) {
         // Title のUPDATEのUseCaseをここで呼び出す
-        // 更新後は、Dialogを隠す
         dialog.dismiss()
     }
 
