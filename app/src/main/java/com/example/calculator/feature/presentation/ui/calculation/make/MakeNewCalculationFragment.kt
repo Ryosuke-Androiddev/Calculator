@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentMakeNewCalculationBinding
@@ -25,6 +26,7 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
     private var _binding: FragmentMakeNewCalculationBinding? = null
     private val binding get() = _binding!!
 
+    private val args: MakeNewCalculationFragmentArgs by navArgs()
     private val adapter by lazy { CalculationFormulaItemAdapter() }
     private val viewModel: CalculationViewModel by viewModels()
 
@@ -45,6 +47,8 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+
+        binding.makeNewCalculationTitleTextView.text = args.newCalculationInfo.title
 
         setupRecyclerView()
 

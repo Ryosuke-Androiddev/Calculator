@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_addFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <argument
+            android:name="new_calculation_info"
+            app:argType="com.example.calculator.feature.domain.model.CalculationInfo" />
     </fragment>
     <fragment
         android:id="@+id/updateFragment"

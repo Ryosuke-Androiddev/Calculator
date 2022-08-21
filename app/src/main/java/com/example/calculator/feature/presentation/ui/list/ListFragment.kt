@@ -126,13 +126,13 @@ class ListFragment : Fragment(R.layout.fragment_list),
         findNavController().navigate(action)
     }
 
-    private fun navigateToCreateNewItemFragment() {
-        val action = ListFragmentDirections.actionListFragmentToCreateNewItemFragment()
+    private fun navigateToCreateNewItemFragment(calculationInfo: CalculationInfo) {
+        val action = ListFragmentDirections.actionListFragmentToCreateNewItemFragment(newCalculationInfo = calculationInfo)
         findNavController().navigate(action)
     }
 
-    override fun onMakeNewCalculationSaveButtonClick() {
-        navigateToCreateNewItemFragment()
+    override fun onMakeNewCalculationSaveButtonClick(calculationInfo: CalculationInfo) {
+        navigateToCreateNewItemFragment(calculationInfo = calculationInfo)
     }
 
     override fun onCustomPopUpDialogSaveButtonClick(dialog : CustomPopUpDialogFragment) {
