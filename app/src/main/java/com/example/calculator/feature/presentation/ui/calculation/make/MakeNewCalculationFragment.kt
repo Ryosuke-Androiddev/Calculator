@@ -19,6 +19,8 @@ import com.example.calculator.feature.presentation.component.adapter.formula_ite
 import com.example.calculator.feature.presentation.ui.calculation.viewmodel.CalculationViewModel
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
+import org.mariuszgromada.math.mxparser.Expression
+import java.text.DecimalFormat
 
 @AndroidEntryPoint
 class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculation) {
@@ -130,6 +132,7 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         binding.equalFormulaInputButton.setOnClickListener {
             // show answer and insert calculation
+            showCalculationResult()
             // TODO call UseCase Insert Logic here
         }
 
@@ -182,6 +185,27 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
         return "${binding.formulaTextview.text}$buttonText"
     }
 
+    // 掛け算と割り算の記号を入れ替える
+    private fun getInputExpression() : String {
+        var expression = binding.formulaTextview.text.replace(Regex("÷"), "/")
+        expression = expression.replace(Regex("×"), "*")
+        return expression
+    }
+
+    private fun showCalculationResult() {
+        try {
+            val expression = getInputExpression()
+            val result = Expression(expression).calculate()
+            if (result.isNaN()) {
+                binding.formulaAnswerTextView.text = ERROR_MESSAGE
+            } else {
+                binding.formulaAnswerTextView.text = DecimalFormat("0.######").format(result).toString()
+            }
+        } catch (e: Exception) {
+            binding.formulaAnswerTextView.text = ERROR_MESSAGE
+        }
+    }
+
     private fun setupRecyclerView() {
 
         binding.calculationFormulaRecyclerview.adapter = adapter
@@ -195,5 +219,9 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val ERROR_MESSAGE = "Error"
     }
 }

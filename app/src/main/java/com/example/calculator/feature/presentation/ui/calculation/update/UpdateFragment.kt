@@ -13,9 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentUpdateBinding
 import com.example.calculator.feature.presentation.component.adapter.formula_item.CalculationFormulaItemAdapter
+import com.example.calculator.feature.presentation.ui.calculation.make.MakeNewCalculationFragment
 import com.example.calculator.feature.presentation.ui.calculation.viewmodel.CalculationViewModel
 import com.example.calculator.feature.presentation.util.DummyData
 import dagger.hilt.android.AndroidEntryPoint
+import org.mariuszgromada.math.mxparser.Expression
+import java.text.DecimalFormat
 
 @AndroidEntryPoint
 class UpdateFragment : Fragment(R.layout.fragment_update) {
@@ -122,6 +125,7 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
 
         binding.updateEqualFormulaInputButton.setOnClickListener {
             // show answer and insert calculation
+            showCalculationResult()
             // TODO call UseCase Insert Logic here
         }
 
@@ -177,6 +181,27 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
         return "${binding.updateFormulaTextview.text}$buttonText"
     }
 
+    // 掛け算と割り算の記号を入れ替える
+    private fun getInputExpression() : String {
+        var expression = binding.updateFormulaTextview.text.replace(Regex("÷"), "/")
+        expression = expression.replace(Regex("×"), "*")
+        return expression
+    }
+
+    private fun showCalculationResult() {
+        try {
+            val expression = getInputExpression()
+            val result = Expression(expression).calculate()
+            if (result.isNaN()) {
+                binding.updateFormulaAnswerTextView.text = UPDATE_ERROR_MESSAGE
+            } else {
+                binding.updateFormulaAnswerTextView.text = DecimalFormat("0.######").format(result).toString()
+            }
+        } catch (e: Exception) {
+            binding.updateFormulaAnswerTextView.text = UPDATE_ERROR_MESSAGE
+        }
+    }
+
     private fun setupRecyclerView() {
 
         binding.updateCalculationFormulaRecyclerview.adapter = adapter
@@ -190,5 +215,9 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val UPDATE_ERROR_MESSAGE = "Error"
     }
 }
