@@ -18,6 +18,7 @@ import com.example.calculator.databinding.FragmentListBinding
 import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.adapter.list_item.CalculationInfoItemAdapter
 import com.example.calculator.feature.presentation.component.dialog.CustomPopUpDialogFragment
+import com.example.calculator.feature.presentation.component.dialog.DeletePopUpDialogFragment
 import com.example.calculator.feature.presentation.component.dialog.MakeCalculationPopUpDialogFragment
 import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
 import com.example.calculator.feature.presentation.util.DummyData
@@ -26,7 +27,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ListFragment : Fragment(R.layout.fragment_list),
     MakeCalculationPopUpDialogFragment.MakeCalculationPopUpDialogListener,
-    CustomPopUpDialogFragment.CustomPopUpDialogListener {
+    CustomPopUpDialogFragment.CustomPopUpDialogListener,
+    DeletePopUpDialogFragment.DeletePopUpDialogListener {
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
@@ -135,6 +137,11 @@ class ListFragment : Fragment(R.layout.fragment_list),
 
     override fun onCustomPopUpDialogSaveButtonClick(dialog : CustomPopUpDialogFragment, calculationInfo: CalculationInfo) {
         viewModel.updateCalculationInfoUseCase(calculationInfo = calculationInfo)
+        dialog.dismiss()
+    }
+
+    override fun setOnDeleteClick(dialog: DeletePopUpDialogFragment, calculationInfo: CalculationInfo) {
+        viewModel.deleteCalculationInfoUseCase(calculationInfo = calculationInfo)
         dialog.dismiss()
     }
 
