@@ -52,7 +52,7 @@ class ListFragment : Fragment(R.layout.fragment_list),
         setupRecyclerView()
 
         viewModel.getAllCalculation.observe(viewLifecycleOwner) { calculationInfoList ->
-            adapter.submitList(calculationInfoList)
+            // adapter.submitList(calculationInfoList)
         }
 
         childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->

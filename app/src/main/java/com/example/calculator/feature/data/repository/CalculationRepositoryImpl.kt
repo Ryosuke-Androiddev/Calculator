@@ -12,8 +12,7 @@ class CalculationRepositoryImpl(
 ): CalculationRepository{
 
     // CalculationInfo
-    override fun getAllCalculationInfo(): List<CalculationInfo> {
-
+    override suspend fun getAllCalculationInfo(): List<CalculationInfo> {
         return calculationDao.getAllCalculationInfo()
     }
 

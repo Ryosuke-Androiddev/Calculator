@@ -44,13 +44,13 @@ class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
             if (calculationTitle.isBlank() || calculationTitle.isEmpty()) {
                 Toast.makeText(requireContext(), "Please input 0 more characters", Toast.LENGTH_SHORT).show()
             } else {
-                 // Object を渡してUseCaseの呼び出しと画面遷移
+                 // IDは適当に渡して生成してくれる
                 val calculationInfo = CalculationInfo(
-                    calculationId = 1L,
+                    calculationId = 0,
                     title = calculationTitle,
                     date = Date()
                 )
-//                viewModel.insertCalculationInfoUseCase(calculationInfo = calculationInfo)
+                // viewModel.insertCalculationInfoUseCase(calculationInfo = calculationInfo)
                 listener.onMakeNewCalculationSaveButtonClick(calculationInfo = calculationInfo)
             }
         }

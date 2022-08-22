@@ -26,7 +26,7 @@ class ListViewModel @Inject constructor(
     // Calculation
     val getAllCalculationUseCase: LiveData<Calculation> = useCase.getCalculation()
 
-    private fun getAllCalculationUseCase() = viewModelScope.launch {
+    private fun getAllCalculationUseCase() = viewModelScope.launch(Dispatchers.IO) {
         _getAllCalculation.postValue(useCase.getAllCalculationInfoUseCase())
     }
 
@@ -49,11 +49,11 @@ class ListViewModel @Inject constructor(
         useCase.deleteCalculationInfoUseCase(calculationInfo = calculationInfo)
     }
 
-    fun sortByDate() = viewModelScope.launch {
+    fun sortByDate() = viewModelScope.launch(Dispatchers.IO) {
         _getAllCalculation.postValue(useCase.sortByDateUseCase())
     }
 
-    fun sortByName() = viewModelScope.launch {
+    fun sortByName() = viewModelScope.launch(Dispatchers.IO) {
         _getAllCalculation.postValue(useCase.sortByNameUseCase())
     }
 }
