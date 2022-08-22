@@ -131,7 +131,8 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             motion:layout_constraintBottom_toBottomOf="@+id/formula_answer_textView"
-            android:layout_marginStart="24dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="12dp"
             motion:layout_constraintTop_toTopOf="@+id/formula_textview"
             motion:layout_constraintStart_toStartOf="parent"
             android:alpha="1.0" />
