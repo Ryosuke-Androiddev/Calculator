@@ -10,7 +10,7 @@ interface CalculationRepository {
     // model CalculationInfo
 
     // Get
-    fun getAllCalculationInfo(): LiveData<List<CalculationInfo>>
+    fun getAllCalculationInfo(): List<CalculationInfo>
     // Insert
     suspend fun insertCalculationInfo(calculationInfo: CalculationInfo)
     // Update

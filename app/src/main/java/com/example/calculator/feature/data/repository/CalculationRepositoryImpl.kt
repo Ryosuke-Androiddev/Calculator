@@ -12,7 +12,7 @@ class CalculationRepositoryImpl(
 ): CalculationRepository{
 
     // CalculationInfo
-    override fun getAllCalculationInfo(): LiveData<List<CalculationInfo>> {
+    override fun getAllCalculationInfo(): List<CalculationInfo> {
 
         return calculationDao.getAllCalculationInfo()
     }

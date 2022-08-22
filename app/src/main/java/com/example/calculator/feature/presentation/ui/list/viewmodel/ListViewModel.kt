@@ -16,18 +16,19 @@ class ListViewModel @Inject constructor(
     private val useCase: UseCase
 ): ViewModel() {
 
-    //val getAllCalculation: LiveData<List<CalculationInfoItem>> = useCase.getAllCalculationInfoUseCase()
+    init {
+        getAllCalculationUseCase()
+    }
 
-    private val list = DummyData.list
-
-    // ここLiveDataの使い方がちゃうかも
-    private val _getAllCalculation = MutableLiveData(list)
-    val getAllCalculationInfoUseCase: LiveData<List<CalculationInfo>> = _getAllCalculation
-
-    // val getAllCalculation: LiveData<List<CalculationInfo>> = useCase.getAllCalculationInfoUseCase()
+    private val _getAllCalculation = MutableLiveData<List<CalculationInfo>>()
+    val getAllCalculation: LiveData<List<CalculationInfo>> = _getAllCalculation
 
     // Calculation
     val getAllCalculationUseCase: LiveData<Calculation> = useCase.getCalculation()
+
+    private fun getAllCalculationUseCase() = viewModelScope.launch {
+        _getAllCalculation.postValue(useCase.getAllCalculationInfoUseCase())
+    }
 
     fun searchCalculationInfoUseCase(searchQuery: String) = viewModelScope.launch(Dispatchers.IO) {
         // 個々のロジックがうまくいってないからクラッシュしてる

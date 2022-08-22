@@ -9,7 +9,7 @@ class GetAllCalculationInfoUseCase @Inject constructor(
     private val repository: CalculationRepository
 ) {
 
-    operator fun invoke(): LiveData<List<CalculationInfo>> {
+    operator fun invoke(): List<CalculationInfo> {
 
         return repository.getAllCalculationInfo()
     }

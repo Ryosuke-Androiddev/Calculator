@@ -11,7 +11,7 @@ interface CalculationDao {
 
     // CalculationInfo
     @Query("SELECT * FROM calculation_info_table")
-    fun getAllCalculationInfo(): LiveData<List<CalculationInfo>>
+    fun getAllCalculationInfo(): List<CalculationInfo>
 
     // Insert
     @Insert(onConflict = OnConflictStrategy.REPLACE)

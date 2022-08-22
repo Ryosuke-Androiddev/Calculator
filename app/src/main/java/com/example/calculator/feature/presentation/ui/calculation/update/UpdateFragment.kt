@@ -132,9 +132,9 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
         setupRecyclerView()
 
         // TODO すべての処理が終わったタイミングで購読を始める
-//        viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationContentList ->
-//            adapter.submitList(calculationContentList)
-//        }
+        viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationContentList ->
+            adapter.submitList(calculationContentList)
+        }
 
         binding.motionBase.setTransitionListener(object : MotionLayout.TransitionListener {
 
@@ -206,10 +206,6 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
 
         binding.updateCalculationFormulaRecyclerview.adapter = adapter
         binding.updateCalculationFormulaRecyclerview.layoutManager = LinearLayoutManager(context)
-
-        // TODO すべての実装が終わったら、以下の2行は削除する
-        binding.updateCalculationFormulaRecyclerview.scrollToPosition(DummyData.contentList.size - 1)
-        adapter.submitList(DummyData.contentList)
     }
 
     override fun onDestroyView() {

@@ -51,8 +51,8 @@ class ListFragment : Fragment(R.layout.fragment_list),
 
         setupRecyclerView()
 
-        viewModel.getAllCalculationInfoUseCase.observe(viewLifecycleOwner) {
-            // submitList() はここで呼び出す
+        viewModel.getAllCalculation.observe(viewLifecycleOwner) { calculationInfoList ->
+            adapter.submitList(calculationInfoList)
         }
 
         childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->
@@ -102,9 +102,6 @@ class ListFragment : Fragment(R.layout.fragment_list),
 
         binding.listRecyclerView.adapter = adapter
         binding.listRecyclerView.layoutManager = LinearLayoutManager(context)
-
-        // この処理をLiveDataで購読している処理に回す
-        adapter.submitList(DummyData.list)
 
         adapter.setOnCalculationClickListener(
             object : CalculationInfoItemAdapter.OnCalculationItemClickListener {
