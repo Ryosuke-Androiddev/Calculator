@@ -27,10 +27,10 @@ interface CalculationDao {
     @Query("SELECT * FROM calculation_info_table WHERE title LIKE :searchQuery")
     fun searchCalculationInfo(searchQuery: String): List<CalculationInfo>
     // Date Sort
-    @Query("SELECT * FROM calculation_info_table ORDER BY date")
+    @Query("SELECT * FROM calculation_info_table ORDER BY date ASC")
     fun sortByDate(): List<CalculationInfo>
     // Name Sort
-    @Query("SELECT * FROM calculation_info_table ORDER BY title")
+    @Query("SELECT * FROM calculation_info_table ORDER BY title DESC")
     fun sortByName(): List<CalculationInfo>
 
     // Calculation Content
