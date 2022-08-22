@@ -63,6 +63,14 @@ class ListFragment : Fragment(R.layout.fragment_list),
             findNavController().navigate(action)
         }
 
+        binding.dateSortButton.setOnClickListener {
+            viewModel.sortByDate()
+        }
+
+        binding.nameSortButton.setOnClickListener {
+            viewModel.sortByName()
+        }
+
         binding.DashBorderButton.setOnClickListener {
             MakeCalculationPopUpDialogFragment().show(childFragmentManager, "Make New Calculation Pop Up")
         }
