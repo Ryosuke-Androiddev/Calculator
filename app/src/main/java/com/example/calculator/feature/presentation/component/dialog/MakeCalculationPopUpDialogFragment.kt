@@ -15,6 +15,7 @@ import com.example.calculator.databinding.MakeCalculationPopUpDialogBinding
 import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.dialog.parent.CustomDialogFragmentParent
 import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
+import java.util.*
 
 class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
 
@@ -28,7 +29,7 @@ class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
     private lateinit var listener : MakeCalculationPopUpDialogListener
 
     interface MakeCalculationPopUpDialogListener {
-        fun onMakeNewCalculationSaveButtonClick()
+        fun onMakeNewCalculationSaveButtonClick(calculationInfo: CalculationInfo)
     }
 
     @SuppressLint("UseGetLayoutInflater")
@@ -43,14 +44,13 @@ class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
             if (calculationTitle.isBlank() || calculationTitle.isEmpty()) {
                 Toast.makeText(requireContext(), "Please input 0 more characters", Toast.LENGTH_SHORT).show()
             } else {
-                // Object を渡してUseCaseの呼び出しと画面遷移
-//                val calculationInfo = CalculationInfo(
-//                    calculationId = 1L,
-//                    title = calculationTitle,
-//                    date = 1L
-//                )
-//                viewModel.insertCalculationInfoUseCase(calculationInfo = calculationInfo)
-                listener.onMakeNewCalculationSaveButtonClick()
+                 // IDは適当に渡して生成してくれる
+                val calculationInfo = CalculationInfo(
+                    calculationId = 0,
+                    title = calculationTitle,
+                    date = Date()
+                )
+                listener.onMakeNewCalculationSaveButtonClick(calculationInfo = calculationInfo)
             }
         }
 

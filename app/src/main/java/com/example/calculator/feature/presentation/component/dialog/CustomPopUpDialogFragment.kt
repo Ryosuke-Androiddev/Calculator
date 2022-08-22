@@ -18,6 +18,7 @@ import com.example.calculator.databinding.CustomPopUpDialogBinding
 import com.example.calculator.feature.domain.model.CalculationInfo
 import com.example.calculator.feature.presentation.component.dialog.parent.CustomDialogFragmentParent
 import com.example.calculator.feature.presentation.ui.list.viewmodel.ListViewModel
+import java.util.*
 
 class CustomPopUpDialogFragment(
     private val calculationInfo: CalculationInfo
@@ -33,7 +34,7 @@ class CustomPopUpDialogFragment(
     private lateinit var listener : CustomPopUpDialogListener
 
     interface CustomPopUpDialogListener {
-        fun onCustomPopUpDialogSaveButtonClick(dialog : CustomPopUpDialogFragment)
+        fun onCustomPopUpDialogSaveButtonClick(dialog : CustomPopUpDialogFragment, calculationInfo: CalculationInfo)
     }
 
     @SuppressLint("UseGetLayoutInflater")
@@ -54,13 +55,12 @@ class CustomPopUpDialogFragment(
                 // 0文字以上の指定をここで
                 Toast.makeText(requireContext(), "Please input 0 more characters", Toast.LENGTH_SHORT).show()
             } else {
-//                val calculationInfo = CalculationInfo(
-//                    calculationId = 1L,
-//                    title = newTitle,
-//                    date = 1L
-//                )
-//                viewModel.updateCalculationInfoUseCase(calculationInfo = calculationInfo)
-                listener.onCustomPopUpDialogSaveButtonClick(this)
+                val calculationInfo = CalculationInfo(
+                    calculationId = calculationInfo.calculationId,
+                    title = newTitle,
+                    date = Date()
+                )
+                listener.onCustomPopUpDialogSaveButtonClick(this, calculationInfo = calculationInfo)
             }
         }
 

@@ -12,8 +12,7 @@ class CalculationRepositoryImpl(
 ): CalculationRepository{
 
     // CalculationInfo
-    override fun getAllCalculationInfo(): LiveData<List<CalculationInfo>> {
-
+    override suspend fun getAllCalculationInfo(): List<CalculationInfo> {
         return calculationDao.getAllCalculationInfo()
     }
 
@@ -22,22 +21,22 @@ class CalculationRepositoryImpl(
     }
 
     override suspend fun updateCalculationInfo(calculationInfo: CalculationInfo) {
-        updateCalculationInfo(calculationInfo = calculationInfo)
+        calculationDao.updateCalculationInfo(calculationInfo = calculationInfo)
     }
 
     override suspend fun deleteCalculationInfo(calculationInfo: CalculationInfo) {
-        deleteCalculationInfo(calculationInfo = calculationInfo)
+        calculationDao.deleteCalculationInfo(calculationInfo = calculationInfo)
     }
 
-    override fun searchCalculationInfo(searchQuery: String): List<CalculationInfo> {
+    override suspend fun searchCalculationInfo(searchQuery: String): List<CalculationInfo> {
         return calculationDao.searchCalculationInfo(searchQuery = searchQuery)
     }
 
-    override fun sortByDate(): List<CalculationInfo> {
+    override suspend fun sortByDate(): List<CalculationInfo> {
         return calculationDao.sortByDate()
     }
 
-    override fun sortByName(): List<CalculationInfo> {
+    override suspend fun sortByName(): List<CalculationInfo> {
         return calculationDao.sortByName()
     }
 

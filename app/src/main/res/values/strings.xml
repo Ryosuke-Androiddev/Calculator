@@ -44,4 +44,7 @@
     <string name="delete_calculation">計算の削除</string>
     <string name="confirm_delete">計算を削除しますか? (1度削除すると元に戻せません)</string>
     <string name="delete">Delete</string>
+    <string name="update">Update</string>
+    <string name="above">↑</string>
+    <string name="new_title">New</string>
 </resources>

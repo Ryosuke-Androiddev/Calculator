@@ -74,6 +74,13 @@
             motion:layout_constraintTop_toTopOf="@+id/update_formula_textview"
             motion:layout_constraintStart_toStartOf="parent"
             android:alpha="0.0" />
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@+id/update_formula_answer_textView"
+            android:id="@+id/update_formula_textview"
+            android:layout_marginEnd="24dp" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -131,7 +138,8 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             motion:layout_constraintBottom_toBottomOf="@+id/update_formula_answer_textView"
-            android:layout_marginStart="24dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="12dp"
             motion:layout_constraintTop_toTopOf="@+id/update_formula_textview"
             motion:layout_constraintStart_toStartOf="parent"
             android:alpha="1.0" />

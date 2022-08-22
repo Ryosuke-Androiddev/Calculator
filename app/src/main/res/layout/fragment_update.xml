@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Update"
+        android:text="@string/update"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="24dp"
-        android:text="↑"
+        android:text="@string/above"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/update_formula_answer_textView"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,20 +71,22 @@
         android:id="@+id/update_formula_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="55555555"
+        android:text=""
+        android:maxLines="1"
+        android:maxLength="12"
         android:textColor="@color/black"
         android:textSize="45sp"
         app:layout_constraintBottom_toTopOf="@+id/update_formula_answer_textView"
-        app:layout_constraintEnd_toEndOf="@+id/update_formula_answer_textView"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/update_formula_answer_textView" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/update_formula_answer_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:text="=5555555"
+        android:text=""
+        android:maxLines="1"
+        android:maxLength="12"
         android:textColor="@color/black"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@id/update_calculation_button_constraintLayout"
@@ -301,14 +303,14 @@
             android:layout_height="70dp"
             android:layout_marginStart="16dp"
             android:text="@string/_2"
-            app:layout_constraintEnd_toStartOf="@+id/formula_input_3_button"
+            app:layout_constraintEnd_toStartOf="@+id/update_formula_input_3_button"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/update_formula_input_1_button"
             app:layout_constraintTop_toTopOf="@+id/update_formula_input_1_button"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/formula_input_3_button"
+            android:id="@+id/update_formula_input_3_button"
             style="@style/CustomCircleButtonShape"
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -330,7 +332,7 @@
             android:text="@string/plus"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/formula_input_3_button"
+            app:layout_constraintStart_toEndOf="@+id/update_formula_input_3_button"
             app:layout_constraintTop_toTopOf="@+id/update_formula_input_1_button"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
 

@@ -2,6 +2,7 @@ package com.example.calculator.feature.presentation.component.dialog
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -23,8 +24,11 @@ class DeletePopUpDialogFragment(
 
     private val builder by lazy { AlertDialog.Builder(requireActivity()) }
     private val dialog by lazy { builder.create() }
+    private lateinit var listener: DeletePopUpDialogListener
 
-    private val viewModel: ListViewModel by viewModels()
+    interface DeletePopUpDialogListener {
+        fun setOnDeleteClick(dialog: DeletePopUpDialogFragment, calculationInfo: CalculationInfo)
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
@@ -34,8 +38,7 @@ class DeletePopUpDialogFragment(
         super.onCreateDialog(savedInstanceState)
 
         binding.deleteTextButton.setOnClickListener {
-            // 削除のUseCaseの呼び出し, 引数は画面遷移時にもらう
-            //viewModel.deleteCalculationInfoUseCase(calculationInfo = calculationInfo)
+            listener.setOnDeleteClick(this, calculationInfo = calculationInfo)
         }
 
         binding.deleteDialogCancelTextButton.setOnClickListener {
@@ -46,6 +49,16 @@ class DeletePopUpDialogFragment(
         dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
 
         return dialog
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            // 呼び出し元を親Fragmentから取得する
+            listener = parentFragment as DeletePopUpDialogListener
+        } catch (e : ClassCastException) {
+            throw ClassCastException(context.toString() + "must Implement Interface")
+        }
     }
 
     override fun onStart() {
