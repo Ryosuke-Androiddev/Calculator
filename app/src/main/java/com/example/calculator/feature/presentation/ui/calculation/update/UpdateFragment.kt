@@ -98,6 +98,33 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
             binding.updateFormulaTextview.text = addInputTextToFormulaTextView("9")
         }
 
+        // Calculation Sign
+
+        binding.updateFormulaInputDotButton.setOnClickListener {
+            binding.updateFormulaTextview.text = addInputTextToFormulaTextView(".")
+        }
+
+        binding.updateDivisionFormulaInputButton.setOnClickListener {
+            binding.updateFormulaTextview.text = addInputTextToFormulaTextView("÷")
+        }
+
+        binding.updateMultiplyFormulaInputButton.setOnClickListener {
+            binding.updateFormulaTextview.text = addInputTextToFormulaTextView("×")
+        }
+
+        binding.updateMinusFormulaInputButton.setOnClickListener {
+            binding.updateFormulaTextview.text = addInputTextToFormulaTextView("-")
+        }
+
+        binding.updatePlusFormulaInputButton.setOnClickListener {
+            binding.updateFormulaTextview.text = addInputTextToFormulaTextView("+")
+        }
+
+        binding.updateEqualFormulaInputButton.setOnClickListener {
+            // show answer and insert calculation
+            // TODO call UseCase Insert Logic here
+        }
+
         setupRecyclerView()
 
         // TODO すべての処理が終わったタイミングで購読を始める

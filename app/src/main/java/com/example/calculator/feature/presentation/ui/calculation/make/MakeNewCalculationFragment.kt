@@ -106,6 +106,33 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
             binding.formulaTextview.text = addInputTextToFormulaTextView("9")
         }
 
+        // Calculation Sign
+
+        binding.formulaInputDotButton.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView(".")
+        }
+
+        binding.divisionFormulaInputButton.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("÷")
+        }
+
+        binding.multiplyFormulaInputButton.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("×")
+        }
+
+        binding.minusFormulaInputButton.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("-")
+        }
+
+        binding.plusFormulaInputButton.setOnClickListener {
+            binding.formulaTextview.text = addInputTextToFormulaTextView("+")
+        }
+
+        binding.equalFormulaInputButton.setOnClickListener {
+            // show answer and insert calculation
+            // TODO call UseCase Insert Logic here
+        }
+
         setupRecyclerView()
 
         // TODO すべての処理が終わったタイミングで購読を始める
