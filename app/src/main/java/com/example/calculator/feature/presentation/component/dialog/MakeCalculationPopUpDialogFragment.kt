@@ -50,7 +50,6 @@ class MakeCalculationPopUpDialogFragment: CustomDialogFragmentParent() {
                     title = calculationTitle,
                     date = Date()
                 )
-                // viewModel.insertCalculationInfoUseCase(calculationInfo = calculationInfo)
                 listener.onMakeNewCalculationSaveButtonClick(calculationInfo = calculationInfo)
             }
         }

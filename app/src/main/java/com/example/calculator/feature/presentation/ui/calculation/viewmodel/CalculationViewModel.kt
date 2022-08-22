@@ -6,10 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.calculator.feature.domain.model.CalculationContent
 import com.example.calculator.feature.domain.use_case.model.UseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class CalculationViewModel @Inject constructor(
     private val useCase: UseCase
 ): ViewModel() {

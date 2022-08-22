@@ -52,7 +52,7 @@ class ListFragment : Fragment(R.layout.fragment_list),
         setupRecyclerView()
 
         viewModel.getAllCalculation.observe(viewLifecycleOwner) { calculationInfoList ->
-            // adapter.submitList(calculationInfoList)
+            adapter.submitList(calculationInfoList)
         }
 
         childFragmentManager.setFragmentResultListener("update_navigation", viewLifecycleOwner) { requestKey: String, bundle: Bundle ->
@@ -129,11 +129,12 @@ class ListFragment : Fragment(R.layout.fragment_list),
     }
 
     override fun onMakeNewCalculationSaveButtonClick(calculationInfo: CalculationInfo) {
+        viewModel.insertCalculationInfoUseCase(calculationInfo = calculationInfo)
         navigateToCreateNewItemFragment(calculationInfo = calculationInfo)
     }
 
-    override fun onCustomPopUpDialogSaveButtonClick(dialog : CustomPopUpDialogFragment) {
-        // Title のUPDATEのUseCaseをここで呼び出す
+    override fun onCustomPopUpDialogSaveButtonClick(dialog : CustomPopUpDialogFragment, calculationInfo: CalculationInfo) {
+        viewModel.updateCalculationInfoUseCase(calculationInfo = calculationInfo)
         dialog.dismiss()
     }
 

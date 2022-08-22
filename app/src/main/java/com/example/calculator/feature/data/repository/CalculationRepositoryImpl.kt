@@ -21,11 +21,11 @@ class CalculationRepositoryImpl(
     }
 
     override suspend fun updateCalculationInfo(calculationInfo: CalculationInfo) {
-        updateCalculationInfo(calculationInfo = calculationInfo)
+        calculationDao.updateCalculationInfo(calculationInfo = calculationInfo)
     }
 
     override suspend fun deleteCalculationInfo(calculationInfo: CalculationInfo) {
-        deleteCalculationInfo(calculationInfo = calculationInfo)
+        calculationDao.deleteCalculationInfo(calculationInfo = calculationInfo)
     }
 
     override suspend fun searchCalculationInfo(searchQuery: String): List<CalculationInfo> {
