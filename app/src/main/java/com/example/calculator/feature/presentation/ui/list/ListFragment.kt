@@ -92,7 +92,9 @@ class ListFragment : Fragment(R.layout.fragment_list),
                 editText.text?.toString()?.let { searchQuery ->
                     if (searchQuery.isNotEmpty()) {
                         // 個々の呼び出しをsubmitList()する処理がないと変更を確認できない
-                        viewModel.searchCalculationInfoUseCase(searchQuery = searchQuery)
+                        viewModel.searchCalculationInfoUseCase(searchQuery = searchQuery).observe(viewLifecycleOwner) { searchList ->
+                            adapter.submitList(searchList)
+                        }
                     } else {
                         Toast.makeText(requireContext(), "Please Input 0 more Characters", Toast.LENGTH_SHORT).show()
                     }
