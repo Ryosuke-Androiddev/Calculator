@@ -15,23 +15,16 @@ import javax.inject.Inject
 class ListViewModel @Inject constructor(
     private val useCase: UseCase
 ): ViewModel() {
-
-    init {
-        getAllCalculationUseCase()
-    }
-
-    private val _getAllCalculation = MutableLiveData<List<CalculationInfo>>()
-    val getAllCalculation: LiveData<List<CalculationInfo>> = _getAllCalculation
-
     // Calculation
     val getAllCalculationUseCase: LiveData<Calculation> = useCase.getCalculation()
 
-    private fun getAllCalculationUseCase() = viewModelScope.launch(Dispatchers.IO) {
-        _getAllCalculation.postValue(useCase.getAllCalculationInfoUseCase())
-    }
+    // Calculation Info LiveData
+    val getAllCalculationInfoUseCase: LiveData<List<CalculationInfo>> = useCase.getAllCalculationInfoUseCase()
+    val sortByDate: LiveData<List<CalculationInfo>> = useCase.sortByDateUseCase()
+    val sortByName: LiveData<List<CalculationInfo>> = useCase.sortByNameUseCase()
 
-    fun searchCalculationInfoUseCase(searchQuery: String) = viewModelScope.launch(Dispatchers.IO) {
-        _getAllCalculation.postValue(useCase.searchCalculationInfoUseCase(searchQuery = searchQuery))
+    fun searchCalculationInfoUseCase(searchQuery: String): LiveData<List<CalculationInfo>> {
+        return useCase.searchCalculationInfoUseCase(searchQuery = searchQuery)
     }
 
     fun insertCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch(Dispatchers.IO) {
@@ -44,13 +37,5 @@ class ListViewModel @Inject constructor(
 
     fun deleteCalculationInfoUseCase(calculationInfo: CalculationInfo) = viewModelScope.launch(Dispatchers.IO) {
         useCase.deleteCalculationInfoUseCase(calculationInfo = calculationInfo)
-    }
-
-    fun sortByDate() = viewModelScope.launch(Dispatchers.IO) {
-        _getAllCalculation.postValue(useCase.sortByDateUseCase())
-    }
-
-    fun sortByName() = viewModelScope.launch(Dispatchers.IO) {
-        _getAllCalculation.postValue(useCase.sortByNameUseCase())
     }
 }

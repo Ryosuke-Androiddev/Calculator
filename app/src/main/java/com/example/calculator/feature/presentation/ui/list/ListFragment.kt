@@ -53,7 +53,7 @@ class ListFragment : Fragment(R.layout.fragment_list),
 
         setupRecyclerView()
 
-        viewModel.getAllCalculation.observe(viewLifecycleOwner) { calculationInfoList ->
+        viewModel.getAllCalculationInfoUseCase.observe(viewLifecycleOwner) { calculationInfoList ->
             adapter.submitList(calculationInfoList)
         }
 
@@ -64,11 +64,15 @@ class ListFragment : Fragment(R.layout.fragment_list),
         }
 
         binding.dateSortButton.setOnClickListener {
-            viewModel.sortByDate()
+            viewModel.sortByDate.observe(viewLifecycleOwner) { sortedList ->
+                adapter.submitList(sortedList)
+            }
         }
 
         binding.nameSortButton.setOnClickListener {
-            viewModel.sortByName()
+            viewModel.sortByName.observe(viewLifecycleOwner) { sortedList ->
+                adapter.submitList(sortedList)
+            }
         }
 
         binding.DashBorderButton.setOnClickListener {
