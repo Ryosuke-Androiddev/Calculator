@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentUpdateBinding
+import com.example.calculator.feature.domain.model.CalculationContent
 import com.example.calculator.feature.presentation.component.adapter.formula_item.CalculationFormulaItemAdapter
 import com.example.calculator.feature.presentation.ui.calculation.make.MakeNewCalculationFragment
 import com.example.calculator.feature.presentation.ui.calculation.viewmodel.CalculationViewModel
@@ -127,6 +128,18 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
             // show answer and insert calculation
             showCalculationResult()
             // TODO call UseCase Insert Logic here
+            viewModel.insertCalculationContentUseCase(
+                CalculationContent(
+                    contentId = 0,
+                    answer = binding.updateFormulaAnswerTextView.text.toString(),
+                    formulaProcess = binding.updateFormulaTextview.text.toString(),
+                    calculationInfoId = args.calculationItem.calculationId
+                )
+            )
+
+            // 計算結果をクリアする
+            binding.updateFormulaTextview.text = ""
+            binding.updateFormulaAnswerTextView.text = ""
         }
 
         setupRecyclerView()
@@ -134,6 +147,7 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
         // TODO すべての処理が終わったタイミングで購読を始める
         viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationContentList ->
             adapter.submitList(calculationContentList)
+            binding.updateCalculationFormulaRecyclerview.smoothScrollToPosition(calculationContentList.size - 1)
         }
 
         binding.motionBase.setTransitionListener(object : MotionLayout.TransitionListener {
