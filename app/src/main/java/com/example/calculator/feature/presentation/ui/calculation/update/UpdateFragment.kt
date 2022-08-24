@@ -152,10 +152,13 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
                 progress: Float
             ) {
                 if (startId == R.id.end) {
-                    binding.updateCalculationFormulaRecyclerview.scrollToPosition(DummyData.contentList.size - 1)
+                    viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationList ->
+                        binding.updateCalculationFormulaRecyclerview.scrollToPosition(calculationList.size - 1)
+                    }
                 } else if (startId == R.id.start) {
-                    // 繰り返し呼ばれるからバグが発生してる
-                    binding.updateCalculationFormulaRecyclerview.scrollToPosition(DummyData.contentList.size - 1)
+                    viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationList ->
+                        binding.updateCalculationFormulaRecyclerview.scrollToPosition(calculationList.size - 1)
+                    }
                 }
             }
 

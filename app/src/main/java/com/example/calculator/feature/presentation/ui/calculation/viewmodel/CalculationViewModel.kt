@@ -16,8 +16,7 @@ class CalculationViewModel @Inject constructor(
     private val useCase: UseCase
 ): ViewModel() {
 
-    private val _getAllCalculationContent = MutableLiveData<List<CalculationContent>>()
-    val getAllCalculationContent : LiveData<List<CalculationContent>> = _getAllCalculationContent
+    val getAllCalculationContent : LiveData<List<CalculationContent>> = useCase.getAllCalculationContentUseCase()
 
     fun insertCalculationContentUseCase(calculationContent: CalculationContent) = viewModelScope.launch(Dispatchers.IO) {
         useCase.insertCalculationContentUseCase(calculationContent = calculationContent)

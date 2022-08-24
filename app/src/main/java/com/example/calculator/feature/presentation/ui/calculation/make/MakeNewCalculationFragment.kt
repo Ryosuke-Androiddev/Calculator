@@ -15,6 +15,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.calculator.R
 import com.example.calculator.databinding.FragmentMakeNewCalculationBinding
+import com.example.calculator.feature.domain.model.CalculationContent
 import com.example.calculator.feature.presentation.component.adapter.formula_item.CalculationFormulaItemAdapter
 import com.example.calculator.feature.presentation.ui.calculation.viewmodel.CalculationViewModel
 import com.example.calculator.feature.presentation.util.DummyData
@@ -50,7 +51,11 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         super.onViewCreated(view, savedInstanceState)
 
-        binding.makeNewCalculationTitleTextView.text = args.newCalculationInfo.title
+        viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationList ->
+            adapter.submitList(calculationList)
+        }
+
+        binding.makeNewCalculationTitleTextView.text = args.newCalculationInfo.calculationId.toString()
 
         // ACボタンで入力を全削除
         binding.acButton.setOnClickListener {
@@ -134,6 +139,14 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
             // show answer and insert calculation
             showCalculationResult()
             // TODO call UseCase Insert Logic here
+//            viewModel.insertCalculationContentUseCase(
+//                CalculationContent(
+//                    contentId = 0,
+//                    answer = binding.formulaAnswerTextView.text.toString(),
+//                    formulaProcess = binding.formulaTextview.text.toString(),
+//                    calculationInfoId = args.newCalculationInfo.calculationId
+//                )
+//            )
         }
 
         setupRecyclerView()
@@ -159,10 +172,13 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
                 progress: Float
             ) {
                 if (startId == R.id.end) {
-                    binding.calculationFormulaRecyclerview.scrollToPosition(DummyData.contentList.size - 1)
+                    viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationList ->
+                        binding.calculationFormulaRecyclerview.scrollToPosition(calculationList.size - 1)
+                    }
                 } else if (startId == R.id.start) {
-                    // 繰り返し呼ばれるからバグが発生してる
-                    binding.calculationFormulaRecyclerview.scrollToPosition(DummyData.contentList.size - 1)
+                    viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationList ->
+                        binding.calculationFormulaRecyclerview.scrollToPosition(calculationList.size - 1)
+                    }
                 }
             }
 
