@@ -11,7 +11,7 @@ interface CalculationDao {
 
     // CalculationInfo
     @Query("SELECT * FROM calculation_info_table")
-    suspend fun getAllCalculationInfo(): List<CalculationInfo>
+    fun getAllCalculationInfo(): LiveData<List<CalculationInfo>>
 
     // Insert
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -24,14 +24,14 @@ interface CalculationDao {
     suspend fun deleteCalculationInfo(calculationInfo: CalculationInfo)
     // Search
     // "SELECT * FROM url_memo_entity WHERE title LIKE "%検索キーワード%"
-    @Query("SELECT * FROM calculation_info_table WHERE title LIKE :searchQuery")
-    fun searchCalculationInfo(searchQuery: String): List<CalculationInfo>
+    @Query("SELECT * FROM calculation_info_table WHERE title LIKE '%' || :searchQuery || '%'")
+    fun searchCalculationInfo(searchQuery: String): LiveData<List<CalculationInfo>>
     // Date Sort
-    @Query("SELECT * FROM calculation_info_table ORDER BY date ASC")
-    fun sortByDate(): List<CalculationInfo>
+    @Query("SELECT * FROM calculation_info_table ORDER BY date")
+    fun sortByDate(): LiveData<List<CalculationInfo>>
     // Name Sort
-    @Query("SELECT * FROM calculation_info_table ORDER BY title DESC")
-    fun sortByName(): List<CalculationInfo>
+    @Query("SELECT * FROM calculation_info_table ORDER BY title")
+    fun sortByName(): LiveData<List<CalculationInfo>>
 
     // Calculation Content
     @Query("SELECT * FROM calculation_content_table")

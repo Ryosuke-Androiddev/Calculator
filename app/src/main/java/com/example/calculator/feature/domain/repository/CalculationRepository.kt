@@ -10,7 +10,7 @@ interface CalculationRepository {
     // model CalculationInfo
 
     // Get
-    suspend fun getAllCalculationInfo(): List<CalculationInfo>
+    fun getAllCalculationInfo(): LiveData<List<CalculationInfo>>
     // Insert
     suspend fun insertCalculationInfo(calculationInfo: CalculationInfo)
     // Update
@@ -18,11 +18,11 @@ interface CalculationRepository {
     // Delete
     suspend fun deleteCalculationInfo(calculationInfo: CalculationInfo)
     // Search
-    suspend fun searchCalculationInfo(searchQuery: String): List<CalculationInfo>
+    fun searchCalculationInfo(searchQuery: String): LiveData<List<CalculationInfo>>
     // Date Sort
-    suspend fun sortByDate(): List<CalculationInfo>
+    fun sortByDate(): LiveData<List<CalculationInfo>>
     // Name Sort
-    suspend fun sortByName(): List<CalculationInfo>
+    fun sortByName(): LiveData<List<CalculationInfo>>
 
     // model CalculationContent
 

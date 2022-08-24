@@ -7,8 +7,8 @@ import com.example.calculator.feature.domain.util.DomainLayerConstants.CALCULATI
 @Entity(tableName = CALCULATION_CONTENT_TABLE_NAME)
 data class CalculationContent(
     @PrimaryKey(autoGenerate = true)
-    val contentId: Long,
-    val answer: Long,
+    val contentId: Int,
+    val answer: String,
     val formulaProcess: String,
     val calculationInfoId: Long
 )

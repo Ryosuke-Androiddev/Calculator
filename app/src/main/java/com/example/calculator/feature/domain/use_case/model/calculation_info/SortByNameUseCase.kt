@@ -8,7 +8,7 @@ import com.example.calculator.feature.domain.repository.CalculationRepository
 class SortByNameUseCase(
     private val repository: CalculationRepository
 ) {
-    suspend operator fun invoke() : List<CalculationInfo> {
+    operator fun invoke() : LiveData<List<CalculationInfo>> {
         return repository.sortByName()
     }
 }

@@ -7,7 +7,7 @@ import com.example.calculator.feature.domain.repository.CalculationRepository
 class SearchCalculationInfoUseCase(
     private val repository: CalculationRepository
 ) {
-    suspend operator fun invoke(searchQuery : String) : List<CalculationInfo> {
+    operator fun invoke(searchQuery : String) : LiveData<List<CalculationInfo>> {
         return repository.searchCalculationInfo(searchQuery = searchQuery)
     }
 }
