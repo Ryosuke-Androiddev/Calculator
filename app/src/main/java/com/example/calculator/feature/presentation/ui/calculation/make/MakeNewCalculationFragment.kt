@@ -51,10 +51,6 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
 
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationList ->
-            adapter.submitList(calculationList)
-        }
-
         binding.makeNewCalculationTitleTextView.text = args.newCalculationInfo.calculationId.toString()
 
         // ACボタンで入力を全削除
@@ -139,14 +135,19 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
             // show answer and insert calculation
             showCalculationResult()
             // TODO call UseCase Insert Logic here
-//            viewModel.insertCalculationContentUseCase(
-//                CalculationContent(
-//                    contentId = 0,
-//                    answer = binding.formulaAnswerTextView.text.toString(),
-//                    formulaProcess = binding.formulaTextview.text.toString(),
-//                    calculationInfoId = args.newCalculationInfo.calculationId
-//                )
-//            )
+            viewModel.insertCalculationContentUseCase(
+                CalculationContent(
+                    contentId = 0,
+                    answer = binding.formulaAnswerTextView.text.toString(),
+                    formulaProcess = binding.formulaTextview.text.toString(),
+                    calculationInfoId = args.newCalculationInfo.calculationId
+                )
+            )
+
+            // 計算結果をクリアする
+            binding.formulaTextview.text = ""
+            binding.formulaAnswerTextView.text = ""
+
         }
 
         setupRecyclerView()
@@ -154,6 +155,9 @@ class MakeNewCalculationFragment : Fragment(R.layout.fragment_make_new_calculati
         // TODO すべての処理が終わったタイミングで購読を始める
         viewModel.getAllCalculationContent.observe(viewLifecycleOwner) { calculationContentList ->
             adapter.submitList(calculationContentList)
+
+            // 最新の計算結果を表示する
+            binding.calculationFormulaRecyclerview.smoothScrollToPosition(calculationContentList.size - 1)
         }
 
         binding.motionBase.setTransitionListener(object : MotionLayout.TransitionListener {

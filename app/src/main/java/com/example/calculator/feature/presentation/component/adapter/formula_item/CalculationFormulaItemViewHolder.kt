@@ -11,5 +11,6 @@ class CalculationFormulaItemViewHolder(
 
     fun bind(calculationContent: CalculationContent) {
         binding.calculationFormula.text = calculationContent.formulaProcess
+        binding.calculationAnswer.text = calculationContent.answer
     }
 }
