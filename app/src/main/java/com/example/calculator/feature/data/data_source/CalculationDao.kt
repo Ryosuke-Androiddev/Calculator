@@ -27,10 +27,10 @@ interface CalculationDao {
     @Query("SELECT * FROM calculation_info_table WHERE title LIKE '%' || :searchQuery || '%'")
     fun searchCalculationInfo(searchQuery: String): LiveData<List<CalculationInfo>>
     // Date Sort
-    @Query("SELECT * FROM calculation_info_table ORDER BY date ASC")
+    @Query("SELECT * FROM calculation_info_table ORDER BY date")
     fun sortByDate(): LiveData<List<CalculationInfo>>
     // Name Sort
-    @Query("SELECT * FROM calculation_info_table ORDER BY title DESC")
+    @Query("SELECT * FROM calculation_info_table ORDER BY title")
     fun sortByName(): LiveData<List<CalculationInfo>>
 
     // Calculation Content
